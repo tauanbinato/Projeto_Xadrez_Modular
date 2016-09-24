@@ -1,0 +1,74 @@
+// Script:    TesteContadores.script
+// Autor:     Arndt von Staa
+// Data:      18/abril/2006
+// Propósito: Testar o módulo de geração de números aleatórios
+//
+
+== Exibir distribuição uniforme de 2 elementos
+=inicializar        0
+=exibiruniforme     1000   0   1   0.022  0.1
+
+== Exibir distribuição uniforme de 10 elementos com origem em 1 e 10000 numeros gerados
+=exibiruniforme     1000   1  10   0.03  0.1
+
+== Exibir distribuição uniforme de 1 elementos com origem em 5 e 10 numeros gerados
+=exibiruniforme       10   5   5   0.0  0.0
+
+== Exibir distribuição uniforme de 50 elementos com origem em 0 e 1000 numeros gerados
+=exibiruniforme     1000   0  49   0.03  0.1
+
+== Exibir distribuição uniforme 50 elementos origem em 0 e 1000000 gerados, raiz PI
+=inicializar        0
+=exibiruniforme  1000000   0  49   0.001 0.1
+
+== Exibir distribuição uniforme 50 elementos origem em 0 e 1000000 gerados, raiz PI + time
+=inicializar        1
+=exibiruniforme  1000000   0  49   0.001 0.2
+
+== Exibir distribuição uniforme 50 elementos origem em 0 e 1000000 gerados, raiz dado
+=inicializar        12345678
+=exibiruniforme  1000000   0  49   0.000967 0.01
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com 50% e 50%
+=inicializar        0
+=exibirfrequencia   1000 100  50 -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 10 20 30 e 40%, residuo
+=exibirfrequencia   1000 100  10  30  60 -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 10 20 30 e 40%, PI
+=inicializar        0
+=exibirfrequencia   1000000 100  10  30  60 -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 10 20 30 e 40%, tempo
+=inicializar        1
+=exibirfrequencia   1000000 100  10  30  60 -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 10 20 30 e 40%, dado
+=inicializar        12345678
+=exibirfrequencia   1000000 100  10  30  60 -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 99 e 1%
+=exibirfrequencia      1000 100  99  -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 99 e 1%
+=exibirfrequencia   1000000 100  99  -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 99,9 e 0,1%
+=exibirfrequencia      1000 1000 999  -1
+
+== Exibir distribuicao de freqüência no dominio 0 a 100 com freqüências 99,9 e 0,1%
+=exibirfrequencia   1000000 1000 999  -1
+
+== Exibir permutacao de 20 elementos
+=exibirpermutacao      1000   20 
+
+== Exibir permutacao de 52 elementos
+=exibirpermutacao   1000000   52 
+
+== Exibir permutacao de 12 elementos
+=inicializar        1
+=exibirpermutacao   1000000   12 
+
+
+// fim

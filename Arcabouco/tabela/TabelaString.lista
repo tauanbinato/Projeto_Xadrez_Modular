@@ -1,0 +1,9 @@
+// Teste de GeraTab e TabString, deve executar zero erros de geração
+
+// Arquivo de teste
+
+#include    "STR_SEGL.DEF"
+#include    "STR_APIC.DEF"
+#include    "TesteTabelaString.espstr"
+
+// fim

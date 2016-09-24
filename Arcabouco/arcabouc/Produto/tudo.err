@@ -1,0 +1,153 @@
+
+
+#################### Compilacao do construto: CriaLib
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+Microsoft (R) Library Manager Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:ArcaboucoTeste.lib 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj 
+
+
+#################### Compilacao do construto: TesteAleatorio
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testalt.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteAleatorio.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testalt.obj 
+
+
+#################### Compilacao do construto: TesteContadores
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testcnt.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteContadores.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testcnt.obj 
+
+
+#################### Compilacao do construto: TesteControleEspaco
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testced.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteControleEspaco.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testced.obj 
+
+
+#################### Compilacao do construto: TesteFuncoes
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testgen.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteFuncoes.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testgen.obj 
+
+
+#################### Compilacao do construto: TesteLerParametros
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testler.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteLerParametros.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testler.obj 
+
+
+#################### Compilacao do construto: TesteTabelaSimbolos
+
+princip.c
+generico.c
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+geraalt.c
+intrpced.c
+intrpcnt.c
+testtbs.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteTabelaSimbolos.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testtbs.obj 
+

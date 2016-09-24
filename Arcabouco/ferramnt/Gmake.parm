@@ -1,0 +1,29 @@
+# Diretivas para plataforma de compilacao MS visual c/c++ 6 ou mais recente
+
+[Comandos]
+c  =>  obj
+   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
+
+[MacrosGerais]
+
+O       = 
+OD      = /Zi /Od
+L       = 
+LD      = /DEBUG /DEBUGTYPE:CV
+
+!IFDEF PRD
+O       = /Ox
+!ENDIF
+
+OPT     = /c /J /W4 /nologo
+INCLUDE = $(INCLUDE);$(PDEFAULT)
+
+[Limpa]
+   CompileBanner /c$(NOME)
+   CompileBanner /c$(NOME) >$(Ferr)\$(NOME).err
+
+[DefaultLink]
+    cd $(Fobj)
+    LINK $(L) @$(NOME).build >> $(Ferr)\$(NOME).err
+
+[Fim]

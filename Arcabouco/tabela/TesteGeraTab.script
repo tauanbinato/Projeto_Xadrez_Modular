@@ -1,0 +1,8 @@
+// Testa o programa principal GeraTab
+// 2004
+
+== Testa lista simples
+=testarGeraTab    0  geratab  /LTesteTabStr-1.lista
+
+== Verifica estatísticas (arquivos, número strings, inxmax stringoes, num erros)
+=verestatisticas  4  44  0  0

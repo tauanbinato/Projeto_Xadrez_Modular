@@ -1,0 +1,61 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: ..\produto\testearvoredebug
+!!!      Script de teste:     ..\scripts\testecontador.script
+
+!!!    0  Linha:     1  // Script:    TesteContador-Arv.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      18/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script para controle de cobertura 
+!!!    0  Linha:     5  // 
+    7  == Declarar as árvores usadas
+   11  == Declarar valores a serem inseridos em nós
+   16  == Declarar condições de retorno
+   27  == Iniciar contagem
+   32  == Verificar assertivas de entrada de irdir
+   35  == Verificar comando recuperar
+>>>    1  Linha:    36  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    37  Falha esperada foi recuperada. 
+   39  == Verificar contadores, 1 deles já contou
+cc>    1  Linha:    40   Contagem em "ARV_CriarArvore" é zero.
+cc>    2  Linha:    40   Contagem em "ARV_DestruirArvore" é zero.
+cc>    3  Linha:    40   Contagem em "ARV_InserirDireita" é zero.
+cc>    4  Linha:    40   Contagem em "ARV_InserirEsquerda" é zero.
+cc>    5  Linha:    40   Contagem em "ARV_IrNoEsquerda" é zero.
+cc>    6  Linha:    40   Contagem em "ARV_IrPai" é zero.
+cc>    7  Linha:    40   Contagem em "ARV_ObterValorCorr" é zero.
+<<<    0  Linha:    42  Falhas registradas eram esperadas e foram recuperadas. 
+   44  == Verificar ObterValorCorr relativo a árvore inexistente
+   47  == Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+>>>    1  Linha:    48  Retorno errado ao obter valor corrente. Deveria ser: 1  É: 4
+<<<    0  Linha:    49  Falha esperada foi recuperada. 
+   51  == Criar árvore
+   55  == Inserir à direita
+   58  == Obter o valor inserido
+   61  == Verificar controle de obter o valor inserido errado
+>>>    1  Linha:    62  Conteúdo do nó está errado. Deveria ser: 'x'  É: 'a'
+<<<    0  Linha:    63  Falha esperada foi recuperada. 
+   65  == Ir para no pai, nao tem
+   68  == Inserir à esquerda
+   71  == Obter o valor inserido
+   74  == Ir para no pai, tem
+   78  == Inserir à direita
+   82  == Ir para no pai
+   86  == Ir para no pai
+   90  == Ir para no esquerda tem
+   94  == Ir para no direita tem
+   99  == Destroi a arvore
+  103  == Cria a arvore
+  107  == Terminar controlar contadores
+  111  == Terminar contagem
+!!!    0  Linha:   115  // fim 
+
+!!! Número de linhas lidas:         115
+!!! Número de casos de teste:        26
+!!! Número comandos corretos:        49
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 1

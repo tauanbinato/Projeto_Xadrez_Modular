@@ -1,0 +1,24 @@
+# Gera uma permutacao aleatoria
+
+[Diretorios]
+
+Nome        =  GeraPermutacao
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+GeraPermutacao
+GeraAlt
+
+[BuildInicio]
+/OUT:..\produto\GeraPermutacao.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

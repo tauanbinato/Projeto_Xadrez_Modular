@@ -1,0 +1,48 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: exemploSimplesDBG
+!!!      Script de teste:     TesteArvore.script
+
+!!!    0  Linha:     1  // Script:    TesteArvore.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      20/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, 
+!!!    0  Linha:     5  //            Testa a construção de uma árvore usando parâmetros literais 
+!!!    0  Linha:     6  //            Não verifica se as operações modificaram corretamente as referências 
+!!!    0  Linha:     7  //            Este script é muito superficial !!! 
+!!!    0  Linha:     8  // 
+   10  == Verificar assertivas de entrada de irdir
+   13  == Verificar comando recuperar
+>>>    1  Linha:    14  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    15  Falha esperada foi recuperada. 
+   17  == Verificar ObterValorCorr relativo a árvore inexistente
+   20  == Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+>>>    1  Linha:    21  Retorno errado ao obter valor corrente. Deveria ser: 1  É: 4
+<<<    0  Linha:    22  Falha esperada foi recuperada. 
+   24  == Criar árvore
+   28  == Inserir à direita
+   31  == Obter o valor inserido
+   34  == Verificar controle de obter o valor inserido errado
+>>>    1  Linha:    35  Conteúdo do nó está errado. Deveria ser: 'x'  É: 'a'
+<<<    0  Linha:    36  Falha esperada foi recuperada. 
+   38  == Ir para no pai, nao tem
+   41  == Inserir à esquerda
+   44  == Obter o valor inserido
+   47  == Ir para no pai, tem
+   51  == Inserir à direita
+   55  == Ir para no pai
+   59  == Ir para no pai
+   63  == Ir para no esquerda tem
+   67  == Ir para no direita tem
+   72  == Destroi a arvore
+!!!    0  Linha:    78  // fim 
+
+!!! Número de linhas lidas:          78
+!!! Número de casos de teste:        18
+!!! Número comandos corretos:        24
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

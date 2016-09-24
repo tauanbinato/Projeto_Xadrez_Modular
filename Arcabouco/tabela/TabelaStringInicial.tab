@@ -1,0 +1,59 @@
+#ifndef _tabela_string_
+#define _tabela_string_
+
+/* !!!!!!!!!! Aquivo gerado! Não o edite! !!!!!!!!!! */
+
+/****************************************************************************
+*
+* $AT Tabela de strings gerada
+*
+* Arquivo gerado: TabelaString.tab
+*
+* Projeto: INF 1301/1628 Exemplos
+* Gestor:  LES/DI/PUC-Rio
+*
+* Arquivos de especificação de strings utilizados para gerar a tabela:
+*
+*      - DefinicaoDefault.espstr
+*
+***************************************************************************/
+
+#define  DIM_TABELA_STRING  1
+
+/* Descritor dos elementos da tabela de pesquisa */
+
+   typedef struct
+   {
+      long idString        ;
+      int  tamString       ; /* tamanho strlen do string */
+      int  inxSubTabela    ; /* identifica o vetor de texto*/
+      int  inxOrigemString ; /* origem no vetor de texto*/
+   } tpElementoTabela ;
+
+/* Tabela de pesquisa
+*     Cada elemento corresponde a um string
+*     Strings são procurados pelo correspondente id.
+*     Cada elemento referencia para um vetor de caracteres contendo o
+*     string. Fornecendo, ainda, o offset de início do string neste vetor.*/
+
+   static tpElementoTabela vtTabelaPesquisa[ DIM_TABELA_STRING ] =
+   {
+      {        1 ,    46 ,     0 ,     0 }   /* "Identificação de string ?d não foi encontrada." */
+   } ; /* Fim tabela de pesquisa */
+
+/* Vetores de strings
+*  Cada vetor contém um ou mais strings terminados em zero
+*  Cada vetor contém no máximo 1023 bytes */
+
+   static char Stringao_0[ ] = 
+      "Identificação de string ?d não foi encontrada.\0"
+   ; /* Fim vetor 0 */
+
+/* Vetor de referências a vetores de strings */
+
+   static char * vtpStringoes[ 1 ] = 
+        { Stringao_0 } ;
+
+#endif
+
+/* Fim tabela strings gerada */

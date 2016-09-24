@@ -1,0 +1,56 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: exemploSimples
+!!!      Script de teste:     TesteArvoreSimb.script
+
+!!!    0  Linha:     1  // Script:    TesteArvoreSimb.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      20/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, 
+!!!    0  Linha:     5  //            Testa a construção de uma árvore usando parâmetros simbólicos 
+!!!    0  Linha:     6  //            Não verifica se as operações modificaram corretamente as referências 
+!!!    0  Linha:     7  //            Este script é muito superficial !!! 
+!!!    0  Linha:     8  // 
+!!!    0  Linha:    13  // Script:    TesteArvore.script 
+!!!    0  Linha:    14  // Autor:     Arndt von Staa 
+!!!    0  Linha:    15  // Data:      12/ago/2003 
+!!!    0  Linha:    16  // Propósito: Ilustrar arquivo de script, testar construção de árvore 
+!!!    0  Linha:    17  //            Este script é muito superficial 
+!!!    0  Linha:    18  // 
+   20  == Declarar as condicoes de retorno
+   31  == Declarar os conteúdos dos nós
+   38  == Verificar assertivas de entrada de irdir
+   41  == Verificar comando recuperar
+>>>    1  Linha:    42  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    43  Falha esperada foi recuperada. 
+   45  == Verificar ObterValorCorr relativo a árvore inexistente
+   48  == Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+>>>    1  Linha:    49  Retorno errado ao obter valor corrente. Deveria ser: 1  É: 4
+<<<    0  Linha:    50  Falha esperada foi recuperada. 
+   52  == Criar árvore
+   56  == Inserir à direita
+   59  == Obter o valor inserido
+   62  == Verificar controle de obter o valor inserido errado
+>>>    1  Linha:    63  Conteúdo do nó está errado. Deveria ser: 'x'  É: 'a'
+<<<    0  Linha:    64  Falha esperada foi recuperada. 
+   66  == Ir para no pai, nao tem
+   69  == Inserir à esquerda
+   72  == Obter o valor inserido
+   75  == Ir para no pai, tem
+   79  == Inserir à direita
+   83  == Ir para no pai
+   87  == Ir para no pai
+   91  == Ir para no esquerda tem
+   95  == Ir para no direita tem
+  100  == Destroi a arvore
+!!!    0  Linha:   106  // fim 
+
+!!! Número de linhas lidas:         106
+!!! Número de casos de teste:        20
+!!! Número comandos corretos:        37
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

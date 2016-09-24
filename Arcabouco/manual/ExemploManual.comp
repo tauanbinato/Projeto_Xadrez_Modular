@@ -1,0 +1,18 @@
+# Composicao do programa exemplo de teste manual
+
+[Diretorios]
+
+Nome        =  ExemploManual
+PathDefault =  .
+err         =  .
+
+[Modulos]
+Tst_Arv
+Arvore
+
+[BuildInicio]
+/OUT:ExemploManual.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

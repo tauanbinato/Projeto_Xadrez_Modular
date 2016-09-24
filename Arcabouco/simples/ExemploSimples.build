@@ -1,0 +1,6 @@
+/OUT:ExemploSimples.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+TestArv.obj  Arvore.obj  
+ArcaboucoTeste.lib
+

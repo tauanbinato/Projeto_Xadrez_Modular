@@ -1,0 +1,51 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: ..\produto\testearvoredebug
+!!!      Script de teste:     ..\scripts\testearvore.script
+
+!!!    0  Linha:     1  // Script:    TesteArvore.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      18/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, testar construção de árvore 
+!!!    0  Linha:     5  //            Este script é muito superficial 
+!!!    0  Linha:     6  // 
+    8  == Iniciar controle de espaço dinâmico
+   11  == Declarar as árvores usadas
+   15  == Declarar valores a serem inseridos em nós
+   20  == Declarar condições de retorno
+   32  == Verificar assertivas de entrada de irdir
+   35  == Verificar comando recuperar
+>>>    1  Linha:    36  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    37  Falha esperada foi recuperada. 
+   39  == Verificar ObterValorCorr relativo a árvore inexistente
+   42  == Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+>>>    1  Linha:    43  Retorno errado ao obter valor corrente. Deveria ser: 1  É: 4
+<<<    0  Linha:    44  Falha esperada foi recuperada. 
+   46  == Criar árvore
+   50  == Inserir à direita
+   53  == Obter o valor inserido
+   56  == Verificar controle de obter o valor inserido errado
+>>>    1  Linha:    57  Conteúdo do nó está errado. Deveria ser: 'x'  É: 'a'
+<<<    0  Linha:    58  Falha esperada foi recuperada. 
+   60  == Ir para no pai, nao tem
+   63  == Inserir à esquerda
+   66  == Obter o valor inserido
+   69  == Ir para no pai, tem
+   73  == Inserir à direita
+   77  == Ir para no pai
+   81  == Ir para no pai
+   85  == Ir para no esquerda tem
+   89  == Ir para no direita tem
+   94  == Destroi a arvore
+   98  == Cria a arvore
+!!!    0  Linha:   103  // fim 
+
+!!! Número de linhas lidas:         103
+!!! Número de casos de teste:        23
+!!! Número comandos corretos:        41
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 1

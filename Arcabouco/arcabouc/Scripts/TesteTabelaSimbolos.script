@@ -1,0 +1,320 @@
+// Script:    TesteTabSimbolos.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Testar o módulo tabela de simbolos utilizado no arcabouço
+//
+
+== Inicializar o modulo de teste
+=resettestetab
+=obternumeroespacosalocados   0
+
+== Testar criação de tabela do tipo 1       
+// inxTabela tamTabela idTipo
+
+=criartab   0  5  1
+
+== Testar criação de tabela de tipo errado        
+=criartab   1  11  0
+=recuperar
+
+== Testar criação de tabela de tamanho errado        
+=criartab   1   1  1
+=recuperar
+
+== Testar criação de tabela já existente         
+=criartab   0   3  2
+=recuperar
+
+== Testar validar tabela existente vazia
+// inxTabela 
+=validartab     0  
+
+== Testar inserir simbolo em tabela do tipo 1 novo
+// inxtabela conta  simbolo condret       
+=inssimboloum   0  1   "abcd"  0
+
+== Testar validar tabela com um símbolo
+=validartab     0  
+
+== Testar inserir simbolo existente em tabela do tipo 1 
+=inssimboloum   0  111 "abcd"  1                 
+
+== teste erro parametro tabela inexistente 
+=inssimboloum   1    2 "bbbb"  0
+=recuperar
+
+== Verificar total de espaços alocados
+=obternumeroespacosalocados   4
+
+== Testar procurar simbolo encontra
+// inxtabela idTipo string condret
+=procurarsimboloum  0  "abcd"  1
+
+== Testar procurar simbolo não encontra
+=procurarsimboloum  0  "abc"  -1
+
+== Testar excluir simbolo
+// inxTabela string condRet    
+=excluirsimbolo     0  "abcd"  0
+
+== Testar excluir simbolo não existe
+=excluirsimbolo     0  "abcd"  2
+
+== Testar procurar simbolo não encontra
+=procurarsimboloum  0  "acbd"  0
+=recuperar
+
+== Testar procurar simbolo não encontra
+=procurarsimboloum  0  "acbd"  -1
+
+== Testar validar tabela esvaziada
+=validartab     0  
+
+== Testar destruir tabela do tipo 1
+=destruirtab    0  
+
+//
+//-------------------------------------------------------------------------
+//
+
+== Testar criação de tabela do tipo 2
+=criartab   1   2  2 
+
+== Testar validar outra tabela existente e vazia 
+=validartab     1  
+
+== Testar destruir tabela do tipo 2 vazia
+// inxTabela 
+=destruirtab    1 
+
+== Testar validar tabela inexistente 
+=validartab     1
+=recuperar
+
+== Criar tabela do tipo 2
+=criartab   0  3  2 
+
+== Testar inserir simbolo 1 em tabela do tipo 2 
+=inssimbolodois   0  'a'  "1234"  0                 
+
+== Testar inserir simbolo 2 em tabela do tipo 2 
+=inssimbolodois   0  'b'  "2345"  0                 
+
+== Testar inserir simbolo 3 em tabela do tipo 2 
+=inssimbolodois   0  'c'  "3456"  0                 
+
+== Testar inserir simbolo 4 em tabela do tipo 2 
+=inssimbolodois   0  'd'  "4567"  0                 
+
+== Testar inserir simbolo 5 em tabela do tipo 2 
+=inssimbolodois   0  'e'  "5678"  0                 
+
+== Testar inserir simbolo 6 em tabela do tipo 2 
+=inssimbolodois   0  'f'  "6789"  0                 
+
+== Testar inserir simbolo 7 em tabela do tipo 2 
+=inssimbolodois   0  'g'  "7890"  0                 
+
+== Testar inserir simbolo 8 em tabela do tipo 2 
+=inssimbolodois   0  'h'  "8901"  0                 
+
+== Validar tabela com 8 símbolos
+=validartab   0
+
+== Testar procurar simbolo 1 em tabela do tipo 2 
+=procurarsimbolodois   0  "1234"  'a'                 
+
+== Testar procurar simbolo 2 em tabela do tipo 2 
+=procurarsimbolodois   0  "2345"  'b'                 
+
+== Testar procurar simbolo 3 em tabela do tipo 2 
+=procurarsimbolodois   0  "3456"  'c'                 
+
+== Testar procurar simbolo 4 em tabela do tipo 2 
+=procurarsimbolodois   0  "4567"  'd'                 
+
+== Testar procurar simbolo 5 em tabela do tipo 2 
+=procurarsimbolodois   0  "5678"  'e'                 
+
+== Testar procurar simbolo 6 em tabela do tipo 2 
+=procurarsimbolodois   0  "6789"  'f'                 
+
+== Testar procurar simbolo 7 em tabela do tipo 2 
+=procurarsimbolodois   0  "7890"  'g'                 
+
+== Testar procurar simbolo 8 em tabela do tipo 2 
+=procurarsimbolodois   0  "8901"  'h'                 
+
+== Testar excluir simbolo 1 em tabela do tipo 2 
+=excluirsimbolo   0  "1234"  0
+
+== Testar excluir simbolo 3 em tabela do tipo 2 
+=excluirsimbolo   0  "3456"  0                 
+
+== Testar excluir simbolo 5 em tabela do tipo 2 
+=excluirsimbolo   0  "5678"  0                 
+
+== Testar excluir simbolo 7 em tabela do tipo 2 
+=excluirsimbolo   0  "7890"  0                 
+
+== Testar excluir simbolo 1 inexistente em tabela do tipo 2 
+=excluirsimbolo   0  "1234"  2                 
+
+== Testar excluir simbolo 3 inexistente em tabela do tipo 2 
+=excluirsimbolo   0  "3456"  2                 
+
+== Testar excluir simbolo 5 inexistente em tabela do tipo 2 
+=excluirsimbolo   0  "5678"  2                 
+
+== Testar excluir simbolo 7 inexistente em tabela do tipo 2 
+=excluirsimbolo   0  "7890"  2                 
+
+== Validar tabela com 4 símbolos restantes
+=validartab   0
+
+== Validar espaco dos 4 simbolos restantes
+=obternumeroespacosalocados  10
+
+== Testar procurar simbolo 1 em tabela do tipo 2 
+=procurarsimbolodois   0  "1234"  '*'                 
+
+== Testar procurar simbolo 2 em tabela do tipo 2 
+=procurarsimbolodois   0  "2345"  'b'                 
+
+== Testar procurar simbolo 3 em tabela do tipo 2 
+=procurarsimbolodois   0  "3456"  '*'                 
+
+== Testar procurar simbolo 4 em tabela do tipo 2 
+=procurarsimbolodois   0  "4567"  'd'                 
+
+== Testar procurar simbolo 5 em tabela do tipo 2 
+=procurarsimbolodois   0  "5678"  '*'                 
+
+== Testar procurar simbolo 6 em tabela do tipo 2 
+=procurarsimbolodois   0  "6789"  'f'                 
+
+== Testar procurar simbolo 7 em tabela do tipo 2 
+=procurarsimbolodois   0  "7890"  '*'                 
+
+== Testar procurar simbolo 8 em tabela do tipo 2 
+=procurarsimbolodois   0  "8901"  'h'                 
+
+== Validar tabela com 4 símbolos restantes
+=validartab   0
+
+== Destruir tabela
+=destruirtab 0
+
+//
+//----------------------------------------------
+//
+
+== Criar tabela do tipo 2
+=criartab   0  3  2 
+
+== Testar inserir 8 simbolos do tipo 2 
+=inssimbolodois   0  'a'  "1234"  0                 
+=inssimbolodois   0  'b'  "2345"  0                 
+=inssimbolodois   0  'c'  "3456"  0                 
+=inssimbolodois   0  'd'  "4567"  0                 
+=inssimbolodois   0  'e'  "5678"  0                 
+=inssimbolodois   0  'f'  "6789"  0                 
+=inssimbolodois   0  'g'  "7890"  0                 
+=inssimbolodois   0  'h'  "8901"  0                 
+
+== Validar tabela com 8 símbolos
+=validartab   0
+
+== Testar procurar os simbolo inseridos na tabela 
+=procurarsimbolodois   0  "1234"  'a'                 
+=procurarsimbolodois   0  "3456"  'c'                 
+=procurarsimbolodois   0  "4567"  'd'                 
+=procurarsimbolodois   0  "2345"  'b'                 
+=procurarsimbolodois   0  "5678"  'e'                 
+=procurarsimbolodois   0  "6789"  'f'                 
+=procurarsimbolodois   0  "7890"  'g'                 
+=procurarsimbolodois   0  "8901"  'h'                 
+=procurarsimbolodois   0  "6789"  'f'                 
+=procurarsimbolodois   0  "5678"  'e'                 
+=procurarsimbolodois   0  "1234"  'a'                 
+
+== Validar tabela com 8 símbolos
+=validartab   0
+
+== Testar excluir simbolo 1 em tabela do tipo 2 
+=excluirsimbolo   0   "4567"  0                 
+=excluirsimbolo   0   "2345"  0                 
+=excluirsimbolo   0   "3456"  0                 
+=excluirsimbolo   0   "7890"  0                 
+=excluirsimbolo   0   "5678"  0                 
+=excluirsimbolo   0   "6789"  0                 
+=excluirsimbolo   0   "8901"  0                 
+=excluirsimbolo   0   "1234"  0                 
+
+== Validar tabela vazia
+=validartab   0
+
+== Testar excluir simbolo 1 inexistente 
+=excluirsimbolo   0  "1234"  2                 
+
+== Testar excluir simbolo 3 inexistente
+=excluirsimbolo   0  "3456"  2                 
+
+== Testar excluir simbolo 5 inexistente
+=excluirsimbolo   0  "5678"  2                 
+
+== Testar excluir simbolo 7 inexistente
+=excluirsimbolo   0  "7890"  2                 
+
+== Validar tabela vazia
+=validartab   0
+
+== Validar espaco da tabela vazia
+=obternumeroespacosalocados  2
+
+== Destruir tabela
+=destruirtab 0
+
+== Controlar espaços remanescentes
+=obternumeroespacosalocados  0
+
+//
+//----------------------------------------------
+//
+// Teste tabela contendo valor que aponta para um espaço
+
+== Criar tabela do tipo 3
+=criartab   3  13  3 
+
+== Inserir símbolos tipo 3
+=inssimbolotres   3   "abcd"  "1234"  0                 
+=inssimbolotres   3   "efgh"  "5678"  0                 
+=inssimbolotres   3   "ijkl"  "9012"  0                 
+
+== Controlar espaços remanescentes
+=obternumeroespacosalocados  11
+
+== Obter os símbolos
+=procurarsimbolotres   3   "ijkl"  "9012"  0 
+=procurarsimbolotres   3   "abcd"  "1234"  0     
+=procurarsimbolotres   3   "ijkl"  "9012"  0 
+=procurarsimbolotres   3   "efgh"  "5678"  0 
+=procurarsimbolotres   3   "ijkl"  "9012"  0 
+
+== Eliminar um simbolo
+=excluirsimbolo   3  "ijkl"  0                 
+
+== Controlar espaços remanescentes
+=obternumeroespacosalocados  8
+=verificartodosespacos       1
+
+== Destruir tabela
+=destruirtab 3
+=verificartodosespacos       1
+
+== Controlar espaços remanescentes
+=exibirtodosespacos          1
+=obternumeroespacosalocados  0
+
+
+// fim

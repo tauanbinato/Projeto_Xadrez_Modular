@@ -1,0 +1,116 @@
+// Script:    TesteBasicoSimb.script
+// Autor:     Arndt von Staa
+// Data:      20/fev/2006
+// Propósito: Ilustrar arquivo de script, 
+//            Testa a construção de uma árvore usando parâmetros simbólicos
+//            Verifica se as operações modificaram corretamente as referências
+//            Este script é muito superficial !!!
+//
+
+== Declarar as condicoes de retorno
+=declararparm  OK           int 0
+=declararparm  NaoRaiz      int 1 
+=declararparm  Estrutura    int 2
+=declararparm  NaoFolha     int 3
+=declararparm  NaoArvore    int 4
+=declararparm  NaoCorr      int 5
+=declararparm  EhRaiz       int 6
+=declararparm  NaoFilho     int 7
+=declararparm  Memoria      int 8
+
+== Declarar os conteúdos dos nós
+=declararparm  CharErro     char  '!'
+=declararparm  CharA        char  'a'
+=declararparm  CharB        char  'b'
+=declararparm  CharC        char  'c'
+
+== Verificar assertivas de entrada de irdir
+=irdir      NaoArvore
+
+== Verificar comando recuperar
+=irdir      OK
+=recuperar 
+
+== Verificar ObterValorCorr relativo a árvore inexistente
+=obter  CharErro   NaoArvore
+
+== Verificar recuperar de ObterValorCorr relativo a uma árvore inexistente
+=obter  CharErro   0
+=recuperar
+=obter  'z'   NaoArvore
+=recuperar
+
+== Criar árvore
+=criar      OK
+
+== Verificar se a arvore criada está vazia
+=irdir      NaoCorr
+=iresq      NaoCorr
+=irpai      NaoCorr
+=obter      CharErro   NaoCorr
+
+== Inserir à direita
+=insdir     CharA   OK
+
+== Verificar se nó inserido é raiz e único
+=irdir      NaoFilho
+=iresq      NaoFilho
+=irpai      EhRaiz
+
+== Obter o valor inserido
+=obter      CharA   OK
+
+== Verificar valor obtido diferente do esperado
+=obter      CharErro   OK
+=recuperar
+
+== Inserir à esquerda
+=insesq     CharB   OK
+
+== Verificar se é nó folha
+=irdir      NaoFilho
+=iresq      NaoFilho
+
+== Obter o valor inserido
+=obter      CharB   OK
+
+== Ir para no pai, tem e é a raiz
+=irpai      OK
+=obter      CharA   OK
+=irpai      EhRaiz
+
+== Inserir à direita
+=insdir     CharC   OK
+=obter      CharC   OK
+
+== Verificar se é nó folha
+=irdir      NaoFilho
+=iresq      NaoFilho
+
+== Ir para no pai, tem e é raiz
+=irpai      OK
+=obter      CharA   OK
+=irpai      EhRaiz
+
+== Ir para no pai mais uma vez
+=irpai      EhRaiz
+=obter      CharA   OK
+
+== Ir para no esquerda tem
+=iresq      OK
+=obter      CharB   OK
+
+== Ir para no direita tem
+=irpai      OK
+=irdir      OK
+=obter      CharC   OK
+
+== Destroi a arvore
+=destruir
+=irdir      NaoArvore
+
+== Cria a arvore
+=criar      OK
+=irdir      NaoCorr
+
+// fim

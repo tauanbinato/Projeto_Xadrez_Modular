@@ -1,0 +1,32 @@
+# Teste do módulo: CEspDin
+
+[Diretorios]
+
+Nome        =  TesteControleEspaco
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb
+LerParm
+CEspDin
+Conta
+GeraAlt
+IntrpCED
+IntrpCNT
+TestCED
+
+[BuildInicio]
+/OUT:..\produto\TesteControleEspaco.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

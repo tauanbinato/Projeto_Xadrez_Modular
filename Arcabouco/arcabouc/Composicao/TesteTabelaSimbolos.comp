@@ -1,0 +1,32 @@
+# Módulo testado: TabSimb
+
+[Diretorios]
+
+Nome        =  TesteTabelaSimbolos
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb      /D_DEBUG
+LerParm
+CEspDin
+Conta
+GeraAlt
+IntrpCED
+IntrpCNT
+TestTBS      /D_DEBUG
+
+[BuildInicio]
+/OUT:..\produto\TesteTabelaSimbolos.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

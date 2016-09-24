@@ -1,0 +1,23 @@
+# Composicao do programa exemplo de teste automatizado
+# Este exemplo utiliza o arcabouço completo 
+# O módulo de teste específico e o módulo sob teste são compilados com DEBUG ligado
+
+[Diretorios]
+
+Nome        =  ExemploSimplesDBG
+PathDefault =  .
+err         =  .
+
+[Modulos]
+TestArv     /D_DEBUG
+Arvore      /D_DEBUG
+
+[BuildInicio]
+/OUT:ExemploSimplesDBG.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

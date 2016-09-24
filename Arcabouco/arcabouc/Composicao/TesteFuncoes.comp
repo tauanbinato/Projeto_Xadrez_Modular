@@ -1,0 +1,32 @@
+# Teste do módulo: generico
+
+[Diretorios]
+
+Nome        =  TesteFuncoes
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb
+LerParm
+CEspDin
+Conta
+GeraAlt
+IntrpCED
+IntrpCNT
+TestGEN
+
+[BuildInicio]
+/OUT:..\produto\TesteFuncoes.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

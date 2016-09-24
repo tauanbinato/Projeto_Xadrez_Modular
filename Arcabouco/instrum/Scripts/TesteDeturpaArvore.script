@@ -1,0 +1,287 @@
+// Script:    TesteDeturpaArvore-1.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Ilustrar arquivo de script, testar construção de árvore
+//            Este script é muito superficial
+//
+
+== Iniciar contadores de passagem
+=inicializarcontadores  "."
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Verificar árvore
+=verificararvore   0   0
+
+== Deturpar tipo nó
+=deturpar          0   6
+=verificararvore   0   2
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore
+=destruir          0
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Anular ponteiro para cabeca
+=deturpar          0   7
+=verificararvore   0   2
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore
+=destruir          0
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Anular ponteiro para pai
+=deturpar          0   8
+=verificararvore   0   2
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore
+=destruir          0
+=verificarmemoria           // vazia
+=obternumeroespacosalocados  0
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Anular ponteiro para esquerda
+=deturpar          0   9
+=verificararvore   0   0      // não é possível observar, precisa observar a lista de espaços
+
+== Destruir a árvore
+=destruir          0         // sobra 1
+=verificarmemoria
+=obternumeroespacosalocados  1
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Anular ponteiro para direita
+=deturpar          0  10
+=verificararvore   0   0      // não é possível observar, precisa observar a lista de espaços
+
+== Destruir a árvore
+=destruir          0
+=verificarmemoria            // sobram 2 
+=obternumeroespacosalocados   2
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Deturpar ponteiro para cabeca
+=deturpar          0  11
+=verificararvore   0   2      
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore
+=destruir          0
+=obternumeroespacosalocados   2
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Deturpar ponteiro para pai
+=deturpar          0  12
+=verificararvore   0   2      
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore
+=destruir          0
+=obternumeroespacosalocados   2
+
+== Criar árvore
+=criar             0   0
+=insdir            0   'a'   0
+=insesq            0   'b'   0
+=irpai             0   0
+=insdir            0   'c'   0
+=insesq            0   'd'   0
+=irpai             0   0
+=insdir            0   'e'   0
+=irpai             0   0
+=obter             0   'c'   0
+
+== Deturpar ponteiro para esquerda
+=deturpar          0  13
+=verificararvore   0   2     
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore                             // não pode destruir
+=obternumeroespacosalocados   8
+
+== Criar árvore
+=criar             4   0
+=insdir            4   'a'   0
+=insesq            4   'b'   0
+=irpai             4   0
+=insdir            4   'c'   0
+=insesq            4   'd'   0
+=irpai             4   0
+=insdir            4   'e'   0
+=irpai             4   0
+=obter             4   'c'   0
+
+== Deturpar ponteiro para direita
+=deturpar          4  14
+=verificararvore   4   2     
+=AceitaFalhasAcumuladas 1
+
+== Destruir a árvore                             // não pode destruir
+=obternumeroespacosalocados  14
+
+== Criar árvore
+=criar             1   0
+=insdir            1   'a'   0
+=insesq            1   'b'   0
+=irpai             1   0
+=insdir            1   'c'   0
+
+== Verificar árvore
+=verificararvore   1   0
+
+== Deturpar tipo cabeca
+=deturpar          1   1
+=verificararvore   1   2
+=AceitaFalhasAcumuladas  1
+
+== Destruir a árvore
+=destruir          1
+
+== Criar árvore
+=criar             1   0
+=insdir            1   'a'   0
+=insesq            1   'b'   0
+=irpai             1   0
+=insdir            1   'c'   0
+
+== Anular ponteiro para raiz
+=deturpar          1   2
+=verificararvore   1   2
+=AceitaFalhasAcumuladas 1
+
+== Anular ponteiro para corrente, raiz ja' esta' anulada
+=deturpar          1   3
+=verificararvore   1   0
+
+== Deturpar ponteiro para raiz
+=deturpar          1   4
+=verificararvore   1   2
+=AceitaFalhasAcumuladas 1
+
+// árvore não pode ser destruída -> erro de execução
+
+== Criar árvore
+=criar             2   0
+=insdir            2   'a'   0
+=insesq            2   'b'   0
+=irpai             2   0
+=insdir            2   'c'   0
+
+== Deturpar ponteiro para corrente
+=deturpar          2   5
+=verificararvore   2   2
+=AceitaFalhasAcumuladas 1
+
+== Deturpar ponteiro para raiz
+=deturpar          2   4
+=verificararvore   2   2
+=AceitaFalhasAcumuladas 1
+
+// árvore não pode ser destruída -> erro de execução
+
+== Criar árvore
+=criar             3   0
+=insdir            3   'a'   0
+=insesq            3   'b'   0
+=irpai             3   0
+=insdir            3   'c'   0
+
+== Anular ponteiro para corrente
+=deturpar          3   3
+=verificararvore   3   2
+=AceitaFalhasAcumuladas 1
+=destruir          3
+
+== Criar árvore
+=criar             3   0
+=insdir            3   'a'   0
+=insesq            3   'b'   0
+=irpai             3   0
+=insdir            3   'c'   0
+
+== Anular ponteiro para corrente
+=deturpar          3   15
+=verificararvore   3    2
+=AceitaFalhasAcumuladas 5
+=destruir          3
+=AceitaFalhasAcumuladas 2
+
+// fim

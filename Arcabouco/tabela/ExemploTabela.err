@@ -1,0 +1,20 @@
+
+GeraTab - Gerar a tabela de strings residentes em memória
+          LES/DI/PUC-Rio, versão 1, 21/11/2004
+
+  Arquivo string:  DefinicaoDefault.espstr
+  Arquivo string:  STR_SEGL.DEF
+  Arquivo string:  STR_APIC.DEF
+  Arquivo string:  TesteTabelaString.espstr
+
+Tabstr.c
+c:\users\tauan\desktop\modular\arcabouco\tabela\TabelaString.tab(100) : warning C4125: decimal digit terminates octal escape sequence
+TestTbs.c
+Microsoft (R) Incremental Linker Version 10.00.30319.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:ExemploTabela.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+Tabstr.obj TestTbs.obj 
+ArcaboucoTeste.lib 

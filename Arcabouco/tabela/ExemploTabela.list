@@ -1,0 +1,211 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: ExemploTabela.comp
+
+   Nome do Construto:           ExemploTabela
+   Diretório base:              C:\Users\tauan\Desktop\modular\Arcabouco\tabela
+
+   Arquivo composição:          ExemploTabela.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      ExemploTabela.make
+   Arquivo diretivas LINK:      ExemploTabela.build
+   Arquivo listagem:            ExemploTabela.list
+
+Módulos do construto: ExemploTabela.comp
+
+   TabelaString.lista
+   TesteTabelaString.espstr
+   Tabstr.c
+   TestTbs.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: STR_APIC.DEF
+      Total linhas:             114
+      Linhas de código:          27
+      Linhas de comentário:      35
+      Linhas em branco:          47
+   Arquivos em que é incluído
+      TabelaString.lista
+
+   Estatísticas do arquivo: STR_SEGL.DEF
+      Total linhas:              67
+      Linhas de código:          12
+      Linhas de comentário:      24
+      Linhas em branco:          26
+   Arquivos em que é incluído
+      TabelaString.lista
+
+   Estatísticas do arquivo: TST_Espc.h
+      Total linhas:             228
+      Linhas de código:          23
+      Linhas de comentário:     185
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      TestTbs.c
+      generico.h
+
+   Estatísticas do arquivo: TabStr.H
+      Total linhas:             151
+      Linhas de código:          23
+      Linhas de comentário:     105
+      Linhas em branco:          23
+   Arquivos em que é incluído
+      Tabstr.c
+
+   Estatísticas do arquivo: TabStr.h
+      Total linhas:             151
+      Linhas de código:          23
+      Linhas de comentário:     105
+      Linhas em branco:          23
+   Arquivos em que é incluído
+      TestTbs.c
+
+   Estatísticas do arquivo: TabelaString.lista
+      Total linhas:               9
+      Linhas de código:           3
+      Linhas de comentário:       2
+      Linhas em branco:           3
+   Arquivos de inclusão de que necessita
+      STR_APIC.DEF
+      STR_SEGL.DEF
+      TesteTabelaString.espstr
+
+   Estatísticas do arquivo: TabelaString.tab
+      Total linhas:              59
+      Linhas de código:          20
+      Linhas de comentário:      32
+      Linhas em branco:          13
+   Arquivos em que é incluído
+      Tabstr.c
+
+   Estatísticas do arquivo: Tabstr.c
+      Total linhas:             204
+      Linhas de código:          88
+      Linhas de comentário:      66
+      Linhas em branco:          57
+   Arquivos de inclusão de que necessita
+      TabStr.H
+      TabelaString.tab
+
+   Estatísticas do arquivo: TestTbs.c
+      Total linhas:             211
+      Linhas de código:         120
+      Linhas de comentário:      35
+      Linhas em branco:          61
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+      TabStr.h
+      generico.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: TesteTabelaString.espstr
+      Total linhas:              25
+      Linhas de código:           8
+      Linhas de comentário:       6
+      Linhas em branco:          11
+   Arquivos em que é incluído
+      TabelaString.lista
+
+   Estatísticas do arquivo: generico.h
+      Total linhas:             713
+      Linhas de código:          59
+      Linhas de comentário:     572
+      Linhas em branco:          82
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+   Arquivos em que é incluído
+      TestTbs.c
+
+   Estatísticas do arquivo: lerparm.h
+      Total linhas:             291
+      Linhas de código:          36
+      Linhas de comentário:     188
+      Linhas em branco:          67
+   Arquivos em que é incluído
+      TestTbs.c
+
+   Estatísticas do arquivo: tst_espc.h
+      Total linhas:             228
+      Linhas de código:          23
+      Linhas de comentário:     185
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      TestTbs.c
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: tab      Path: .
+         Total linhas do tipo:        59
+         Linhas de código:            20
+         Linhas de comentário:        32
+         Linhas em branco:            13
+         Arquivos deste tipo:          1
+
+  Tipo: inc      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: h        Path: .
+         Total linhas do tipo:      1611
+         Linhas de código:           164
+         Linhas de comentário:      1235
+         Linhas em branco:           212
+         Arquivos deste tipo:          5
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:       332
+         Linhas de código:            62
+         Linhas de comentário:       164
+         Linhas em branco:            96
+         Arquivos deste tipo:          3
+
+  Tipo: espstr   Path: .
+         Total linhas do tipo:        25
+         Linhas de código:             8
+         Linhas de comentário:         6
+         Linhas em branco:            11
+         Arquivos deste tipo:          1
+
+  Tipo: lista    Path: .
+         Total linhas do tipo:         9
+         Linhas de código:             3
+         Linhas de comentário:         2
+         Linhas em branco:             3
+         Arquivos deste tipo:          1
+
+  Tipo: c        Path: .
+         Total linhas do tipo:       415
+         Linhas de código:           208
+         Linhas de comentário:       101
+         Linhas em branco:           118
+         Arquivos deste tipo:          2
+
+Totais para todo o construto ExemploTabela
+
+   Total linhas:              2451
+   Linhas de código:           465
+   Linhas de comentário:      1540
+   Linhas em branco:           453
+   Arquivos processados:        13
+

@@ -1,0 +1,5 @@
+/OUT:ArcaboucoTeste.lib
+/MACHINE:IX86
+princip.obj  generico.obj  tabsimb.obj  lerparm.obj  cespdin.obj  
+conta.obj  geraalt.obj  intrpced.obj  intrpcnt.obj  
+

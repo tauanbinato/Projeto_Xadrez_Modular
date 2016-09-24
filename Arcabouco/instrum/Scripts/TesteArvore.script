@@ -1,0 +1,103 @@
+// Script:    TesteArvore.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Ilustrar arquivo de script, testar construção de árvore
+//            Este script é muito superficial
+//
+
+== Iniciar controle de espaço dinâmico
+=inicializarcontadores  "."
+
+== Declarar as árvores usadas
+=declararparm    inxArv0        int   0
+=declararparm    inxArv1        int   1
+
+== Declarar valores a serem inseridos em nós
+=declararparm    NoExcl         char  '!' 
+=declararparm    NoA            char  'a'
+=declararparm    NoX            char  'x'
+
+== Declarar condições de retorno
+=declararparm    CondOK         int   0
+=declararparm    CondNaoRaiz    int   1
+=declararparm    CondErroEstrut int   2
+=declararparm    CondNaoFolha   int   3
+=declararparm    CondNaoExiste  int   4 
+=declararparm    CondVazia      int   5
+=declararparm    CondNohRaiz    int   6 
+=declararparm    CondNaoFilho   int   7
+=declararparm    CondMemoria    int   8
+     
+
+== Verificar assertivas de entrada de irdir
+=irdir      inxArv1            CondNaoExiste
+
+== Verificar comando recuperar
+=irdir      inxArv1            CondOK
+=recuperar 
+
+== Verificar ObterValorCorr relativo a árvore inexistente
+=obter      inxArv1   NoExcl   CondNaoExiste
+
+== Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+=obter      inxArv1   NoExcl   CondNaoRaiz  
+=recuperar
+
+== Criar árvore
+=criar      inxArv1   0        CondOK
+=irdir      inxArv1   CondVazia
+
+== Inserir à direita
+=insdir     inxArv1   NoA      CondOK
+
+== Obter o valor inserido
+=obter      inxArv1   NoA      CondOK
+
+== Verificar controle de obter o valor inserido errado
+=obter      inxArv1   NoX      CondOK
+=recuperar
+
+== Ir para no pai, nao tem
+=irpai      inxArv1            CondNohRaiz
+  
+== Inserir à esquerda
+=insesq     inxArv1   'b'      CondOK
+
+== Obter o valor inserido
+=obter      inxArv1   'b'      CondOK
+
+== Ir para no pai, tem
+=irpai      inxArv1   CondOK
+=obter      inxArv1   NoA      CondOK
+
+== Inserir à direita
+=insdir     inxArv1   'c'      CondOK
+=obter      inxArv1   'c'      CondOK
+
+== Ir para no pai
+=irpai      inxArv1            CondOK
+=obter      inxArv1   NoA      CondOK
+
+== Ir para no pai
+=irpai      inxArv1            CondNohRaiz
+=obter      inxArv1   NoA      CondOK
+
+== Ir para no esquerda tem
+=iresq      inxArv1            CondOK
+=obter      inxArv1   'b'      CondOK
+
+== Ir para no direita tem
+=irpai      inxArv1            CondOK
+=irdir      inxArv1            CondOK
+=obter      inxArv1   'c'      CondOK
+
+== Destroi a arvore
+=destruir   1
+=irdir      inxArv1            CondNaoExiste
+
+== Cria a arvore
+=criar      2                  CondOK
+=irdir      2                  CondVazia
+
+
+// fim

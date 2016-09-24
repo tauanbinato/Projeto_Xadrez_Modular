@@ -1,0 +1,25 @@
+#if ! defined( TIPOS_ARVORE_ )
+#define TIPOS_ARVORE_
+/***************************************************************************
+*
+*  $MCD Arquivo de definição: TiposEspacosArvore.def
+*
+*  Projeto: Automatização de testes
+*  Gestor:  LES/DI/PUC-Rio
+*  Autores: avs
+*
+*  $ED Descrição do arquivo
+*     Este arquivo declara os identificadores de tipos dos espaços de dados
+*		utilizados pelo módulo árvore. O módulo obedece o padrão estabelecido
+*     pelo módulo CNTESPAC. Ou seja, contém uma seqüência de declaradores
+*     a serem incluídos em um enum. Cada declarador corresponde a um dos
+*     tipos de espaço de dados.
+*
+***************************************************************************/
+
+      ARV_TipoEspacoCabeca , 
+      ARV_TipoEspacoNo     ,
+
+/********** Fim do arquivo de definição: TiposEspacosArvore.def  **********/
+
+#endif

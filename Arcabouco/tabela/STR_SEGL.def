@@ -1,0 +1,67 @@
+////////////////////////////////////////////////////////////////////////////
+// 
+// Strings of module:      SEGL Physical segment accessible through the file system
+// 
+// Generated file:         SEGLOCL.MSG
+// Identification letters: SEGL
+// Identification number:  360
+// 
+// Repository name:      Segment input output control
+// Repository file name: C:\TALISMAN\REPOSIT\BSW\SEGMENT.BSW
+// 
+// Ownership
+//    Owning organization:    LES/DI/PUC-Rio
+//    Project:                Talisman
+// 
+////////////////////////////////////////////////////////////////////////////
+
+// !!!!! Generated file. Do not edit. !!!!!
+
+<Offset>  360
+
+
+// Blocos programa: Erro de dado
+
+  SEGL_ErrorData           1  "Illegal opening mode parameter"
+
+// Blocos programa: Controlar a abertura
+
+  SEGL_ErrorCantOpen       2  "Could not open segment file: ?0"
+
+// Blocos programa: Verificar autorização para excluir
+
+  SEGL_ErrorNotAuthorized  3  "Segment: ?1 may not be closed."
+
+// Blocos programa: Fechar Arquivo de Segmento
+
+  SEGL_ErrorClose          4  "Error while closing segment: ?0"
+
+// Blocos programa: Validate and position page to be read
+
+  SEGL_ErrorAccess         5  "Illegal access rigth file: ?0"
+
+// Blocos programa: Perform page read
+
+  SEGL_ErrorRead           6  "Read error, page: ?1 file: ?0"
+
+// Blocos programa: Assure open segment file
+
+  SEGL_ErrorSegment        7  "File is not a valid segment: ?0"
+
+// Blocos programa: Assure legal page identification
+
+  SEGL_ErrorIdPag          8  "Page ?1 does not exist in file ?0"
+
+// Blocos programa: Validate and position page to be written
+
+  SEGL_ErrorRights         9  "May not write to file ?0"
+
+// Blocos programa: Perform write
+
+  SEGL_ErrorWrite         10  "Write error, page: ?1 file: ?0"
+
+// Blocos programa: Verify physical capability to increase the file
+
+  SEGL_ErrorCantIncrease  11  "Cannot increase file size: ?0"
+
+//** End of string file, module: SEGL Physical segment accessible through the file system

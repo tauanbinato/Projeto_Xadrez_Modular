@@ -1,0 +1,161 @@
+// Script:    TesteContadores.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Testar o módulo contadores
+//
+
+== Iniciar contagem
+=inicializarcontadores  "."
+=contagemtotal               0
+=numcontadores               0
+
+== Ler contadores
+=lercontadores          "..\\scripts\\TesteContador-1"  0
+=numcontadores               3
+
+== Ler mais contadores, tem um duplicado
+=lercontadores          "..\\scripts\\TesteContador-2"  1
+=numcontadores               4
+
+== Verificar erro de parametro em =numcontadores
+=numcontadores               3
+=recuperar
+=AceitaFalhasAcumuladas      1
+
+== Verificar se leu corretamente
+=numcontadores               4
+=contagemcontador   "abcd"   0
+=contagemcontador   "cde"   -2
+=contagemcontador   "xyz"    20
+=contagemcontador   "outro * com ? brancos . e : especiais"   -1
+
+== Exibir o conteúdo dos contadores
+=exibircontagem   "abcd"
+=exibircontagem   "cde"
+=exibircontagem   "xyz"
+=exibircontagem   "outro * com ? brancos . e : especiais"
+=exibircontagem   "contador inexistente"
+=recuperar
+
+== Verificar acesso a contador inexistente 
+=contagemcontador   "abcde"   -12
+
+== Verificar contagem sem ter iniciado
+=contar  "abcd"  10   0  
+=contar "outro * com ? brancos . e : especiais"  13  0
+=contagemcontador   "abcd"       0
+=contagemcontador   "outro * com ? brancos . e : especiais"   -1
+
+== Verificar gravacao de arquivo de contadores, precisa examinar em \lixo\a.txt
+=gravarcontadores   "\\lixo\\a.txt"  0
+
+== Verificar contagem proibida antes de ativar
+=contar             "cde"   12   0
+=contagemcontador   "cde"   -2
+
+== Ativar a contagem
+=iniciarcontagem
+
+== Verificar contagem iniciada
+=contar "abcd"  10 0  
+=contar "outro * com ? brancos . e : especiais"  13  0
+=contagemcontador   "abcd"       1
+=contagemcontador   "outro * com ? brancos . e : especiais"   1
+
+== Verificar contagem proibida após ativar
+=contar             "cde"   12   -14
+=contagemcontador   "cde"   -2
+=AceitaFalhasAcumuladas      1
+
+== Verificar controle de contadores zero
+=verificarcontagens     0
+
+== Verificar zerar dado contador
+=zerarcontador    "abcd"
+=verificarcontagens     1
+=AceitaFalhasAcumuladas      1
+
+== Verificar zerar todos
+=contar "abcd"  10  0 
+=contagemcontador   "abcd"       1
+=zerartodoscontadores
+
+== Verificar controle de contadores zero
+=zerartodoscontadores
+=verificarcontagens          3
+=AceitaFalhasAcumuladas      3
+=contagemcontador   "abcd"   0
+=contagemcontador   "cde"   -2
+=contagemcontador   "xyz"    0
+=contagemcontador   "outro * com ? brancos . e : especiais"   0
+
+== Realizar contagens
+=contar   "abcd"  10   0
+=contar   "abcd"  10   0
+=contar   "xyz"   11   0
+=contar   "outro * com ? brancos . e : especiais"   12  0
+=contar   "outro * com ? brancos . e : especiais"   12  0
+=contar   "xyz"   11   0
+=contar   "outro * com ? brancos . e : especiais"   12  0
+=contar   "abcd"  10   0
+=contar   "abcd"  10   0
+=contar   "xyz"   11   0
+=contar   "xyz"   11   0
+=contar   "xyz"   11   0
+
+
+== Percorrer todos contadores com iterador
+=iniciariteradorcontadores
+=exibircontadorcorrente
+=nomecorrente        "abcd"
+=contagemcorrente    4  
+=iterarproximocontador
+=exibircontadorcorrente
+=nomecorrente        "cde"
+=contagemcorrente    -2  
+=iterarproximocontador
+=exibircontadorcorrente
+=nomecorrente        "outro * com ? brancos . e : especiais"
+=contagemcorrente    3  
+=iterarproximocontador
+=exibircontadorcorrente
+=nomecorrente        "xyz"
+=contagemcorrente    5  
+=iterarproximocontador
+=ehiteradorativo     0
+
+== Ver se tem contador zero
+=verificarcontagens     0
+
+== Terminar controlar contadores
+=pararcontagem
+
+== Contar mais um pouco
+=contar   "abcd"  10   0
+=contar   "xyz"   11   0
+=contar   "xyz"   11   0
+
+== Verificar conteudo
+=numcontadores               4
+=contagemcontador   "abcd"   4
+=contagemcontador   "cde"   -2
+=contagemcontador   "xyz"    5
+=contagemcontador   "outro * com ? brancos . e : especiais"   3
+=verificarcontagens    0
+
+== Registrar acumulador
+=registraracumulador   "\\lixo\\acumulador"
+
+== Controlar espaços alocados
+=exibirtodosespacos          1
+=obternumeroespacosalocados  10
+
+== Terminar contagem
+=terminarcontadores
+
+== Verificar controle de inicializacao
+=verificarcontagens      -1
+=AceitaFalhasAcumuladas   1
+
+// fim
+

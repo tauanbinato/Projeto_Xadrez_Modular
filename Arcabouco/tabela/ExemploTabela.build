@@ -1,0 +1,6 @@
+/OUT:ExemploTabela.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+Tabstr.obj  TestTbs.obj  
+ArcaboucoTeste.lib
+

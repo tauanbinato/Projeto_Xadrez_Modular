@@ -1,0 +1,4 @@
+NumArquivosString:       4
+NumStrings:             45
+NumVetoresString:        1
+NumErros:                0

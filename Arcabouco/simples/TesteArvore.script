@@ -1,0 +1,78 @@
+// Script:    TesteArvore.script
+// Autor:     Arndt von Staa
+// Data:      20/fev/2006
+// Propósito: Ilustrar arquivo de script, 
+//            Testa a construção de uma árvore usando parâmetros literais
+//            Não verifica se as operações modificaram corretamente as referências
+//            Este script é muito superficial !!!
+//
+
+== Verificar assertivas de entrada de irdir
+=irdir      4
+
+== Verificar comando recuperar
+=irdir      0
+=recuperar 
+
+== Verificar ObterValorCorr relativo a árvore inexistente
+=obter      '!'   4
+
+== Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+=obter      '!'   1  
+=recuperar
+
+== Criar árvore
+=criar      0   0
+=irdir      5
+
+== Inserir à direita
+=insdir     'a'   0
+
+== Obter o valor inserido
+=obter      'a'   0
+
+== Verificar controle de obter o valor inserido errado
+=obter      'x'   0
+=recuperar
+
+== Ir para no pai, nao tem
+=irpai      6
+  
+== Inserir à esquerda
+=insesq     'b'   0
+
+== Obter o valor inserido
+=obter      'b'   0
+
+== Ir para no pai, tem
+=irpai      0
+=obter      'a'   0
+
+== Inserir à direita
+=insdir     'c'   0
+=obter      'c'   0
+
+== Ir para no pai
+=irpai      0
+=obter      'a'   0
+
+== Ir para no pai
+=irpai      6
+=obter      'a'   0
+
+== Ir para no esquerda tem
+=iresq      0
+=obter      'b'   0
+
+== Ir para no direita tem
+=irpai      0
+=irdir      0
+=obter      'c'   0
+
+== Destroi a arvore
+=destruir   
+=irdir      4
+
+
+
+// fim

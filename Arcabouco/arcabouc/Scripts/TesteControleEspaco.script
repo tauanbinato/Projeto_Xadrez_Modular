@@ -1,0 +1,273 @@
+// Script:    TesteControleEspaco.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Testar controle de alocação dinâmica
+//
+
+== Exibir espaço não alocado
+=exibirespaco           1
+
+== Alocar espaço de 16 bytes
+=alocarespaco           0  16   5  "arq-111-inx-0"
+
+== Exibir espaço alocado
+=exibirespaco           0
+
+== Alocar espaço de 1 byte
+=alocarespaco           1  1    6  "arq-222-inx-1"
+=exibirespaco           1
+
+== Alocar espaço de 17 bytes
+=alocarespaco           2  17   5  "arq-333-inx-2"
+=exibirespaco           2
+
+== exibir todos os espaços da origem para o fim (obs a espacos são adicionados à frente)
+=exibirespaco           2
+=exibirespaco           1
+=exibirespaco           0
+
+== Verificar os tamanhos de todos os espaços
+=obtertamanhoespaco     0  16
+=obtertamanhoespaco     1   1
+=obtertamanhoespaco     2  17
+
+== Verificar erro de tamanho
+=obtertamanhoespaco     2  18
+=recuperar
+
+== Verificar um a um todos os espaços com conteúdo ainda vazio
+=verificarespaco        0   1
+=verificarespaco        1   1
+=verificarespaco        2   1
+
+== Verificar a lista de todos os espaços
+=verificartodosespacos  1
+
+== Marcar 2o. inativos
+=marcarespaconaoativo   1
+
+== Verificar se os espaços estão ativos
+=verificarespacoativo   0   1
+=verificarespacoativo   1   0
+=verificarespacoativo   2   1
+
+== Exibir todos os espacos
+=exibirtodosespacos     1
+=obternumeroregra       1   3
+
+== Exibir todos os espacos ativos
+=exibirtodosespacos     2
+=obternumeroregra       2   2
+
+== Exibir todos os espacos não ativos
+=exibirtodosespacos     3
+=obternumeroregra       3   1
+
+== Iniciar iterador
+=iniciariteradorespacos
+=existeespacocorrente   1
+
+== Obter 1o. espaço da lista
+=obterespacocorrente    3
+=verificarespacoativo   3   1
+
+== Obter 2o. espaço da lista
+=avancarproximoespaco   1
+=obterespacocorrente    3
+=verificarespacoativo   3   0
+
+== Marcar último não ativo
+=marcarespaconaoativo   2
+
+== Verificar se os espaços estão ativos
+=verificarespacoativo   0   1
+=verificarespacoativo   1   0
+=verificarespacoativo   2   0
+
+== Iniciar iterador
+=iniciariteradorespacos
+=existeespacocorrente   1
+
+== Obter 1o. espaço da lista
+=obterespacocorrente    3
+=verificarespacoativo   3   0
+
+== Obter 2o. espaço da lista
+=avancarproximoespaco   1
+=existeespacocorrente   1
+=obterespacocorrente    3
+=verificarespacoativo   3   0
+
+== Obter 3o. espaço da lista
+=avancarproximoespaco   1
+=existeespacocorrente   1
+=obterespacocorrente    3
+=verificarespacoativo   3   1
+
+== Avançar além da lista
+=avancarproximoespaco   0
+=existeespacocorrente   0
+
+== Iniciar e terminar iterador
+=iniciariteradorespacos
+=existeespacocorrente   1
+=terminariteradorespaco
+=existeespacocorrente   0
+
+== Marcar todos os espaços não ativos
+=marcartodosnaoativos
+=verificarespacoativo   0   0
+=verificarespacoativo   1   0
+=verificarespacoativo   2   0
+
+== excluir espaço do meio
+=desalocarespaco        1
+=exibirespaco           2
+=exibirespaco           1
+=exibirespaco           0
+
+== excluir espaço final 
+=desalocarespaco        0
+=exibirespaco           2
+=exibirespaco           1
+=exibirespaco           0
+
+== excluir único restante 
+=desalocarespaco        2
+=exibirespaco           2
+=exibirespaco           1
+=exibirespaco           0
+
+== Alocar espaços  de tamanhos 2 5 e 15
+=alocarespaco           2   2   2  "aa"
+=alocarespaco           1   5   5  "bbbbb"
+=alocarespaco           0  15  15  "ccccccccccccccc"
+
+== Verificar totais de espaços
+=obternumeroespacosalocados  3
+=obternumerototalespacos     6
+
+== Verificar se recebe tipo indefinido
+=obtertipoespaco        0  0
+
+== Verificar se atribui tipo
+=definirtipoespaco      0  53  1
+=obtertipoespaco        0  53
+
+== Verificar redefinição de tipo
+=definirtipoespaco      0  54  0
+=obtertipoespaco        0  53
+
+== Verificar redefinição de tipo para indefinido
+=definirtipoespaco      0  0  1
+=obtertipoespaco        0  0
+=definirtipoespaco      0  54  1
+
+== exibir todos os espaços da origem para o fim (obs a espacos são adicionados à frente)
+=exibirespaco           0
+=exibirespaco           1
+=exibirespaco           2
+
+== inserir exato no espaço
+=inserirstringespaco    0   "cccccccccccccc"
+=exibirespaco           0
+=obterstringespaco      0   "cccccccccccccc"
+
+== inserir 1 menor no espaço
+=inserirstringespaco    1   "aaa"
+=exibirespaco           1
+=obterstringespaco      1   "aaa"
+
+== inserir exatamente no espaço
+=inserirstringespaco    2   "a"
+
+== Verificar um a um todos os espaços com conteúdo inicializado 
+=verificarespaco        0   1
+=verificarespaco        1   1
+=verificarespaco        2   1
+
+== Verificar a lista de todos os espaços
+=verificartodosespacos  1
+
+== Adicionar mais um espaço
+=alocarespaco           3   5   5  "xxxxx"
+=obternumeroespacosalocados  4
+=obternumerototalespacos     7
+
+== Excluir segundo espaço
+=exibirespaco           3     // 6 deve ser origem e ter como sucessor 5
+=desalocarespaco        0
+=exibirespaco           3     // 6 deve ser origem e ter como sucessor 4
+
+== Excluir ultimo espaço
+=exibirespaco           2     // 3 deve ser final e ter como antecessor 4
+=desalocarespaco        2
+=exibirespaco           1     // 4 deve ser final e ter como antecessor 6
+
+== Excluir primeiro espaço
+=exibirespaco           3     // 6 deve ser origem e ter como sucessor 4
+=desalocarespaco        3
+=exibirespaco           1     // 4 deve ser origem e final 
+
+== Excluir espaço restante
+=desalocarespaco        1
+
+== Verificar total de espacos ativos
+=obternumeroespacosalocados  0
+=obternumerototalespacos     7
+
+== Alocar lista de 3 espaços
+=alocarespaco           0   2   2  "arq1"
+=inserirstringespaco    0   "a"
+=exibirespaco           0
+=alocarespaco           0   5   5  "arq1"
+=inserirstringespaco    0   "bbbb"
+=exibirespaco           0
+=alocarespaco           0   4  15  "arq1"
+=inserirstringespaco    0   "ccc"
+=exibirespaco           0
+
+== Iniciar iterador
+=iniciariteradorespacos
+
+== Obter 1o. espaço da lista
+=existeespacocorrente   1
+=obterespacocorrente    3
+=obterstringespaco      3   "ccc"
+
+== Obter 2o. espaço da lista
+=avancarproximoespaco   1
+=existeespacocorrente   1
+=obterespacocorrente    3
+=obterstringespaco      3   "bbbb"
+
+== Obter 3o. espaço da lista
+=avancarproximoespaco   1
+=existeespacocorrente   1
+=obterespacocorrente    3
+=obterstringespaco      3   "a"
+
+== Avançar além da lista
+=avancarproximoespaco   0
+=existeespacocorrente   0
+
+== Excluir espaço do meio da lista
+=iniciariteradorespacos
+=avancarproximoespaco   1
+=excluirespacocorrente
+
+== Verificar espaço após exclusão
+=iniciariteradorespacos
+=obterespacocorrente    0
+=obterstringespaco      0   "ccc"
+=avancarproximoespaco   1
+=obterespacocorrente    0
+=obterstringespaco      0   "a"
+=avancarproximoespaco   0
+
+== Validar a lista de espacos alocados
+=verificartodosespacos       1
+=obternumeroespacosalocados  2
+=obternumerototalespacos    10
+
+// fim

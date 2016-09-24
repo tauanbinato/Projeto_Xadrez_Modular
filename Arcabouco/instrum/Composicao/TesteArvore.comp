@@ -1,0 +1,25 @@
+# Teste do módulo árvore usando a biblioteca contendo o arcabouço
+
+[Diretorios]
+
+Nome        =  TesteArvore
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+Arvore
+TestArv
+
+[BuildInicio]
+/OUT:..\produto\TesteArvore.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

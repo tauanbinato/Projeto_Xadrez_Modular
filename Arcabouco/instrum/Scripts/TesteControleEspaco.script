@@ -1,0 +1,134 @@
+// Script:    TesteControleEspaco-Arv.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Ilustrar arquivo de script para controle de espaço dinâmico
+//
+
+== Declarar as árvores usadas
+=declararparm    inxArv0        int   0
+=declararparm    inxArv1        int   1
+=declararparm    inxArv2        int   2
+=declararparm    inxArv3        int   3
+=declararparm    inxArv4        int   4
+=declararparm    inxArv5        int   5
+
+== Declarar valores a serem inseridos em nós
+=declararparm    NoExcl         char  '!' 
+=declararparm    NoA            char  'a'
+=declararparm    NoX            char  'x'
+
+== Declarar condições de retorno
+=declararparm    CondOK         int   0
+=declararparm    CondNaoRaiz    int   1
+=declararparm    CondErroEstrut int   2
+=declararparm    CondNaoFolha   int   3
+=declararparm    CondNaoExiste  int   4 
+=declararparm    CondVazia      int   5
+=declararparm    CondNohRaiz    int   6 
+=declararparm    CondNaoFilho   int   7
+=declararparm    CondMemoria    int   8
+     
+=declararparm    CriterioExibir int   1
+
+== Iniciar contagem
+=inicializarcontadores  ""
+=lercontadores          "..\\scripts\\Arvore"
+=iniciarcontagem
+
+== Verificar assertivas de entrada de irdir
+=irdir      inxArv1            CondNaoExiste
+
+== Verificar comando recuperar
+=irdir      inxArv1            CondOK
+=recuperar 
+
+== Verificar contadores, 1 deles já contou
+=verificarcontagens    7
+=contagemcontador   "ARV_IrNoDireita"  2
+=AceitaFalhasAcumuladas 7
+
+== Verificar ObterValorCorr relativo a árvore inexistente
+=obter      inxArv1   NoExcl   CondNaoExiste
+
+== Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+=obter      inxArv1   NoExcl   CondNaoRaiz  
+=recuperar
+
+== Verificar espaços alocados
+=verificartodosespacos       1
+=obternumeroespacosalocados  0
+
+== Criar árvore
+=criar      inxArv3   0        CondOK
+=irdir      inxArv3   CondVazia
+
+== Inserir à direita
+=insdir     inxArv3   NoA      CondOK
+
+== Obter o valor inserido
+=obter      inxArv3   NoA      CondOK
+
+== Verificar controle de obter o valor inserido errado
+=obter      inxArv3   NoX      CondOK
+=recuperar
+
+== Ir para no pai, nao tem
+=irpai      inxArv3            CondNohRaiz
+  
+== Inserir à esquerda
+=insesq     inxArv3   'b'      CondOK
+
+== Obter o valor inserido
+=obter      inxArv3   'b'      CondOK
+
+== Ir para no pai, tem
+=irpai      inxArv3   CondOK
+=obter      inxArv3   NoA      CondOK
+
+== Inserir à direita
+=insdir     inxArv3   'c'      CondOK
+=obter      inxArv3   'c'      CondOK
+
+== Controlar vazamento de memória
+=exibirtodosespacos            CriterioExibir
+=verificartodosespacos         CriterioExibir
+=obternumeroespacosalocados    4                 // cabeca + 3 nós
+
+== Ir para no pai
+=irpai      inxArv3            CondOK
+=obter      inxArv3   NoA      CondOK
+
+== Ir para no pai
+=irpai      inxArv3            CondNohRaiz
+=obter      inxArv3   NoA      CondOK
+
+== Ir para no esquerda tem
+=iresq      inxArv3            CondOK
+=obter      inxArv3   'b'      CondOK
+
+== Ir para no direita tem
+=irpai      inxArv3            CondOK
+=irdir      inxArv3            CondOK
+=obter      inxArv3   'c'      CondOK
+
+== Destroi a arvore
+=destruir   inxArv3
+=irdir      inxArv3   CondNaoExiste
+
+== Controlar vazamento de memória
+=obternumeroespacosalocados  0
+=verificartodosespacos       CriterioExibir
+
+== Cria a arvore
+=criar      inxArv4   CondOK
+=irdir      inxArv4   CondVazia
+=destruir   inxArv4
+
+== Terminar controlar contadores
+=pararcontagem
+=verificarcontagens    0
+
+== Terminar contagem
+=terminarcontadores
+
+// fim

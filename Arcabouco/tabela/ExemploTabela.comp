@@ -1,0 +1,31 @@
+# Composição do teste de uso de tabela de string
+
+[Diretorios]
+
+Nome        =  ExemploTabela
+PathDefault =  .
+err         =  .
+h           =  .
+c           =  .
+inc         =  .
+espstr      =  .
+tab         =  .
+lista       =  .
+
+
+[Modulos]
+TabelaString.lista        g
+TesteTabelaString.espstr  g
+Tabstr
+TestTbs
+
+
+[BuildInicio]
+/OUT:ExemploTabela.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

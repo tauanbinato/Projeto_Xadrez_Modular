@@ -1,0 +1,111 @@
+// Script:    TesteGenerico.script
+// Autor:     Arndt von Staa
+// Data:      12/ago/2003
+// Propósito: Testar as funções do módulo de teste genérico
+//
+
+== Teste de booleanos
+=compararbool   0  0
+=compararbool  -1  0
+=recuperar
+=compararbool   0  1
+=recuperar
+=compararbool 320  -240
+
+== Teste de caracteres
+=compararchar   'a'  'a'
+=compararchar   'b'  'a'
+=recuperar
+
+== Teste de inteiros
+=compararint   10 10
+=compararint   -2 -1
+=recuperar
+
+== Teste de inteiros longos
+=compararlong  -10 -10
+=compararlong    2   1
+=recuperar
+
+== Teste de flutuantes
+=compararfloat     10     10     0.1
+=compararfloat   1234.0 1234.0   0.1
+=compararfloat  -1234.0 1234.0   0.1
+=recuperar
+=compararfloat   1234.0 1235.0   0.1
+=compararfloat   1244.0 1234.0   0.01
+=compararfloat   1244000.0 1234000.0   10.0
+//=compararfloat   124400000000000.0 123400000000000.0   1.0
+//=recuperar
+=compararfloat   1244.0 1234.0   0.001
+=recuperar
+=compararfloat   -10000.0 -9999.0   0.000101  // Levar em conta o truncamento!
+=compararfloat   -10000.0 -9999.0   0.0001
+=recuperar
+=compararfloat   -10000.0 -9999.0   0.00009
+=recuperar
+
+== Teste de string
+=compararstring  ""       ""
+=compararstring  "z"      ""
+=recuperar
+=compararstring  ""       "z"
+=recuperar
+=compararstring  "a"      "a"
+=compararstring  "bc"     "bc"
+=compararstring  "bcd"    "bcd"
+=compararstring  "acd"    "bcd"
+=recuperar
+=compararstring  "bad"    "bcd"
+=recuperar
+=compararstring  "bca"    "bcd"
+=recuperar
+=compararstring  "bcde"   "bcd"
+=recuperar
+
+== Teste espacos curtos iguais
+=espaco     "abcdef"  "abcdef"
+
+== Teste espacos de 16 bytes iguais
+=espaco     "abcdefghijklmnop"  "abcdefghijklmnop"
+
+== Teste espacos de 16 bytes não iguais 
+=espaco     "abcdefghijklmnop"  "abcdefghijklmno"
+=recuperar -2
+
+== Teste espacos de 17 bytes iguais
+=espaco     "abcdefghijklmnopq"  "abcdefghijklmnopq"
+
+== Teste espacos contendo brancos e caracteres nao letra
+=espaco     "+  ab& ~ c^d -"    "+  ab& ~ c^d -"
+
+== Teste espacos contendo branco no final. Da erro sempre
+=espaco     "+  a ~ c^d -   "    "+  a ~ c^d -" 
+=recuperar -2
+
+== Teste espacos de 17 bytes nao iguais
+=espaco     "abcdefghijklmnopq"  "abcdefghijklmno"
+=recuperar -2
+
+== Teste espacos longos iguais
+=espaco     "zzxvczxvzxvzxcvzxvzcvxcvzxvzxvcabcdefghijklmn"  "zzxvczxvzxvzxcvzxvzcvxcvzxvzxvcabcdefghijklmn"
+
+== Teste espacos longos não iguais (caractere 22 é r deveria ser c)
+=espaco     "zzxvczxvzxvzxcvzxvzcvxcvzxvzxvcabcdefghijklmn"  "zzxvczxvzxvzxcvzxvzcvxrvzxvzxvcabcdefghijklmn"
+=recuperar -2
+
+== Teste espacos de tamanho 0
+=espaco     "." "."
+
+== Teste espacos de errados, 2o. aponta para algum lixo de valor desconhecido 
+=espaco     "01234567890abcdef"   "."
+=recuperar -2
+
+== Teste espacos contendo texto com caracteres em branco, iguais 
+=espaco     "01 23 45 67  89 0a bc def"    "01 23 45 67  89 0a bc def"
+
+== Teste espacos contendo texto com caracteres em branco, diferentes 
+=espaco     "01 23 45 67  89 0a bc def"    "01 23 45 67 89 0a bc def"
+=recuperar -2
+
+// fim

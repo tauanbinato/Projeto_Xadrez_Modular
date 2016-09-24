@@ -1,0 +1,330 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteFuncoes.comp
+
+   Nome do Construto:           TesteFuncoes
+   Diretório base:              C:\Users\tauan\Desktop\modular\Arcabouco\arcabouc\composicao
+
+   Arquivo composição:          TesteFuncoes.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteFuncoes.make
+   Arquivo diretivas LINK:      TesteFuncoes.build
+   Arquivo listagem:            TesteFuncoes.list
+
+Módulos do construto: TesteFuncoes.comp
+
+   princip.c
+   generico.c
+   tabsimb.c
+   lerparm.c
+   cespdin.c
+   conta.c
+   geraalt.c
+   intrpced.c
+   intrpcnt.c
+   testgen.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: ..\tabelas\idtiposespaco.def
+      Total linhas:              36
+      Linhas de código:           9
+      Linhas de comentário:      22
+      Linhas em branco:           5
+   Arquivos em que é incluído
+      cespdin.c
+
+   Estatísticas do arquivo: cespdin.c
+      Total linhas:            1538
+      Linhas de código:         758
+      Linhas de comentário:     416
+      Linhas em branco:         411
+   Arquivos de inclusão de que necessita
+      ..\tabelas\idtiposespaco.def
+      cespdin.h
+      generico.h
+      geraalt.h
+      tst_espc.h
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             818
+      Linhas de código:          67
+      Linhas de comentário:     639
+      Linhas em branco:         112
+   Arquivos em que é incluído
+      cespdin.c
+      conta.c
+      generico.c
+      intrpced.c
+      tabsimb.c
+
+   Estatísticas do arquivo: conta.c
+      Total linhas:            1253
+      Linhas de código:         686
+      Linhas de comentário:     300
+      Linhas em branco:         303
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      conta.h
+      generico.h
+      tabsimb.h
+      tst_espc.h
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             495
+      Linhas de código:          44
+      Linhas de comentário:     372
+      Linhas em branco:          79
+   Arquivos em que é incluído
+      conta.c
+      intrpcnt.c
+
+   Estatísticas do arquivo: generico.c
+      Total linhas:            1328
+      Linhas de código:         656
+      Linhas de comentário:     386
+      Linhas em branco:         334
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      generico.h
+      intrpced.h
+      intrpcnt.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: generico.h
+      Total linhas:             588
+      Linhas de código:          54
+      Linhas de comentário:     470
+      Linhas em branco:          64
+   Arquivos de inclusão de que necessita
+      tst_espc.h
+   Arquivos em que é incluído
+      cespdin.c
+      conta.c
+      generico.c
+      intrpced.c
+      intrpcnt.c
+      lerparm.c
+      princip.c
+      tabsimb.c
+      tabsimb.h
+      testgen.c
+
+   Estatísticas do arquivo: geraalt.c
+      Total linhas:             124
+      Linhas de código:          60
+      Linhas de comentário:      47
+      Linhas em branco:          25
+   Arquivos de inclusão de que necessita
+      geraalt.h
+
+   Estatísticas do arquivo: geraalt.h
+      Total linhas:             169
+      Linhas de código:          15
+      Linhas de comentário:     138
+      Linhas em branco:          16
+   Arquivos em que é incluído
+      cespdin.c
+      geraalt.c
+
+   Estatísticas do arquivo: intrpced.c
+      Total linhas:             326
+      Linhas de código:         178
+      Linhas de comentário:      58
+      Linhas em branco:         103
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      generico.h
+      intrpced.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: intrpced.h
+      Total linhas:             142
+      Linhas de código:          12
+      Linhas de comentário:     121
+      Linhas em branco:           9
+   Arquivos de inclusão de que necessita
+      tst_espc.h
+   Arquivos em que é incluído
+      generico.c
+      intrpced.c
+
+   Estatísticas do arquivo: intrpcnt.c
+      Total linhas:             400
+      Linhas de código:         203
+      Linhas de comentário:     100
+      Linhas em branco:         112
+   Arquivos de inclusão de que necessita
+      conta.h
+      generico.h
+      intrpcnt.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: intrpcnt.h
+      Total linhas:             123
+      Linhas de código:          12
+      Linhas de comentário:     102
+      Linhas em branco:           9
+   Arquivos de inclusão de que necessita
+      tst_espc.h
+   Arquivos em que é incluído
+      generico.c
+      intrpcnt.c
+
+   Estatísticas do arquivo: lerparm.c
+      Total linhas:            1411
+      Linhas de código:         824
+      Linhas de comentário:     241
+      Linhas em branco:         400
+   Arquivos de inclusão de que necessita
+      generico.h
+      lerparm.h
+      tabsimb.h
+      tst_espc.h
+
+   Estatísticas do arquivo: lerparm.h
+      Total linhas:             463
+      Linhas de código:          36
+      Linhas de comentário:     362
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      generico.c
+      intrpced.c
+      intrpcnt.c
+      lerparm.c
+      testgen.c
+
+   Estatísticas do arquivo: princip.c
+      Total linhas:             288
+      Linhas de código:         126
+      Linhas de comentário:     102
+      Linhas em branco:          71
+   Arquivos de inclusão de que necessita
+      generico.h
+      tst_espc.h
+
+   Estatísticas do arquivo: tabsimb.c
+      Total linhas:             473
+      Linhas de código:         246
+      Linhas de comentário:     120
+      Linhas em branco:         121
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      generico.h
+      tabsimb.h
+      tst_espc.h
+
+   Estatísticas do arquivo: tabsimb.h
+      Total linhas:             290
+      Linhas de código:          33
+      Linhas de comentário:     223
+      Linhas em branco:          34
+   Arquivos de inclusão de que necessita
+      generico.h
+      tst_espc.h
+   Arquivos em que é incluído
+      conta.c
+      lerparm.c
+      tabsimb.c
+
+   Estatísticas do arquivo: testgen.c
+      Total linhas:             251
+      Linhas de código:         116
+      Linhas de comentário:      90
+      Linhas em branco:          56
+   Arquivos de inclusão de que necessita
+      generico.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: tst_espc.h
+      Total linhas:             320
+      Linhas de código:          23
+      Linhas de comentário:     277
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      cespdin.c
+      conta.c
+      generico.c
+      generico.h
+      intrpced.c
+      intrpced.h
+      intrpcnt.c
+      intrpcnt.h
+      lerparm.c
+      princip.c
+      tabsimb.c
+      tabsimb.h
+      testgen.c
+
+Totais por tipo de arquivo
+
+  Tipo: inc      Path: ..\Tabelas
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: tab      Path: ..\Tabelas
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: def      Path: ..\Tabelas
+         Total linhas do tipo:        36
+         Linhas de código:             9
+         Linhas de comentário:        22
+         Linhas em branco:             5
+         Arquivos deste tipo:          1
+
+  Tipo: h        Path: ..\Fontes
+         Total linhas do tipo:      3408
+         Linhas de código:           296
+         Linhas de comentário:      2704
+         Linhas em branco:           408
+         Arquivos deste tipo:          9
+
+  Tipo: obj      Path: ..\Objetos
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: ..\Produto
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: ..\Fontes
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: c        Path: ..\Fontes
+         Total linhas do tipo:      7392
+         Linhas de código:          3853
+         Linhas de comentário:      1860
+         Linhas em branco:          1936
+         Arquivos deste tipo:         10
+
+Totais para todo o construto TesteFuncoes
+
+   Total linhas:             10836
+   Linhas de código:          4158
+   Linhas de comentário:      4586
+   Linhas em branco:          2349
+   Arquivos processados:        20
+

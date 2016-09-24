@@ -1,0 +1,150 @@
+#ifndef _tabela_string_
+#define _tabela_string_
+
+/* !!!!!!!!!! Aquivo gerado! Não o edite! !!!!!!!!!! */
+
+/****************************************************************************
+*
+* $AT Tabela de strings gerada
+*
+* Arquivo gerado: .\TabelaString.tab
+*
+* Projeto: INF 1301/1628 Exemplos
+* Gestor:  LES/DI/PUC-Rio
+*
+* Arquivos de especificação de strings utilizados para gerar a tabela:
+*
+*      - DefinicaoDefault.espstr
+*      - STR_APIC.DEF
+*      - STR_SEGL.DEF
+*      - TesteTabelaString.espstr
+*
+***************************************************************************/
+
+#define  DIM_TABELA_STRING  45
+
+/* Descritor dos elementos da tabela de pesquisa */
+
+   typedef struct
+   {
+      long idString        ;
+      int  tamString       ; /* tamanho strlen do string */
+      int  inxSubTabela    ; /* identifica o vetor de texto*/
+      int  inxOrigemString ; /* origem no vetor de texto*/
+   } tpElementoTabela ;
+
+/* Tabela de pesquisa
+*     Cada elemento corresponde a um string
+*     Strings são procurados pelo correspondente id.
+*     Cada elemento referencia para um vetor de caracteres contendo o
+*     string. Fornecendo, ainda, o offset de início do string neste vetor.*/
+
+   static tpElementoTabela vtTabelaPesquisa[ DIM_TABELA_STRING ] =
+   {
+      {        1 ,    46 ,     0 ,     0 } , /* "Identificação de string ?d não foi encontrada." */
+      {      110 ,    10 ,     0 ,    47 } , /* "abcdefghij" */
+      {      113 ,    11 ,     0 ,    58 } , /* "\a\b\f\n\r\t\v\'\"\\\?" */
+      {      114 ,     3 ,     0 ,    70 } , /* "\1\10\101" */
+      {      115 ,     5 ,     0 ,    74 } , /* "\1\10\101\1012" */
+      {      116 ,     4 ,     0 ,    80 } , /* "\x41\x042\x0043\x000044" */
+      {      117 ,     5 ,     0 ,    85 } , /* "a\x42\103\ta" */
+      {      121 ,     4 ,     0 ,    91 } , /* "xpto" */
+      {      361 ,    30 ,     0 ,    96 } , /* "Illegal opening mode parameter" */
+      {      362 ,    31 ,     0 ,   127 } , /* "Could not open segment file: ?0" */
+      {      363 ,    30 ,     0 ,   159 } , /* "Segment: ?1 may not be closed." */
+      {      364 ,    31 ,     0 ,   190 } , /* "Error while closing segment: ?0" */
+      {      365 ,    29 ,     0 ,   222 } , /* "Illegal access rigth file: ?0" */
+      {      366 ,    29 ,     0 ,   252 } , /* "Read error, page: ?1 file: ?0" */
+      {      367 ,    31 ,     0 ,   282 } , /* "File is not a valid segment: ?0" */
+      {      368 ,    33 ,     0 ,   314 } , /* "Page ?1 does not exist in file ?0" */
+      {      369 ,    24 ,     0 ,   348 } , /* "May not write to file ?0" */
+      {      370 ,    30 ,     0 ,   373 } , /* "Write error, page: ?1 file: ?0" */
+      {      371 ,    29 ,     0 ,   404 } , /* "Cannot increase file size: ?0" */
+      {      601 ,    16 ,     0 ,   434 } , /* "Talisman started" */
+      {      602 ,    14 ,     0 ,   451 } , /* "Start Talisman" */
+      {      603 ,    11 ,     0 ,   466 } , /* "Get element" */
+      {      604 ,    11 ,     0 ,   478 } , /* "Display all" */
+      {      605 ,    21 ,     0 ,   490 } , /* "Insert element before" */
+      {      606 ,    16 ,     0 ,   512 } , /* "Talisman stopped" */
+      {      607 ,    10 ,     0 ,   529 } , /* "Verify all" */
+      {      608 ,     9 ,     0 ,   540 } , /* "Write all" */
+      {      609 ,    34 ,     0 ,   550 } , /* "All dirty frames have been written" */
+      {      610 ,    26 ,     0 ,   585 } , /* "Segment ?1 has been opened" */
+      {      611 ,    12 ,     0 ,   612 } , /* "Open segment" */
+      {      612 ,    26 ,     0 ,   625 } , /* "Segment ?1 is being closed" */
+      {      613 ,    13 ,     0 ,   652 } , /* "Close segment" */
+      {      614 ,    50 ,     0 ,   666 } , /* "User may not close system segment id: ?0  name: ?1" */
+      {      615 ,    28 ,     0 ,   717 } , /* "List names must not be empty" */
+      {      616 ,    13 ,     0 ,   746 } , /* "Allocate list" */
+      {      617 ,    23 ,     0 ,   760 } , /* "Get list identification" */
+      {      618 ,    11 ,     0 ,   784 } , /* "Access list" */
+      {      619 ,    12 ,     0 ,   796 } , /* "Release list" */
+      {      620 ,    12 ,     0 ,   809 } , /* "Destroy list" */
+      {      621 ,    14 ,     0 ,   822 } , /* "Insert element" */
+      {      622 ,    14 ,     0 ,   837 } , /* "Delete element" */
+      {      623 ,    12 ,     0 ,   852 } , /* "Move element" */
+      {      624 ,    13 ,     0 ,   865 } , /* "  !!! ?0  ?1." */
+      {      625 ,    53 ,     0 ,   879 } , /* "  >>> ?0  Program exception occured in operation: ?1." */
+      {      626 ,    63 ,     0 ,   933 }   /* "  >>> ?0  Unexpected system exception occurred in operation: ?1" */
+   } ; /* Fim tabela de pesquisa */
+
+/* Vetores de strings
+*  Cada vetor contém um ou mais strings terminados em zero
+*  Cada vetor contém no máximo 1023 bytes */
+
+   static char Stringao_0[ ] = 
+      "Identificação de string ?d não foi encontrada.\0"
+      "abcdefghij\0"
+      "\a\b\f\n\r\t\v\'\"\\\?\0"
+      "\1\10\101\0"
+      "\1\10\101\1012\0"
+      "\x41\x042\x0043\x000044\0"
+      "a\x42\103\ta\0"
+      "xpto\0"
+      "Illegal opening mode parameter\0"
+      "Could not open segment file: ?0\0"
+      "Segment: ?1 may not be closed.\0"
+      "Error while closing segment: ?0\0"
+      "Illegal access rigth file: ?0\0"
+      "Read error, page: ?1 file: ?0\0"
+      "File is not a valid segment: ?0\0"
+      "Page ?1 does not exist in file ?0\0"
+      "May not write to file ?0\0"
+      "Write error, page: ?1 file: ?0\0"
+      "Cannot increase file size: ?0\0"
+      "Talisman started\0"
+      "Start Talisman\0"
+      "Get element\0"
+      "Display all\0"
+      "Insert element before\0"
+      "Talisman stopped\0"
+      "Verify all\0"
+      "Write all\0"
+      "All dirty frames have been written\0"
+      "Segment ?1 has been opened\0"
+      "Open segment\0"
+      "Segment ?1 is being closed\0"
+      "Close segment\0"
+      "User may not close system segment id: ?0  name: ?1\0"
+      "List names must not be empty\0"
+      "Allocate list\0"
+      "Get list identification\0"
+      "Access list\0"
+      "Release list\0"
+      "Destroy list\0"
+      "Insert element\0"
+      "Delete element\0"
+      "Move element\0"
+      "  !!! ?0  ?1.\0"
+      "  >>> ?0  Program exception occured in operation: ?1.\0"
+      "  >>> ?0  Unexpected system exception occurred in operation: ?1\0"
+   ; /* Fim vetor 0 */
+
+/* Vetor de referências a vetores de strings */
+
+   static char * vtpStringoes[ 1 ] = 
+        { Stringao_0 } ;
+
+#endif
+
+/* Fim tabela strings gerada */

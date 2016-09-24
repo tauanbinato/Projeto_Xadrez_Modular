@@ -1,0 +1,16 @@
+////////////////////////////////////////////////
+//
+// Exemplo de arquivo de declaração de contadores
+// Conta módulo Arvore marcado
+//
+///////////////////////////////////////////////
+    
+    ARV_InserirEsquerda
+    ARV_InserirDireita
+    ARV_CriarArvore
+    ARV_DestruirArvore
+    ARV_IrPai
+    ARV_IrNoEsquerda
+    ARV_IrNoDireita
+    ARV_ObterValorCorr
+	 XPTO nome adicionado para fins de teste\=-2

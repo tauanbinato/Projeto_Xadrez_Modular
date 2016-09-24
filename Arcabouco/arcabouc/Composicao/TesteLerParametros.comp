@@ -1,0 +1,32 @@
+# Módulo testado: LerParm
+
+[Diretorios]
+
+Nome        =  TesteLerParametros
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb
+LerParm     /D_DEBUG
+CEspDin
+Conta
+GeraAlt
+IntrpCED
+IntrpCNT
+TestLER     /D_DEBUG
+
+[BuildInicio]
+/OUT:..\produto\TesteLerParametros.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

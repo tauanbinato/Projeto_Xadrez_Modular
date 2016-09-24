@@ -1,0 +1,117 @@
+// Script:    TesteControleEspaco-Voa.script
+// Autor:     Arndt von Staa
+// Data:      13/abr/2006
+// Propósito: Testar deturpação e verificação da estrutura de controle de espaços dinâmicos
+//
+
+== Alocar espaços  de tamanhos 2 5 e 15
+=alocarespaco           2   2   2  "dado2"
+=alocarespaco           1   5   5  "dado1"
+=alocarespaco           0  15  15  "dado0"
+
+== Verificar controle de tamanho de nome de arquivo - deve ser c09...
+=alocarespaco           3   2   2  "987654321098765432c098765432b098765432a0987654321"
+=exibirespaco           3
+=verificarespaco        3   1
+
+== Verificar a lista de todos os espaços
+=verificartodosespacos  1
+
+== inserir exato no espaço
+=inserirstringespaco    0   "cccccccccccccc"
+=exibirespaco           0
+=obterstringespaco      0   "cccccccccccccc"
+
+== inserir 1 menor no espaço
+=inserirstringespaco    1   "aaa"
+=exibirespaco           1
+=obterstringespaco      1   "aaa"
+
+== inserir 1 maior no espaço
+=inserirstringespaco    2   "aa"
+=exibirespaco           2
+=obterstringespaco      2   "aa"
+
+== Verificar um a um todos os espaços com conteúdo inicializado, espaço 2 está em erro
+=verificarespaco        0   1
+=verificarespaco        1   1
+=verificarespaco        2   0
+
+== Obter total de falhas até este ponto
+=AceitaFalhasAcumuladas   4
+
+== Verificar a lista de todos os espaços
+=verificartodosespacos  0
+
+== Obter total de falhas até este ponto
+=AceitaFalhasAcumuladas   2
+
+== Deturpar, sem destruir
+=deturparespaco         0   1   51
+=deturparespaco         0   3   68
+=deturparespaco         0   5   85
+=exibirespaco           0
+
+== Deturpar controle antes, controle após já está deturpado
+=deturparespaco         2  -1   33
+=verificarespaco        2   1
+=recuperar
+=AceitaFalhasAcumuladas   3
+
+== Deturpar identificaçao do espaço
+=deturparespaco         1 -54   129
+=verificarespaco        1   0
+=AceitaFalhasAcumuladas   2
+
+== Deturpar encadeamento após
+=deturparespaco         1 -58   85
+=verificarespaco        1   0
+=AceitaFalhasAcumuladas   3
+
+== Deturpar encadeamento antes (espaço após foi corrigido para NULL)
+=deturparespaco       1 -62   85
+=verificarespaco      1   0
+=AceitaFalhasAcumuladas   3
+
+== Deturpar tamanho do valor
+=deturparespaco       3 -42   85
+=verificarespaco      3   0
+=AceitaFalhasAcumuladas   3
+
+== Deturpar tamanho total, controles já estão deturpados, encadeamento errado
+=deturparespaco       2 -66   85
+=verificarespaco      2   0
+=AceitaFalhasAcumuladas   5
+
+== Deturpar anterior de espaço origem
+=alocarespaco         4  10   15  "dado2"
+=deturparespaco       4 -62   1
+=exibirbruto          4
+=verificarespaco      4   0
+=AceitaFalhasAcumuladas   3
+
+== Repetir verificação para controlar correção
+=exibirbruto          4
+=verificarespaco      4   1
+
+== Repetir verificação de deturpação de pAnt no meio corrigida para NULL
+=verificarespaco      1   0
+=AceitaFalhasAcumuladas   3
+
+== Deturpar marca digital do espaco, é tratado como NULL
+=deturparespaco       4 -70   1
+=exibirbruto          4
+=verificarespaco      4   0
+
+== Excluir os espacos
+=desalocarespaco      0
+=desalocarespaco      1
+=desalocarespaco      2
+=desalocarespaco      3
+=desalocarespaco      4
+=AceitaFalhasAcumuladas   13
+
+== Verificar número de espacos remanescentes
+=obternumeroespacosalocados 5
+
+// fim

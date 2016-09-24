@@ -1,0 +1,6 @@
+/OUT:..\produto\TesteArvoreProd.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+arvore.obj  testarv.obj  
+ArcaboucoTeste.lib
+

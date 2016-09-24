@@ -1,0 +1,192 @@
+// Script:    TesteContadores.script
+// Autor:     Arndt von Staa
+// Data:      15/fev/2006
+// Propósito: Testar o módulo de leitura de parâmetros de comando de teste
+//
+
+== Verificar linha 1
+=lerparm-cis:    'a'   123  "abcdefghij"
+
+== Verificar linha 2
+=lerparm-cis:    'a'   -1  "b"
+
+== Verificar linha 2
+=lerparm-cis:    'a'   -123  "áçéã"
+
+== Verificar inteiro sozinho
+=lerparm-ii:    -1 +10
+
+== Verificar dois strings em seguida
+=lerparm-ss:   "abcdefgh" "x"
+
+== Verificar um string solitario 
+=lerparm-s:   "abc d e fghijklmnopqrstuvxyz"    
+
+== Verificar um string solitario sem aspa final
+=lerparm-s:   "abcdefg hijklmnopqrstuvxyz
+=recuperar
+=AceitaFalhasAcumuladas  1
+
+== Verificar um flutuante
+=lerparm-fi:   1.     1
+=lerparm-fi:   2.     2
+=lerparm-fi:   3.1    3
+=lerparm-fi:   4.E-1  4
+=lerparm-fi:  -4.E-1  5
+
+== Verificar ler nome
+=lerparm-n:    abcde
+=lerparm-n:    a_b123cde
+=lerparm-n:    a
+
+== Verificar ler nome errado inicia com número
+=lerparm-n:    2
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Verificar ler nome errado inicia com sublinhado
+=lerparm-n:    _
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Verificar ler nome errado inicia com aspas duplas
+=lerparm-n:    "
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Verificar ler nome errado inicia com aspas simples
+=lerparm-n:    '
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Verificar ler nome errado inicia com caractere especial
+=lerparm-n:    *
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Declara string de tamanho 0
+=declararparm     String0  string   ""
+=exibirdeclaracao String0
+
+== Repete a declaração
+=declararparm   String0
+=recuperar
+=AceitaFalhasAcumuladas  1
+
+
+== Declara string de tamanho 1
+=declararparm     String1  string   "a"
+=exibirdeclaracao String1       
+
+== Declara string de tamanho 12
+=declararparm     String12  string   "aáãâàäAÁÃÂÀÄ"
+=exibirdeclaracao String12
+
+== Declara string com caracteres especiais
+=declararparm     String1E  string   "\n\r\a\t\f\v\"\'\\\?"
+=exibirdeclaracao String1E
+
+== Declara string caractere nulo
+=declararparm     String1Null  string   "\0"
+=exibirdeclaracao String1Null
+
+== Declara string com caracteres nulos pelo meio
+=declararparm     String1N  string   "abc\0cde\0"
+=exibirdeclaracao String1N
+
+== Declara inteiro
+=declararparm     Inteiro  int  255
+=exibirdeclaracao Inteiro
+
+== Declara char
+=declararparm     Char     char   'q'
+=exibirdeclaracao Char
+
+== Declara char nulo
+=declararparm     Char0     char   '\0'
+=exibirdeclaracao Char0
+
+== Declara char \n
+=declararparm     Charn     char   '\n'
+=exibirdeclaracao Charn
+
+== Declara double
+=declararparm     Double   double 1.1E-1
+=exibirdeclaracao Double
+
+== Comparar parâmetros caractere
+=compararparmchar   'q'   Char
+=compararparmchar   Char  'q'  
+=compararparmchar   Char  Char
+
+== Comparar com tipo incorreto
+=compararparmchar   Char  Inteiro
+=recuperar
+=AceitaFalhasAcumuladas  2
+
+== Comparar parâmetros inteiro
+=compararparmint   Inteiro  255 
+=compararparmint   255  Inteiro  
+=compararparmint   Inteiro  Inteiro  
+
+== Comparar parâmetros double
+=compararparmdouble  Double   1.1E-1 
+=compararparmdouble  1.1E-1   Double
+=compararparmdouble  Double   Double 
+
+== Comparar parâmetros string
+=declararparm  StringTeste   string   "abc de\0fg\r\""
+=compararparmstring    StringTeste   "abc de\0"
+=compararparmstring    "abc de\0" StringTeste ;
+=compararparmstring    StringTeste   StringTeste
+
+== Comparar caracteres hexadecimais
+=compararparmchar   '\x30' '0'  
+=compararparmchar   '\x41' 'A'  
+=compararparmchar   '\x61' 'a'  
+=compararparmchar   '\x0' '\0'  
+=compararparmchar   '\x7' '\007'  
+=compararparmchar   'a'   '\x413'   
+=recuperar
+=AceitaFalhasAcumuladas  2
+=compararparmchar   '\xFF'   '\377'   
+=compararparmchar   '\xff'   '\377'   
+=compararparmchar   '\xaa'   '\xAA'
+=compararparmchar   '\x0'    '\400'   
+=AceitaFalhasAcumuladas  1
+
+== Comparar strings com hexadecimais
+=compararparmstring "a\x30\x41\x611" "a0Aa1"
+
+== Comparar caracteres octais
+=compararparmchar   '\60' '0'  
+=compararparmchar   '\101' 'A'  
+=compararparmchar   '\141' 'a'  
+=compararparmchar   '\1'   '\01'  
+=compararparmchar   '\1'   '\001'  
+=compararparmchar   '\1'   '\1001'  
+=recuperar
+=AceitaFalhasAcumuladas  2
+=compararparmchar   '\1'   '\555'  
+=recuperar
+=AceitaFalhasAcumuladas  1
+
+== Comparar strings com octais
+=compararparmstring "a\60\101\1411" "a0Aa1"
+
+== Verificar dois strings em seguida com tab antes do primeiro
+=compararparmstring				  "abcdefgh" "abcdefgh"
+=compararparmstring	 StringTeste   StringTeste
+
+== Verificar dois strings em seguida com mistura de tab e branco entre os dois
+=compararparmstring   "abcdefgh"		"abcdefgh"
+	=compararparmstring   StringTeste	StringTeste
+
+== Verificar dois strings em seguida com somente tab antes de cada um
+=compararparmstring		"abcdefgh"		"abcdefgh"
+
+== Verificar dois strings em seguida com somente tab tambem antes do comando
+	=compararparmstring		StringTeste		StringTeste
+
+// fim
+

@@ -1,0 +1,57 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: exemploSimples
+!!!      Script de teste:     TesteBasico.script
+
+!!!    0  Linha:     1  // Script:    TesteBasico.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      20/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, 
+!!!    0  Linha:     5  //            Testa a construção de uma árvore usando parâmetros literais 
+!!!    0  Linha:     6  //            Verifica se as operações modificaram corretamente as referências 
+!!!    0  Linha:     7  //            Este script é muito superficial !!! 
+!!!    0  Linha:     8  // 
+   11  == Verificar assertivas de entrada de irdir
+   14  == Verificar comando recuperar
+>>>    1  Linha:    15  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    16  Falha esperada foi recuperada. 
+   18  == Verificar ObterValorCorr relativo a árvore inexistente
+!!!    0  Linha:    19  // O interpretador de teste inicializa o valor a ser obtido com '!'. Consequentemente, 
+!!!    0  Linha:    20  // esse será o valor "obtido" caso a função ObterValor retorne condição de erro, 
+!!!    0  Linha:    21  // uma vez que, nesse caso, a função não altera o valor a ser "retornado". 
+   24  == Verificar recuperar de ObterValorCorr relativo a uma árvore inexistente
+>>>    1  Linha:    25  Retorno errado ao obter valor corrente. Deveria ser: 0  É: 4
+<<<    0  Linha:    26  Falha esperada foi recuperada. 
+>>>    1  Linha:    27  Conteúdo do nó está errado. Deveria ser: 'z'  É: '!'
+<<<    0  Linha:    28  Falha esperada foi recuperada. 
+   30  == Criar árvore
+   33  == Verificar se a arvore criada está vazia
+   39  == Inserir à direita
+   42  == Verificar se nó inserido é raiz e único
+   47  == Obter o valor inserido
+   50  == Verificar valor obtido diferente do esperado
+>>>    1  Linha:    51  Conteúdo do nó está errado. Deveria ser: '!'  É: 'a'
+<<<    0  Linha:    52  Falha esperada foi recuperada. 
+   54  == Inserir à esquerda
+   57  == Verificar se é nó folha
+   61  == Obter o valor inserido
+   64  == Ir para no pai, tem e é a raiz
+   69  == Inserir à direita
+   73  == Verificar se é nó folha
+   77  == Ir para no pai, tem e é raiz
+   82  == Ir para no pai mais uma vez
+   86  == Ir para no esquerda tem
+   90  == Ir para no direita tem
+   95  == Destroi a arvore
+   99  == Cria a arvore
+!!!    0  Linha:   103  // fim 
+
+!!! Número de linhas lidas:         103
+!!! Número de casos de teste:        22
+!!! Número comandos corretos:        37
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

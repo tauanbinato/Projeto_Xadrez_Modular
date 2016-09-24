@@ -1,0 +1,22 @@
+# Composicao do programa exemplo de teste automatizado
+# Este exemplo utiliza o arcabouço completo 
+
+[Diretorios]
+
+Nome        =  ExemploSimples
+PathDefault =  .
+err         =  .
+
+[Modulos]
+TestArv
+Arvore
+
+[BuildInicio]
+/OUT:ExemploSimples.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

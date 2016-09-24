@@ -1,0 +1,6 @@
+// Arquivo de definição de string default
+// Mensagens geradas pelo módulo TABSTR
+
+<Offset> 0
+
+STR_NaoEncontrouString   1   "Identificação de string ?d não foi encontrada."

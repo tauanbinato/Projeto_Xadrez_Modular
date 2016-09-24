@@ -1,0 +1,32 @@
+# Modulo testado: Conta
+
+[Diretorios]
+
+Nome        =  TesteContadores
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb      /D_DEBUG
+LerParm
+CEspDin
+Conta        /D_DEBUG
+GeraAlt
+IntrpCED
+IntrpCNT     /D_DEBUG
+TestCNT      /D_DEBUG
+
+[BuildInicio]
+/OUT:..\produto\TesteContadores.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[Fim]

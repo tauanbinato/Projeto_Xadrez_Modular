@@ -1,0 +1,174 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteArvoreProd.comp
+
+   Nome do Construto:           TesteArvoreProd
+   Diretório base:              D:\AutoTest\instrum\composicao
+
+   Arquivo composição:          TesteArvoreProd.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteArvoreProd.make
+   Arquivo diretivas LINK:      TesteArvoreProd.build
+   Arquivo listagem:            TesteArvoreProd.list
+
+Módulos do construto: TesteArvoreProd.comp
+
+   arvore.c
+   testarv.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: ..\\tabelas\\idtiposespaco.def
+      Total linhas:              35
+      Linhas de código:           9
+      Linhas de comentário:      21
+      Linhas em branco:           5
+   Arquivos de inclusão de que necessita
+      tiposespacosarvore.def
+   Arquivos em que é incluído
+      arvore.c
+
+   Estatísticas do arquivo: arvore.c
+      Total linhas:            1049
+      Linhas de código:         553
+      Linhas de comentário:     224
+      Linhas em branco:         308
+   Arquivos de inclusão de que necessita
+      ..\\tabelas\\idtiposespaco.def
+      arvore.h
+      cespdin.h
+      conta.h
+      generico.h
+      tiposespacosarvore.def
+      tst_espc.h
+
+   Estatísticas do arquivo: arvore.h
+      Total linhas:             435
+      Linhas de código:          63
+      Linhas de comentário:     288
+      Linhas em branco:          84
+   Arquivos em que é incluído
+      arvore.c
+      testarv.c
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             668
+      Linhas de código:          52
+      Linhas de comentário:     519
+      Linhas em branco:          97
+   Arquivos em que é incluído
+      arvore.c
+      testarv.c
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             468
+      Linhas de código:          43
+      Linhas de comentário:     349
+      Linhas em branco:          76
+   Arquivos em que é incluído
+      arvore.c
+
+   Estatísticas do arquivo: generico.h
+      Total linhas:             561
+      Linhas de código:          58
+      Linhas de comentário:     433
+      Linhas em branco:          70
+   Arquivos de inclusão de que necessita
+      tst_espc.h
+   Arquivos em que é incluído
+      arvore.c
+      testarv.c
+
+   Estatísticas do arquivo: lerparm.h
+      Total linhas:             306
+      Linhas de código:          36
+      Linhas de comentário:     203
+      Linhas em branco:          67
+   Arquivos em que é incluído
+      testarv.c
+
+   Estatísticas do arquivo: testarv.c
+      Total linhas:             461
+      Linhas de código:         222
+      Linhas de comentário:     141
+      Linhas em branco:         113
+   Arquivos de inclusão de que necessita
+      arvore.h
+      cespdin.h
+      generico.h
+      lerparm.h
+      tst_espc.h
+
+   Estatísticas do arquivo: tiposespacosarvore.def
+      Total linhas:              25
+      Linhas de código:           5
+      Linhas de comentário:      17
+      Linhas em branco:           3
+   Arquivos em que é incluído
+      ..\\tabelas\\idtiposespaco.def
+      arvore.c
+
+   Estatísticas do arquivo: tst_espc.h
+      Total linhas:             320
+      Linhas de código:          23
+      Linhas de comentário:     277
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      arvore.c
+      generico.h
+      testarv.c
+
+Totais por tipo de arquivo
+
+  Tipo: def      Path: ..\Tabelas
+         Total linhas do tipo:        60
+         Linhas de código:            14
+         Linhas de comentário:        38
+         Linhas em branco:             8
+         Arquivos deste tipo:          2
+
+  Tipo: h        Path: ..\Fontes
+         Total linhas do tipo:      2758
+         Linhas de código:           275
+         Linhas de comentário:      2069
+         Linhas em branco:           414
+         Arquivos deste tipo:          6
+
+  Tipo: obj      Path: ..\Objetos
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: ..\Produto
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: ..\Fontes
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: c        Path: ..\Fontes
+         Total linhas do tipo:      1510
+         Linhas de código:           775
+         Linhas de comentário:       365
+         Linhas em branco:           421
+         Arquivos deste tipo:          2
+
+Totais para todo o construto TesteArvoreProd
+
+   Total linhas:              4328
+   Linhas de código:          1064
+   Linhas de comentário:      2472
+   Linhas em branco:           843
+   Arquivos processados:        10
+

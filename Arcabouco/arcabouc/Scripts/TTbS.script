@@ -1,0 +1,17 @@
+// Script:    TesteTabSimbolos.script
+// Autor:     Arndt von Staa
+// Data:      18/fev/2006
+// Propósito: Testar o módulo tabela de simbolos utilizado no arcabouço
+//
+
+== Inicializar o modulo de teste
+=resettestetab
+=obternumeroespacosalocados   0
+=exibirtodosespacos           1
+
+== Controlar espaços remanescentes
+=resettestetab
+=exibirtodosespacos          1
+=obternumeroespacosalocados  0
+
+// fim

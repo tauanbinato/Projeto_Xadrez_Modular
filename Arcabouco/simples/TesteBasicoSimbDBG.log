@@ -1,0 +1,56 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: exemploSimplesDBG
+!!!      Script de teste:     TesteBasicoSimb.script
+
+!!!    0  Linha:     1  // Script:    TesteBasicoSimb.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      20/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, 
+!!!    0  Linha:     5  //            Testa a construção de uma árvore usando parâmetros simbólicos 
+!!!    0  Linha:     6  //            Verifica se as operações modificaram corretamente as referências 
+!!!    0  Linha:     7  //            Este script é muito superficial !!! 
+!!!    0  Linha:     8  // 
+   10  == Declarar as condicoes de retorno
+   21  == Declarar os conteúdos dos nós
+   27  == Verificar assertivas de entrada de irdir
+   30  == Verificar comando recuperar
+>>>    1  Linha:    31  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    32  Falha esperada foi recuperada. 
+   34  == Verificar ObterValorCorr relativo a árvore inexistente
+   37  == Verificar recuperar de ObterValorCorr relativo a uma árvore inexistente
+>>>    1  Linha:    38  Retorno errado ao obter valor corrente. Deveria ser: 0  É: 4
+<<<    0  Linha:    39  Falha esperada foi recuperada. 
+>>>    1  Linha:    40  Conteúdo do nó está errado. Deveria ser: 'z'  É: '!'
+<<<    0  Linha:    41  Falha esperada foi recuperada. 
+   43  == Criar árvore
+   46  == Verificar se a arvore criada está vazia
+   52  == Inserir à direita
+   55  == Verificar se nó inserido é raiz e único
+   60  == Obter o valor inserido
+   63  == Verificar valor obtido diferente do esperado
+>>>    1  Linha:    64  Conteúdo do nó está errado. Deveria ser: '!'  É: 'a'
+<<<    0  Linha:    65  Falha esperada foi recuperada. 
+   67  == Inserir à esquerda
+   70  == Verificar se é nó folha
+   74  == Obter o valor inserido
+   77  == Ir para no pai, tem e é a raiz
+   82  == Inserir à direita
+   86  == Verificar se é nó folha
+   90  == Ir para no pai, tem e é raiz
+   95  == Ir para no pai mais uma vez
+   99  == Ir para no esquerda tem
+  103  == Ir para no direita tem
+  108  == Destroi a arvore
+  112  == Cria a arvore
+!!!    0  Linha:   116  // fim 
+
+!!! Número de linhas lidas:         116
+!!! Número de casos de teste:        24
+!!! Número comandos corretos:        50
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

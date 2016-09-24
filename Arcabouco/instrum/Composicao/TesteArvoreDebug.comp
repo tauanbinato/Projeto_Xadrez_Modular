@@ -1,0 +1,25 @@
+# Teste do módulo Arvore compilado com debug
+
+[Diretorios]
+
+Nome        =  TesteArvoreDebug
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+Arvore      /D_DEBUG
+TestArv     /D_DEBUG
+
+[BuildInicio]
+/OUT:..\produto\TesteArvoreDebug.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

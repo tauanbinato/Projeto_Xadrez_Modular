@@ -1,0 +1,25 @@
+// String de 10 caracteres. Tamanho: 10
+
+<Offset> 100
+
+
+STR10   10   "abcdefghij"
+
+// String formado pelos caracteres de escape. Tamanho: 11
+STR13   13   "\a\b\f\n\r\t\v\'\"\\\?"
+
+// String formado por caracteres de escape octais. Tamanho: 3
+Str14   14 "\1\10\101"
+
+// String formado por caracteres de escape octais, com erro no ultimo. Tamanho: 5
+Str15   15 "\1\10\101\1012"
+
+// String formado por caracteres de escape hexadecimais. Tamanho: 4
+STR16   16 "\x41\x042\x0043\x000044"
+
+// String formado por mistura. Tamanho: 5
+STR17   17 "a\x42\103\ta"
+
+
+STR20   21 "xpto"
+

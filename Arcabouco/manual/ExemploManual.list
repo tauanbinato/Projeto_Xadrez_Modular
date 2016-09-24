@@ -1,0 +1,92 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: ExemploManual.comp
+
+   Nome do Construto:           ExemploManual
+   Diretório base:              D:\AutoTest\Manual
+
+   Arquivo composição:          ExemploManual.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      ExemploManual.make
+   Arquivo diretivas LINK:      ExemploManual.build
+   Arquivo listagem:            ExemploManual.list
+
+Módulos do construto: ExemploManual.comp
+
+   Tst_Arv.c
+   Arvore.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: ARVORE.H
+      Total linhas:             216
+      Linhas de código:          29
+      Linhas de comentário:     146
+      Linhas em branco:          41
+   Arquivos em que é incluído
+      Arvore.c
+
+   Estatísticas do arquivo: Arvore.c
+      Total linhas:             462
+      Linhas de código:         220
+      Linhas de comentário:     143
+      Linhas em branco:         110
+   Arquivos de inclusão de que necessita
+      ARVORE.H
+
+   Estatísticas do arquivo: Tst_Arv.c
+      Total linhas:             309
+      Linhas de código:         135
+      Linhas de comentário:      79
+      Linhas em branco:         108
+   Arquivos de inclusão de que necessita
+      arvore.h
+
+   Estatísticas do arquivo: arvore.h
+      Total linhas:             216
+      Linhas de código:          29
+      Linhas de comentário:     146
+      Linhas em branco:          41
+   Arquivos em que é incluído
+      Tst_Arv.c
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:       432
+         Linhas de código:            58
+         Linhas de comentário:       292
+         Linhas em branco:            82
+         Arquivos deste tipo:          2
+
+  Tipo: c        Path: .
+         Total linhas do tipo:       771
+         Linhas de código:           355
+         Linhas de comentário:       222
+         Linhas em branco:           218
+         Arquivos deste tipo:          2
+
+Totais para todo o construto ExemploManual
+
+   Total linhas:              1203
+   Linhas de código:           413
+   Linhas de comentário:       514
+   Linhas em branco:           300
+   Arquivos processados:         4
+

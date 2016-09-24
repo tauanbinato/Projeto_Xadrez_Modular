@@ -1,0 +1,95 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: ..\produto\testearvoredebug
+!!!      Script de teste:     ..\scripts\testecontroleespaco.script
+
+!!!    0  Linha:     1  // Script:    TesteControleEspaco-Arv.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      18/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script para controle de espaço dinâmico 
+!!!    0  Linha:     5  // 
+    7  == Declarar as árvores usadas
+   15  == Declarar valores a serem inseridos em nós
+   20  == Declarar condições de retorno
+   33  == Iniciar contagem
+   38  == Verificar assertivas de entrada de irdir
+   41  == Verificar comando recuperar
+>>>    1  Linha:    42  Retorno errado ao ir para direita. Deveria ser: 0  É: 4
+<<<    0  Linha:    43  Falha esperada foi recuperada. 
+   45  == Verificar contadores, 1 deles já contou
+cc>    1  Linha:    46   Contagem em "ARV_CriarArvore" é zero.
+cc>    2  Linha:    46   Contagem em "ARV_DestruirArvore" é zero.
+cc>    3  Linha:    46   Contagem em "ARV_InserirDireita" é zero.
+cc>    4  Linha:    46   Contagem em "ARV_InserirEsquerda" é zero.
+cc>    5  Linha:    46   Contagem em "ARV_IrNoEsquerda" é zero.
+cc>    6  Linha:    46   Contagem em "ARV_IrPai" é zero.
+cc>    7  Linha:    46   Contagem em "ARV_ObterValorCorr" é zero.
+<<<    0  Linha:    48  Falhas registradas eram esperadas e foram recuperadas. 
+   50  == Verificar ObterValorCorr relativo a árvore inexistente
+   53  == Verificar recuperar de ObterValorCorr relativo a árvore inexistente
+>>>    1  Linha:    54  Retorno errado ao obter valor corrente. Deveria ser: 1  É: 4
+<<<    0  Linha:    55  Falha esperada foi recuperada. 
+   57  == Verificar espaços alocados
+   61  == Criar árvore
+   65  == Inserir à direita
+   68  == Obter o valor inserido
+   71  == Verificar controle de obter o valor inserido errado
+>>>    1  Linha:    72  Conteúdo do nó está errado. Deveria ser: 'x'  É: 'a'
+<<<    0  Linha:    73  Falha esperada foi recuperada. 
+   75  == Ir para no pai, nao tem
+   78  == Inserir à esquerda
+   81  == Obter o valor inserido
+   84  == Ir para no pai, tem
+   88  == Inserir à direita
+   92  == Controlar vazamento de memória
+
+!!!  Espaco de dados, id:     3  pValor: 00329712  hexa: 12 97 32 00  E' origem lista  Id suc:     2
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  AA 94 32 00 72 95 32 00 00 00 00 00 00 00 00 00   ª”2.r•2.........
+    010  63 7C 7C 7C                                       c|||
+
+
+!!!  Espaco de dados, id:     2  pValor: 00329642  hexa: 42 96 32 00  Id ant:     3  Id suc:     1
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  AA 94 32 00 72 95 32 00 00 00 00 00 00 00 00 00   ª”2.r•2.........
+    010  62 7C 7C 7C                                       b|||
+
+
+!!!  Espaco de dados, id:     1  pValor: 00329572  hexa: 72 95 32 00  Id ant:     2  Id suc:     0
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  AA 94 32 00 00 00 00 00 42 96 32 00 12 97 32 00   ª”2.....B–2..—2.
+    010  61 7C 7C 7C                                       a|||
+
+
+!!!  Espaco de dados, id:     0  pValor: 003294AA  hexa: AA 94 32 00  Id ant:     1  E' final lista
+     Id tipo valor: 1  Tamanho: 8  Ativo  Linha onde alocou: 154  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  72 95 32 00 12 97 32 00                           r•2..—2.
+
+   97  == Ir para no pai
+  101  == Ir para no pai
+  105  == Ir para no esquerda tem
+  109  == Ir para no direita tem
+  114  == Destroi a arvore
+  118  == Controlar vazamento de memória
+  122  == Cria a arvore
+  127  == Terminar controlar contadores
+  131  == Terminar contagem
+!!!    0  Linha:   134  // fim 
+
+!!! Número de linhas lidas:         134
+!!! Número de casos de teste:        29
+!!! Número comandos corretos:        62
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 0

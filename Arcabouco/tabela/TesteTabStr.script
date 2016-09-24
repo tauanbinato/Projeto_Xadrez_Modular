@@ -1,0 +1,91 @@
+// Script:    Teste.script
+// Autor:     Arndt von Staa
+// Data:      14/ago/2004
+// Propósito: Teste de tabela string
+//
+
+== Obter string no inicio existente   
+=ObterString     1   100 "Identificação de string ?d não foi encontrada."      0
+
+== Obter tamanho de string no inicio existente  
+=ObterTamTab    1   46   
+
+== Obter string no meio existente   
+=ObterString   601   100 "Talisman started"      0
+
+== Obter tamanho de string no meio existente  
+=ObterTamTab  601   16   
+
+== Obter string no final existente   
+=ObterString   626   100 "  >>> ?0  Unexpected system exception occurred in operation: ?1" 0
+
+== Obter tamanho de string no final existente  
+=ObterTamTab  626   63   
+
+== Obter string no meio inexistente, strings não iguais
+=ObterString   118   100 "xpto"    -1
+=recuperar
+
+== Obter string no início inexistente
+=ObterString     0   100 "Identificação de string ?d não foi encontrada."    -1
+
+== Obter string no final inexistente
+=ObterString   627   100 "Identificação de string ?d não foi encontrada."    -1
+
+== Obter string inexistente
+=ObterString   118   100 "Identificação de string ?d não foi encontrada."    -1
+
+== Obter tamanho de string inexistente, tamanho esperado qualquer
+=ObterTamTab  118   -1
+
+== Tornal incorreto o id da mensagem de string inexistente
+=DeturparId     0    5
+
+== Obter string existente deturpado, esperando OK
+=ObterString  118   100 "??????????"     -3
+=recuperar
+
+== Obter string existente deturpado, esperando erro de tabelas
+=ObterString  118   100 "?!?!?"   -3
+
+== Obter string inexistente e mensagem de erro inexistente
+=ObterString   13   100 "?!?!?"   -3
+
+== Obter tamanho de string inexistente, tamanho da mensagem de erro
+=ObterTamTab   13   -1
+
+
+== Obter tamanho real de string comum
+=ObterTamReal 110   100   10   0
+
+== Obter tamanho real de string com todos os escapes de um caractere
+=ObterTamReal 113   100   11   0
+
+== Obter tamanho real de string com escapes octais corretos
+=ObterTamReal 114   100    3   0
+
+== Obter tamanho real de string com escapes octais errados
+=ObterTamReal 115   100    5   0
+
+== Obter tamanho real de string com escapes hexadecimais
+=ObterTamReal 116   100    4   0
+
+== Obter tamanho real de string com escapes hexadecimais
+=ObterString  116   100    "ABCD"   0
+
+== Obter tamanho real de string com escapes misturados
+=ObterTamReal 117   100   5   0
+
+== Obter string cujo id foi deturpado
+=ObterString   0    100   "?!?!?"    -3
+
+== Obter string que cabe no espaço dado, excesso
+=ObterString   601   18 "Talisman started"      0
+
+== Obter string que cabe no espaço dado, exato  (o espaço deve considerar o zero final!)
+=ObterString   601   17 "Talisman started"      0
+
+== Obter string que cabe no espaço dado, falta
+=ObterString   601   16 "Talisman starte"      -2
+
+// fim

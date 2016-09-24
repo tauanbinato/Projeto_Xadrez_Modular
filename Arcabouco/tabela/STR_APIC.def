@@ -1,0 +1,114 @@
+////////////////////////////////////////////////////////////////////////////
+// 
+// Strings of module:      Talisman C/C++ API
+// 
+// Generated file:         TALCAPI.MSG
+// Identification letters: APIC
+// Identification number:  600
+// 
+// Repository name:      Talisman C/C++ API
+// Repository file name: C:\TALISMAN\REPOSIT\BSW\TALCAPI.BSW
+// 
+// Ownership
+//    Owning organization:    LES/DI/PUC-Rio
+//    Project:                Talisman
+// 
+////////////////////////////////////////////////////////////////////////////
+
+// !!!!! Generated file. Do not edit. !!!!!
+
+<Offset>  600
+
+// Blocos programa: Start event logger
+
+  APIC_TalismanStart       1  "Talisman started"
+
+// Blocos programa: Catch all Talisman exceptions
+
+  APIC_idOpStarted         2  "Start Talisman"
+
+// Blocos programa: Root of APIC &Get current element
+
+  APIC_idOpGetElement      3  "Get element"
+
+// Blocos programa: Root of APIC &Display all
+
+  APIC_idOpDisplayAll      4  "Display all"
+
+// Blocos programa: Corpo de APIC &Insert element before
+
+  APIC_idOpInsertBefore    5  "Insert element before"
+
+// Blocos programa: Stop event logger
+
+  APIC_TalismanStop        6  "Talisman stopped"
+
+// Blocos programa: Catch verification program exceptions
+
+  APIC_idOpVerifyAll       7  "Verify all"
+
+// Blocos programa: Root of APIC &Write all
+
+  APIC_idOpWriteAll        8  "Write all"
+  APIC_NotifyWriteAll      9  "All dirty frames have been written"
+
+// Blocos programa: Do open segment
+
+  APIC_NotifyOpenSegment  10  "Segment ?1 has been opened"
+
+// Blocos programa: Catch open segment exceptions
+
+  APIC_idOpOpenSegment    11  "Open segment"
+
+// Blocos programa: Root of APIC &Close segment
+
+  APIC_NotifyCloseSegment 12  "Segment ?1 is being closed"
+  APIC_idOpCloseSegment   13  "Close segment"
+  APIC_ErrorSegmentId     14  "User may not close system segment id: ?0  name: ?1"
+
+// Blocos programa: Root of APIC &Create list
+
+  APIC_ErrorEmptyListName 15  "List names must not be empty"
+  APIC_idOpAllocateList   16  "Allocate list"
+
+// Blocos programa: Root of APIC &Get list id
+
+  APIC_idOpGetIdList      17  "Get list identification"
+
+// Blocos programa: Root of APIC &Access list
+
+  APIC_idOpAccessList     18  "Access list"
+
+// Blocos programa: Root of APIC &Release list
+
+  APIC_idOpReleaseList    19  "Release list"
+
+// Blocos programa: Root of APIC &Destroy list
+
+  APIC_idOpDestroyList    20  "Destroy list"
+
+// Blocos programa: Root of APIC &Insert element
+
+  APIC_idOpInsertElement  21  "Insert element"
+
+// Blocos programa: Root of APIC &Delete current element
+
+  APIC_idOpDeleteElement  22  "Delete element"
+
+// Blocos programa: Root of APIC &Move current element reference
+
+  APIC_idOpMoveElement    23  "Move element"
+
+// Blocos programa: Root of APIC -Notify action
+
+  APIC_NotifyHead         24  "  !!! ?0  ?1."
+
+// Blocos programa: Display exception message
+
+  APIC_TalismanException  25  "  >>> ?0  Program exception occured in operation: ?1."
+
+// Blocos programa: Root of APIC -Display system exception message
+
+  APIC_SystemException    26  "  >>> ?0  Unexpected system exception occurred in operation: ?1"
+
+//** End of string file, module: Talisman C/C++ API

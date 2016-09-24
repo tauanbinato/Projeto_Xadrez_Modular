@@ -1,0 +1,142 @@
+
+!!! Inicio dos testes
+!!!      Construto sob teste: ..\produto\testearvoredebug
+!!!      Script de teste:     ..\scripts\testedeturpaarvore.script
+
+!!!    0  Linha:     1  // Script:    TesteDeturpaArvore-1.script 
+!!!    0  Linha:     2  // Autor:     Arndt von Staa 
+!!!    0  Linha:     3  // Data:      18/fev/2006 
+!!!    0  Linha:     4  // Propósito: Ilustrar arquivo de script, testar construção de árvore 
+!!!    0  Linha:     5  //            Este script é muito superficial 
+!!!    0  Linha:     6  // 
+    8  == Iniciar contadores de passagem
+   11  == Criar árvore
+   23  == Verificar árvore
+   26  == Deturpar tipo nó
+>>>    1  Linha:    28  Tipo do espaço de dados não é nó de árvore. Deveria ser: 2  É: 0
+<<<    0  Linha:    29  Falhas registradas eram esperadas e foram recuperadas. 
+   31  == Destruir a árvore
+   34  == Criar árvore
+   46  == Anular ponteiro para cabeca
+>>>    1  Linha:    48  Nó corrente não aponta para cabeça. Deveria ser: 00328F72  É: 00000000
+<<<    0  Linha:    49  Falhas registradas eram esperadas e foram recuperadas. 
+   51  == Destruir a árvore
+   54  == Criar árvore
+   66  == Anular ponteiro para pai
+>>>    1  Linha:    68  Pai de filho à direita não é este nó. Deveria ser: 00327F92  É: 00000000
+<<<    0  Linha:    69  Falhas registradas eram esperadas e foram recuperadas. 
+   71  == Destruir a árvore
+   76  == Criar árvore
+   88  == Anular ponteiro para esquerda
+   92  == Destruir a árvore
+
+!!!  Espaco de dados, id:    22  pValor: 003283A2  hexa: A2 83 32 00  E' origem lista  E' final lista
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  92 7F 32 00 D2 82 32 00 00 00 00 00 00 00 00 00   ’.2.Ò‚2.........
+    010  64 7C 7C 7C                                       d|||
+
+   97  == Criar árvore
+  109  == Anular ponteiro para direita
+  113  == Destruir a árvore
+
+!!!  Espaco de dados, id:    29  pValor: 00328742  hexa: 42 87 32 00  E' origem lista  Id suc:    22
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  DA 84 32 00 A2 85 32 00 00 00 00 00 00 00 00 00   Ú„2.¢…2.........
+    010  65 7C 7C 7C                                       e|||
+
+
+!!!  Espaco de dados, id:    22  pValor: 003283A2  hexa: A2 83 32 00  Id ant:    29  E' final lista
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos OK
+          0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   0123456789ABCDEF
+    000  92 7F 32 00 D2 82 32 00 00 00 00 00 00 00 00 00   ’.2.Ò‚2.........
+    010  64 7C 7C 7C                                       d|||
+
+  118  == Criar árvore
+  130  == Deturpar ponteiro para cabeca
+>>>    1  Linha:   132  Nó corrente não aponta para cabeça. Deveria ser: 003287AA  É: 0041C000
+<<<    0  Linha:   133  Falhas registradas eram esperadas e foram recuperadas. 
+  135  == Destruir a árvore
+  139  == Criar árvore
+  151  == Deturpar ponteiro para pai
+>>>    1  Linha:   153  Pai de filho à direita não é este nó. Deveria ser: 00328A12  É: 0041C000
+<<<    0  Linha:   154  Falhas registradas eram esperadas e foram recuperadas. 
+  156  == Destruir a árvore
+  160  == Criar árvore
+  172  == Deturpar ponteiro para esquerda
+>>>    1  Linha:   174  Pai de filho à esquerda não é este nó. Deveria ser: 0032931A  É: 78787878
+<<<    0  Linha:   175  Falhas registradas eram esperadas e foram recuperadas. 
+  177  == Destruir a árvore                             // não pode destruir
+  180  == Criar árvore
+  192  == Deturpar ponteiro para direita
+>>>    1  Linha:   194  Pai de filho à direita não é este nó. Deveria ser: 003297EA  É: 78787878
+<<<    0  Linha:   195  Falhas registradas eram esperadas e foram recuperadas. 
+  197  == Destruir a árvore                             // não pode destruir
+  200  == Criar árvore
+  207  == Verificar árvore
+  210  == Deturpar tipo cabeca
+>>>    1  Linha:   212  Tipo do espaço de dados não é cabeça de árvore. Deveria ser: 1  É: 0
+<<<    0  Linha:   213  Falhas registradas eram esperadas e foram recuperadas. 
+  215  == Destruir a árvore
+  218  == Criar árvore
+  225  == Anular ponteiro para raiz
+>>>    1  Linha:   227  Árvore vazia tem nó corrente não NULL. Deveria ser: 00000000  É: 00329E52
+<<<    0  Linha:   228  Falhas registradas eram esperadas e foram recuperadas. 
+  230  == Anular ponteiro para corrente, raiz ja' esta' anulada
+  234  == Deturpar ponteiro para raiz
+>>>    1  Linha:   236  Nó raiz não aponta para cabeça. Deveria ser: 00329D22  É: 78787878
+<<<    0  Linha:   237  Falhas registradas eram esperadas e foram recuperadas. 
+!!!    0  Linha:   239  // árvore não pode ser destruída -> erro de execução 
+  241  == Criar árvore
+  248  == Deturpar ponteiro para corrente
+>>>    1  Linha:   250  Nó corrente não aponta para cabeça. Deveria ser: 00329F1A  É: 78787878
+<<<    0  Linha:   251  Falhas registradas eram esperadas e foram recuperadas. 
+  253  == Deturpar ponteiro para raiz
+>>>    1  Linha:   255  Nó raiz não aponta para cabeça. Deveria ser: 00329F1A  É: 78787878
+<<<    0  Linha:   256  Falhas registradas eram esperadas e foram recuperadas. 
+!!!    0  Linha:   258  // árvore não pode ser destruída -> erro de execução 
+  260  == Criar árvore
+  267  == Anular ponteiro para corrente
+>>>    1  Linha:   269  Árvore não vazia tem nó corrente NULL. Deveria ser: 00000000  É: 0032A31A
+<<<    0  Linha:   270  Falhas registradas eram esperadas e foram recuperadas. 
+  273  == Criar árvore
+  280  == Anular ponteiro para corrente
+ed>    1  Linha:   282  Controle de extravasão após está errado. 
+ed>    2  Linha:   282  Espaco de dados esta corrompido.  Id: 73  pValor: 0032A652
+
+     Espaco de dados, id:    73  pValor: 0032A652  hexa: 52 A6 32 00  E' origem lista  Id suc:    72
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos errado: 3C C3
+
+ed>    3  Linha:   282  Controle de extravasão após está errado. 
+ed>    4  Linha:   282  Espaco de dados esta corrompido.  Id: 73  pValor: 0032A652
+
+     Espaco de dados, id:    73  pValor: 0032A652  hexa: 52 A6 32 00  E' origem lista  Id suc:    72
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos errado: 3C C3
+
+>>>    5  Linha:   282  Controle do espaço acusou erro. 
+<<<    0  Linha:   283  Falhas registradas eram esperadas e foram recuperadas. 
+ed>    1  Linha:   284  Controle de extravasão após está errado. 
+ed>    2  Linha:   284  Espaco de dados esta corrompido.  Id: 73  pValor: 0032A652
+
+     Espaco de dados, id:    73  pValor: 0032A652  hexa: 52 A6 32 00  E' origem lista  Id suc:    71
+     Id tipo valor: 2  Tamanho: 20  Ativo  Linha onde alocou: 920  Arquivo: ..\Fontes\arvore.c
+     Controle antes OK  Controle apos errado: 3C C3
+
+<<<    0  Linha:   285  Falhas registradas eram esperadas e foram recuperadas. 
+!!!    0  Linha:   287  // fim 
+
+!!! Número de linhas lidas:         287
+!!! Número de casos de teste:        44
+!!! Número comandos corretos:       187
+!!! Número de falhas encontradas:     0
+
+!!! Não foram encontrados problemas
+
+
+!!! Numero de espacos ainda alocados: 23

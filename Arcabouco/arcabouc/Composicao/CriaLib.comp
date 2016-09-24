@@ -1,0 +1,34 @@
+# Composição da biblioteca estática do arcabouço de teste
+
+[Diretorios]
+
+Nome        =  CriaLib
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+tab         =  ..\Tabelas
+inc         =  ..\Tabelas
+
+[Modulos]
+Princip
+Generico
+TabSimb
+LerParm
+CEspDin
+Conta
+GeraAlt
+IntrpCED
+IntrpCNT
+
+[Link]
+    cd $(Fobj)
+    LIB $(L) @$(NOME).build >> $(Ferr)\$(NOME).err
+
+[BuildInicio]
+/OUT:ArcaboucoTeste.lib
+/MACHINE:IX86
+
+[Fim]
