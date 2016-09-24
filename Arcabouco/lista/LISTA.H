@@ -124,7 +124,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tppLista LIS_CriarLista(
              void   ( * ExcluirValor ) ( void * pDado ) ) ;
 
-
+   
 /***********************************************************************
 *
 *  $FC Função: LIS  &Destruir lista
