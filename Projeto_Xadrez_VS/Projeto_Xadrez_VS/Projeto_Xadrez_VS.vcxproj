@@ -150,10 +150,14 @@
     <ClInclude Include="..\..\Arcabouco\lista\LERPARM.H" />
     <ClInclude Include="..\..\Arcabouco\lista\LISTA.H" />
     <ClInclude Include="..\..\Arcabouco\lista\TST_ESPC.H" />
+    <ClInclude Include="PECA.h" />
+    <ClInclude Include="TABULEIRO.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Arcabouco\lista\LISTA.C" />
     <ClCompile Include="..\..\Arcabouco\lista\TESTLIS.C" />
+    <ClCompile Include="PECA.c" />
+    <ClCompile Include="TABULEIRO.c" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Arcabouco\arcabouc\Objetos\ArcaboucoTeste.lib" />

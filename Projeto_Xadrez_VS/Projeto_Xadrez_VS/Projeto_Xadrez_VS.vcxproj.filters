@@ -27,12 +27,24 @@
     <ClInclude Include="..\..\Arcabouco\lista\TST_ESPC.H">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PECA.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TABULEIRO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Arcabouco\lista\TESTLIS.C">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Arcabouco\lista\LISTA.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PECA.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TABULEIRO.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
