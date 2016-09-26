@@ -12,7 +12,7 @@
 *
 *  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
 *  Gestor:  LES/DI/PUC-Rio
-*  Autores: ja, lp, tb e avs
+*  Autores: avs
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
@@ -50,9 +50,7 @@
 *        de todos os dados nele ancorados.
 *
 ***************************************************************************/
-
-#include "PESSOA.H"
-
+ 
 #if defined( LISTA_OWN )
    #define LISTA_EXT
 #else
@@ -64,6 +62,7 @@
 /* Tipo referência para uma lista */
 
 typedef struct LIS_tagLista * LIS_tppLista ;
+
 
 /***********************************************************************
 *
@@ -124,7 +123,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
    LIS_tppLista LIS_CriarLista(
              void   ( * ExcluirValor ) ( void * pDado ) ) ;
 
-   
+
 /***********************************************************************
 *
 *  $FC Função: LIS  &Destruir lista
@@ -169,8 +168,8 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 *  $EP Parâmetros
 *     pLista - ponteiro para a lista onde deve ser inserido o elemento
-*     pValor - ponteiro para a estrutura infonome
-*              
+*     pValor - ponteiro para o valor do novo elemento
+*              Pode ser NULL
 *
 *  $FV Valor retornado
 *     LIS_CondRetOK
@@ -178,7 +177,8 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista , struct infonome * pValor  ) ;
+   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista ,
+                                           void * pValor        ) ;
 
 
 /***********************************************************************
@@ -192,7 +192,8 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *  $EP Parâmetros
 *     Parâmetros
 *        pLista - ponteiro para a lista onde deve ser inserido o elemento
-*        pValor - ponteiro para a estrutura infonome
+*        pValor - ponteiro para o valor do novo elemento
+*                 Pode ser NULL
 *           
 *
 *  $FV Valor retornado
@@ -202,7 +203,9 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,struct infonome * pValor )  ;
+   LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,
+                                          void * pValor        )
+       ;
 
 
 /***********************************************************************
@@ -236,14 +239,15 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 *  $EP Parâmetros
 *     pLista - ponteiro para a lista de onde se quer o valor
-*	  pValor - ponteiro para estrutura.
 *
 *  $FV Valor retornado
-*     LIS_CondRetOK - Obteve o valor.
-*	  LIS_CondRetNaoAchou - Chegou ao final da lista e não achou.
+*     não NULL - se o elemento corrente existe
+*     NULL     - se a lista estiver vazia
+*                Pode retornar NULL se o valor inserido no elemento for NULL.
+*
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_ObterValor( LIS_tppLista pLista , Infonome **pValor );
+   void * LIS_ObterValor( LIS_tppLista pLista ) ;
 
 
 /***********************************************************************
@@ -302,7 +306,8 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,   int numElem ) ;
+   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,
+                                              int numElem ) ;
 
 
 /***********************************************************************
@@ -330,43 +335,8 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,    struct infonome * pValor        ) ;
-
-/***********************************************************************
-*
-*  $FC Função: &Insere Ordenado
-*
-*  $ED Descrição da função
-*     Insere na lista de forma ordenada utilizando as iniciais como chave de ordenamento.
-*
-*  $EP Parâmetros
-*     Lista     - ponteiro para a lista
-*     iniciais  - iniciais da pessoa
-*                 
-*  $FV Valor retornado
-*     LIS_CondRetOK     - Retorna a lista ordenada.
-*      
-***********************************************************************/
-
-   LIS_tpCondRet LIS_insereOrdenado (LIS_tppLista Lista,    Infonome* pValor);
-
-/***********************************************************************
-*
-*  $FC Função: &Exibe Elemento Lista
-*
-*  $ED Descrição da função
-*     Exibe os valores de cada elemento da lista.
-*
-*  $EP Parâmetros
-*     pLista     - ponteiro para a lista
-*
-*  $FV Valor retornado
-*     LIS_CondRetOK   - exibiu corretamente.
-*	  LIS_CondRetListaVazia   - se a lista estiver vazia
-*
-***********************************************************************/
-
-   LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista);
+   LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
+                                    void * pValor        ) ;
 
 #undef LISTA_EXT
 

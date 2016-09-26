@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteLista.comp
 
    Nome do Construto:           TesteLista
-   Diretório base:              C:\Users\tauan\Desktop\modular\Arcabouco\lista
+   Diretório base:              D:\AutoTest\Lista
 
    Arquivo composição:          TesteLista.comp
    Arquivo plataforma:          gmake.parm

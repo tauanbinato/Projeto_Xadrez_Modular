@@ -1,43 +1,34 @@
-Ôªø//?/***************************************************************************
-//*  $MCI M√≥dulo de implementa√ß√£o: LIS  Lista duplamente encadeada
-//*
-//*  Arquivo gerado:              LISTA.c
-//*  Letras identificadoras:      LIS
-//*
-//*  Nome da base de software:    Arcabou√ßo para a automa√ß√£o de testes de programas redigidos em C
-//*  Arquivo da base de software: D:\AUTOTEST\PROJETOS\LISTA.BSW
-//*
-//*  Projeto: INF 1301 / 1628 Automatiza√ß√£o dos testes de m√≥dulos C
-//*  Gestor:  LES/DI/PUC-Rio
-//*  Autores: avs
-//*
-//*  $HA Hist√≥rico de evolu√ß√£o:
-//*     Vers√£o  Autor    Data     Observa√ß√µes
-//*     4       avs   01/fev/2006 criar linguagem script simb√≥lica
-//*     3       avs   08/dez/2004 uniformiza√ß√£o dos exemplos
-//*     2       avs   07/jul/2003 unifica√ß√£o de todos os m√≥dulos em um s√≥ projeto
-//*     1       avs   16/abr/2003 in√≠cio desenvolvimento
-//*
-//***************************************************************************/
+/***************************************************************************
+*  $MCI MÛdulo de implementaÁ„o: LIS  Lista duplamente encadeada
+*
+*  Arquivo gerado:              LISTA.c
+*  Letras identificadoras:      LIS
+*
+*  Nome da base de software:    ArcabouÁo para a automaÁ„o de testes de programas redigidos em C
+*  Arquivo da base de software: D:\AUTOTEST\PROJETOS\LISTA.BSW
+*
+*  Projeto: INF 1301 / 1628 AutomatizaÁ„o dos testes de mÛdulos C
+*  Gestor:  LES/DI/PUC-Rio
+*  Autores: avs
+*
+*  $HA HistÛrico de evoluÁ„o:
+*     Vers„o  Autor    Data     ObservaÁıes
+*     4       avs   01/fev/2006 criar linguagem script simbÛlica
+*     3       avs   08/dez/2004 uniformizaÁ„o dos exemplos
+*     2       avs   07/jul/2003 unificaÁ„o de todos os mÛdulos em um sÛ projeto
+*     1       avs   16/abr/2003 inÌcio desenvolvimento
+*
+***************************************************************************/
 
-#include    <string.h>
-#include    <stdio.h>
-#include    <malloc.h>
-
-#include    "TST_Espc.h"
-
-#include    "Generico.h"
-#include    "LerParm.h"
-#include	<assert.h>
-
-#include    "Lista.h"
-#include	"PESSOA.H"
-
+#include   <stdio.h>
+#include   <string.h>
+#include   <memory.h>
+#include   <malloc.h>
+#include   <assert.h>
 
 #define LISTA_OWN
 #include "LISTA.h"
 #undef LISTA_OWN
-
 
 /***********************************************************************
 *
@@ -48,8 +39,8 @@
 
    typedef struct tagElemLista {
 
-         Infonome * pValor ;
-               /* Ponteiro para a estrutura infonome */
+         void * pValor ;
+               /* Ponteiro para o valor contido no elemento */
 
          struct tagElemLista * pAnt ;
                /* Ponteiro para o elemento predecessor */
@@ -61,7 +52,7 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: LIS Descritor da cabe√ßa de lista
+*  $TC Tipo de dados: LIS Descritor da cabeÁa de lista
 *
 *
 ***********************************************************************/
@@ -78,29 +69,28 @@
                /* Ponteiro para o elemento corrente da lista */
 
          int numElem ;
-               /* N√∫mero de elementos da lista */
+               /* N˙mero de elementos da lista */
 
          void ( * ExcluirValor ) ( void * pValor ) ;
-               /* Ponteiro para a fun√ß√£o de destrui√ß√£o do valor contido em um elemento */
+               /* Ponteiro para a funÁ„o de destruiÁ„o do valor contido em um elemento */
 
    } LIS_tpLista ;
 
-/***** Prot√≥tipos das fun√ß√µes encapuladas no m√≥dulo *****/
+/***** ProtÛtipos das funÁıes encapuladas no mÛdulo *****/
 
    static void LiberarElemento( LIS_tppLista   pLista ,
                                 tpElemLista  * pElem   ) ;
 
    static tpElemLista * CriarElemento( LIS_tppLista pLista ,
-                                       Infonome *       pValor  ) ;
+                                       void *       pValor  ) ;
 
    static void LimparCabeca( LIS_tppLista pLista ) ;
 
-/*****  C√≥digo das fun√ß√µes exportadas pelo m√≥dulo  *****/
-   
+/*****  CÛdigo das funÁıes exportadas pelo mÛdulo  *****/
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Criar lista
+*  FunÁ„o: LIS  &Criar lista
 *  ****/
 
    LIS_tppLista LIS_CriarLista(
@@ -121,134 +111,11 @@
 
       return pLista ;
 
-   } /* Fim fun√ß√£o: LIS  &Criar lista */
-   /***********************************************************************
-*
-*  $FC Fun√ß√£o: LIS  -Insere ordenado (chave de ordena√ß√£o: iniciais)
-*
-***********************************************************************/
+   } /* Fim funÁ„o: LIS  &Criar lista */
 
-LIS_tpCondRet  LIS_insereOrdenado (LIS_tppLista Lista, Infonome* pValor)
-{
-	tpElemLista *novoElem, *aux = NULL;
-	tpElemLista *auxProx = Lista->pOrigemLista;
-
-	char ** iniciais_auxProx , ** iniciais_pValor;
-	
-	//Chama fun√ß√µes do m√≥dulo PESSOA
-	PES_ObterValorIniciais(iniciais_pValor , pValor);
-	PES_ObterValorIniciais(iniciais_auxProx , auxProx->pValor);
-
-	printf("values:  %s %s :::",*iniciais_auxProx, *iniciais_pValor);
-	/*
-	novoElem = CriarElemento(Lista , pValor);
-
-	if(Lista->pOrigemLista == NULL){
-		printf("\n::::::::a1::::::::\n");
-		Lista->pOrigemLista = novoElem;
-		printf("ELEM: %d \n", novoElem->pValor);
-		return LIS_CondRetOK;
-		
-	}
-	printf("iniaux %s inival %s\n",iniciais_auxProx, iniciais_pValor );
-	if(strcmp(*iniciais_auxProx, *iniciais_pValor) > 0){
-		printf("\n::::::::a2::::::::\n");
-		Lista->pOrigemLista->pAnt = novoElem;
-		novoElem->pProx = Lista->pOrigemLista;
-		Lista->pOrigemLista = novoElem;
-		printf("ELEM: %d \n", novoElem->pValor);
-		return LIS_CondRetOK;
-	}
-
-	aux = auxProx;
-	while(strcmp(*iniciais_auxProx, *iniciais_pValor) < 0){
-		if(aux->pProx == NULL){
-			printf("\n::::::::a3::::::::\n");
-			aux->pProx = novoElem;
-			printf("ELEM: %d \n", novoElem->pValor);
-			return LIS_CondRetOK;
-		}
-		aux = auxProx;
-		auxProx = auxProx->pProx;
-		PES_ObterValorIniciais(iniciais_auxProx , auxProx->pValor);
-	}
-
-	novoElem->pProx = aux->pProx;
-	aux->pProx = novoElem;
-	novoElem->pAnt = aux;
-	printf("\n::::::::a0::::::::\n");
-	if(novoElem->pProx != NULL){
-		novoElem->pProx->pAnt = novoElem;
-	}
-	printf("ELEM: %d \n", novoElem->pValor);
-	return LIS_CondRetOK;*/
-	
-	while(auxProx != NULL && strcmp(*iniciais_auxProx, *iniciais_pValor) == -1)
-	{
-		aux = auxProx;
-		auxProx = auxProx->pProx;
-
-		PES_ObterValorIniciais(iniciais_auxProx , auxProx->pValor);
-	}
-
-	novoElem = CriarElemento(Lista , pValor);
-	
-	if(aux == NULL) 
-	{
-		novoElem->pProx = Lista->pOrigemLista;
-		Lista->pOrigemLista = novoElem;
-		//novoElem->pProx->pAnt = novoElem;
-	}
-	else 
-	{
-		novoElem->pProx = aux->pProx;
-		aux->pProx = novoElem;
-		novoElem->pAnt = aux;
-	}
-
-	printf("ELEM: %d \n", novoElem->pValor);
-
-	return LIS_CondRetOK;
-
-} /* Fim Fun√ß√£o: LIS -Insere ordenado (chave de ordena√ß√£o: iniciais)  */
-/***********************************************************************
-*
-*  $FC Fun√ß√£o: LIS  -Exibe Elementos da Lista
-*
-***********************************************************************/
-LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
-{   
-	char **aux_Iniciais;
-	char **aux_Nome;
-	pLista->pElemCorr = pLista->pOrigemLista;
-
-	if(pLista->pElemCorr == NULL){
-		
-		return LIS_CondRetListaVazia;
-	}
-	
-	//DUVIDA, N TERIAMOS QUE POR O ELEMENTO CORRENTO DE VOLTA PARA O PRIMEIRO ELEMENTO CASO N TIVESSE?
-
-	while (pLista->pElemCorr != NULL)
-	{
-		
-		//Chama fun√ß√µes do m√≥dulo PESSOA
-	    PES_ObterValorIniciais(aux_Iniciais , pLista->pElemCorr->pValor);
-		printf("saiu obtervaloriniciais\n");
-	    PES_ObterValorNome(aux_Nome , pLista->pElemCorr->pValor);
-
-		printf("Iniciais: %s, Nome: %s\n",aux_Iniciais,aux_Nome);
-		LIS_AvancarElementoCorrente(pLista , pLista->numElem);   
-	}
-
-	free(aux_Iniciais);
-	free(aux_Nome);
-
-	return LIS_CondRetOK;
-}/* Fim Fun√ß√£o: LIS -Exibe Elementos da Lista  */
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Destruir lista                                                                          
+*  FunÁ„o: LIS  &Destruir lista
 *  ****/
 
    void LIS_DestruirLista( LIS_tppLista pLista )
@@ -262,11 +129,11 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       free( pLista ) ;
 
-   } /* Fim fun√ß√£o: LIS  &Destruir lista */
+   } /* Fim funÁ„o: LIS  &Destruir lista */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Esvaziar lista                                                                          
+*  FunÁ„o: LIS  &Esvaziar lista
 *  ****/
 
    void LIS_EsvaziarLista( LIS_tppLista pLista )
@@ -289,14 +156,15 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       LimparCabeca( pLista ) ;
 
-   } /* Fim fun√ß√£o: LIS  &Esvaziar lista */
+   } /* Fim funÁ„o: LIS  &Esvaziar lista */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Inserir elemento antes
+*  FunÁ„o: LIS  &Inserir elemento antes
 *  ****/
 
-   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista , Infonome * pValor)
+   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista ,
+                                           void * pValor        )
    {
 
       tpElemLista * pElem ;
@@ -305,7 +173,7 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
          assert( pLista != NULL ) ;
       #endif
 
-      /* Criar elemento a inserir antes */
+      /* Criar elemento a inerir antes */
 
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
@@ -338,15 +206,15 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
          return LIS_CondRetOK ;
 
-   } /* Fim fun√ß√£o: LIS  &Inserir elemento antes */
+   } /* Fim funÁ„o: LIS  &Inserir elemento antes */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Inserir elemento ap√≥s
+*  FunÁ„o: LIS  &Inserir elemento apÛs
 *  ****/
 
    LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,
-                                         Infonome * pValor        )
+                                          void * pValor        )
       
    {
 
@@ -356,14 +224,15 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
          assert( pLista != NULL ) ;
       #endif
 
-      /* Criar elemento a inerir ap√≥s */
+      /* Criar elemento a inerir apÛs */
+
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
          {
             return LIS_CondRetFaltouMemoria ;
          } /* if */
 
-      /* Encadear o elemento ap√≥s o elemento */
+      /* Encadear o elemento apÛs o elemento */
 
          if ( pLista->pElemCorr == NULL )
          {
@@ -389,11 +258,11 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
                   
          return LIS_CondRetOK ;
 
-   } /* Fim fun√ß√£o: LIS  &Inserir elemento ap√≥s */
+   } /* Fim funÁ„o: LIS  &Inserir elemento apÛs */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Excluir elemento
+*  FunÁ„o: LIS  &Excluir elemento
 *  ****/
 
    LIS_tpCondRet LIS_ExcluirElemento( LIS_tppLista pLista )
@@ -412,7 +281,7 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       pElem = pLista->pElemCorr ;
 
-      /* Desencadeia √† esquerda */
+      /* Desencadeia ‡ esquerda */
 
          if ( pElem->pAnt != NULL )
          {
@@ -423,7 +292,7 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
             pLista->pOrigemLista = pLista->pElemCorr ;
          } /* if */
 
-      /* Desencadeia √† direita */
+      /* Desencadeia ‡ direita */
 
          if ( pElem->pProx != NULL )
          {
@@ -437,14 +306,14 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       return LIS_CondRetOK ;
 
-   } /* Fim fun√ß√£o: LIS  &Excluir elemento */
+   } /* Fim funÁ„o: LIS  &Excluir elemento */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Obter refer√™ncia para o valor contido no elemento
+*  FunÁ„o: LIS  &Obter referÍncia para o valor contido no elemento
 *  ****/
 
-   LIS_tpCondRet LIS_ObterValor( LIS_tppLista pLista , Infonome **pValor )
+   void * LIS_ObterValor( LIS_tppLista pLista )
    {
 
       #ifdef _DEBUG
@@ -453,20 +322,16 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       if ( pLista->pElemCorr == NULL )
       {
-		pValor = NULL;
-        return LIS_CondRetFimLista ;
-
+        return NULL ;
       } /* if */
-	 
-	  *pValor = pLista->pElemCorr->pValor ;
-	  
-      return LIS_CondRetOK;
 
-   } /* Fim fun√ß√£o: LIS  &Obter refer√™ncia para o valor contido no elemento */
+      return pLista->pElemCorr->pValor ;
+
+   } /* Fim funÁ„o: LIS  &Obter referÍncia para o valor contido no elemento */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Ir para o elemento inicial                                                             
+*  FunÁ„o: LIS  &Ir para o elemento inicial
 *  ****/
 
    void IrInicioLista( LIS_tppLista pLista )
@@ -478,11 +343,11 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       pLista->pElemCorr = pLista->pOrigemLista ;
 
-   } /* Fim fun√ß√£o: LIS  &Ir para o elemento inicial */
+   } /* Fim funÁ„o: LIS  &Ir para o elemento inicial */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Ir para o elemento final                                                              
+*  FunÁ„o: LIS  &Ir para o elemento final
 *  ****/
 
    void IrFinalLista( LIS_tppLista pLista )
@@ -494,14 +359,15 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       pLista->pElemCorr = pLista->pFimLista ;
 
-   } /* Fim fun√ß√£o: LIS  &Ir para o elemento final */
+   } /* Fim funÁ„o: LIS  &Ir para o elemento final */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Avan√ßar elemento Corrente				
+*  FunÁ„o: LIS  &AvanÁar elemento
 *  ****/
 
-   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista , int numElem )
+   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,
+                                              int numElem )
    {
 
       int i ;
@@ -521,7 +387,7 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
          } /* fim ativa: Tratar lista vazia */
 
-      /* Tratar avan√ßar para frente */
+      /* Tratar avanÁar para frente */
 
          if ( numElem > 0 )
          {
@@ -545,9 +411,9 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
             pLista->pElemCorr = pLista->pFimLista ;
             return LIS_CondRetFimLista ;
 
-         } /* fim ativa: Tratar avan√ßar para frente */
+         } /* fim ativa: Tratar avanÁar para frente */
 
-      /* Tratar avan√ßar para tr√°s */
+      /* Tratar avanÁar para tr·s */
 
          else if ( numElem < 0 )
          {
@@ -571,29 +437,24 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
             pLista->pElemCorr = pLista->pOrigemLista ;
             return LIS_CondRetFimLista ;
 
-         } /* fim ativa: Tratar avan√ßar para tr√°s */
+         } /* fim ativa: Tratar avanÁar para tr·s */
 
-      /* Tratar n√£o avan√ßar */
+      /* Tratar n„o avanÁar */
 
          return LIS_CondRetOK ;
 
-   } /* Fim fun√ß√£o: LIS  &Avan√ßar elemento */
+   } /* Fim funÁ„o: LIS  &AvanÁar elemento */
 
 /***************************************************************************
 *
-*  Fun√ß√£o: LIS  &Procurar elemento contendo pessoa													
+*  FunÁ„o: LIS  &Procurar elemento contendo valor
 *  ****/
 
    LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
-                                    Infonome * pValor        )
+                                    void * pValor        )
    {
-      
-	  char ** aux_Nome , ** aux_Iniciais , **aux_Nome_na_Struct , **aux_Iniciais_na_Struct;
-      tpElemLista * pElem ;
 
-	  //Chama fun√ß√µes do m√≥dulo PESSOA
-	  PES_ObterValorIniciais(aux_Iniciais_na_Struct , pValor);
-	  PES_ObterValorNome(aux_Nome_na_Struct , pValor);
+      tpElemLista * pElem ;
 
       #ifdef _DEBUG
          assert( pLista  != NULL ) ;
@@ -608,34 +469,28 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
             pElem != NULL ;
             pElem  = pElem->pProx )
       {
-		    //Chama fun√ß√µes do m√≥dulo PESSOA
-	        PES_ObterValorIniciais(aux_Iniciais , pElem->pValor);
-			PES_ObterValorNome(aux_Nome , pElem->pValor);
-
-		  if ( strcmp(*aux_Iniciais,*aux_Iniciais_na_Struct) == 0 && strcmp(*aux_Nome,*aux_Nome_na_Struct) == 0 )
+         if ( pElem->pValor == pValor )
          {
             pLista->pElemCorr = pElem ;
             return LIS_CondRetOK ;
          } /* if */
-
-
       } /* for */
 
       return LIS_CondRetNaoAchou ;
 
-   } /* Fim fun√ß√£o: LIS  &Procurar elemento contendo valor */
+   } /* Fim funÁ„o: LIS  &Procurar elemento contendo valor */
 
 
-/*****  C√≥digo das fun√ß√µes encapsuladas no m√≥dulo  *****/
+/*****  CÛdigo das funÁıes encapsuladas no mÛdulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Fun√ß√£o: LIS  -Liberar elemento da lista
+*  $FC FunÁ„o: LIS  -Liberar elemento da lista
 *
-*  $ED Descri√ß√£o da fun√ß√£o
-*     Elimina os espa√ßos apontados pelo valor do elemento e o
-*     pr√≥prio elemento.
+*  $ED DescriÁ„o da funÁ„o
+*     Elimina os espaÁos apontados pelo valor do elemento e o
+*     prÛprio elemento.
 *
 ***********************************************************************/
 
@@ -653,32 +508,28 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       pLista->numElem-- ;
 
-   } /* Fim fun√ß√£o: LIS  -Liberar elemento da lista */
+   } /* Fim funÁ„o: LIS  -Liberar elemento da lista */
 
 
 /***********************************************************************
 *
-*  $FC Fun√ß√£o: LIS  -Criar o elemento
+*  $FC FunÁ„o: LIS  -Criar o elemento
 *
 ***********************************************************************/
 
-   tpElemLista * CriarElemento( LIS_tppLista pLista , Infonome *       pValor  )
+   tpElemLista * CriarElemento( LIS_tppLista pLista ,
+                                void *       pValor  )
    {
 
-	  char ** aux_Nome , ** aux_Iniciais;
       tpElemLista * pElem ;
+
       pElem = ( tpElemLista * ) malloc( sizeof( tpElemLista )) ;
-	 
       if ( pElem == NULL )
       {
          return NULL ;
       } /* if */
 
-	  //Chama fun√ß√µes do m√≥dulo PESSOA
-	  //PES_ObterValorIniciais(aux_Iniciais , pValor);
-	  //PES_ObterValorNome(aux_Nome , pValor);
-	  //PES_preencher_estrutura(&pElem->pValor, *aux_Nome , *aux_Iniciais);
-	  pElem->pValor = pValor;
+      pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
       pElem->pProx  = NULL  ;
 
@@ -686,12 +537,12 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
 
       return pElem ;
 
-   } /* Fim fun√ß√£o: LIS  -Criar o elemento */
+   } /* Fim funÁ„o: LIS  -Criar o elemento */
 
 
 /***********************************************************************
 *
-*  $FC Fun√ß√£o: LIS  -Limpar a cabe√ßa da lista
+*  $FC FunÁ„o: LIS  -Limpar a cabeÁa da lista
 *
 ***********************************************************************/
 
@@ -703,6 +554,7 @@ LIS_tpCondRet ExibeElemLista(LIS_tppLista pLista)
       pLista->pElemCorr = NULL ;
       pLista->numElem   = 0 ;
 
-   } /* Fim fun√ß√£o: LIS  -Limpar a cabe√ßa da lista */
+   } /* Fim funÁ„o: LIS  -Limpar a cabeÁa da lista */
 
-/********** Fim do m√≥dulo de implementa√ß√£o: LIS  Lista duplamente encadeada **********/
+/********** Fim do mÛdulo de implementaÁ„o: LIS  Lista duplamente encadeada **********/
+

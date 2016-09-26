@@ -19,6 +19,7 @@
 *     1       avs   16/abr/2003 início desenvolvimento
 *
 ***************************************************************************/
+
 #include    <string.h>
 #include    <stdio.h>
 #include    <malloc.h>
@@ -29,16 +30,9 @@
 #include    "LerParm.h"
 
 #include    "Lista.h"
-#include	"Pessoa.h"
+
 
 static const char RESET_LISTA_CMD         [ ] = "=resetteste"     ;
-static const char PROCURA_VALOR_LISTA_CMD [ ] = "=procuravalor"   ;
-static const char OBTER_VALOR_INICIAIS_CMD[ ] = "=obteminiciais"  ;
-static const char OBTER_VALOR_NOME_CMD	  [ ] = "=obtemnome"      ;
-static const char CRIAR_ESTR_CMD		  [ ] = "=criareestru"    ;
-static const char PREENCHE_ESTR_CMD		  [ ] = "=preestrutura"   ;
-static const char EXIBE_ELEM_CMD		  [ ] = "=exibeelemento"  ;
-static const char INSERE_ORD_CMD		  [ ] = "=insereord"      ;
 static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"     ;
 static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"  ;
 static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"  ;
@@ -50,6 +44,7 @@ static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
 
+
 #define TRUE  1
 #define FALSE 0
 
@@ -60,7 +55,6 @@ static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
 #define DIM_VALOR     100
 
 LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
-Infonome	*vtStructs[DIM_VT_LISTA];
 
 /***** Protótipos das funções encapuladas no módulo *****/
 
@@ -80,43 +74,32 @@ Infonome	*vtStructs[DIM_VT_LISTA];
 *
 *     Comandos disponíveis:
 *
-*     =criarlista                   inxLista									            ok
-*     =destruirlista                inxLista	                                            ok
-*     =esvaziarlista                inxLista												ok
-*     =irinicio                     inxLista												ok
-*     =irfinal                      inxLista												ok										
-*     =insereord                    inxLista  inxStruct            CondRetEsp               ok
-*     =inselemantes                 inxLista  inxStruct            CondRetEsp				ok		
-*     =inselemapos                  inxLista  inxStruct            CondRetEsp               ok
-*     =obtervalorelem               inxLista  inxStruct            CondretPonteiro          ok
-*     =excluirelem                  inxLista                       CondRetEsp               ok
-*     =avancarelem                  inxLista  numElem              CondRetEsp               ok
-*     =procuravalor                 inxLista  inxStruct            CondRetEsp				ok
-*     =exibeelemento                inxLista                       CondRetEsp					
-*     =criareestru                  inxStruct                      CondRetEsp               ok
-*     =preestrutura                 inxStruct string1   string2    CondRetEsp               ok
-*     =obteminiciais                inxStruct string1              CondRetEsp               ok
-*     =obtemnome					inxStruct string1			   CondRetEsp               ok
-*
+*     =resetteste
+*           - anula o vetor de listas. Provoca vazamento de memória
+*     =criarlista                   inxLista
+*     =destruirlista                inxLista
+*     =esvaziarlista                inxLista
+*     =inselemantes                 inxLista  string  CondRetEsp
+*     =inselemapos                  inxLista  string  CondRetEsp
+*     =obtervalorelem               inxLista  string  CondretPonteiro
+*     =excluirelem                  inxLista  CondRetEsp
+*     =irinicio                     inxLista
+*     =irfinal                      inxLista
+*     =avancarelem                  inxLista  numElem CondRetEsp
 *
 ***********************************************************************/
- 
+
    TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
    {
 
       int inxLista  = -1 ,
           numLidos   = -1 ,
-          CondRetEsp = -1 ,
-		  inxStruct = -1;
+          CondRetEsp = -1  ;
 
       TST_tpCondRet CondRet ;
-	  PES_tpCondRet CondRet_PES;
-	  LIS_tpCondRet CondRet_LIS;
 
       char   StringDado[  DIM_VALOR ] ;
-	  char	 StringDado_2[ DIM_VALOR ];
-	  char * pDado ;
-	  char * pDado_2;
+      char * pDado ;
 
       int ValEsp = -1 ;
 
@@ -125,7 +108,6 @@ Infonome	*vtStructs[DIM_VT_LISTA];
       int numElem = -1 ;
 
       StringDado[ 0 ] = 0 ;
-	  StringDado_2[ 0 ] = 0;
 
       /* Efetuar reset de teste de lista */
 
@@ -141,226 +123,13 @@ Infonome	*vtStructs[DIM_VT_LISTA];
 
          } /* fim ativa: Efetuar reset de teste de lista */
 
-		 //INICIO TESTES PESSOA
-
-	  /* Testar criarErstrutura */												
-
-		 else if ( strcmp( ComandoTeste , CRIAR_ESTR_CMD ) == 0 )
-         {
-
-            numLidos = LER_LerParametros( "ii" ,&inxStruct, &CondRetEsp ) ;
-		
-			if ( ( numLidos != 2 )
-              || ( ! ValidarInxStruct( inxStruct , VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-		
-            CondRet_PES = PES_Criar_Estrutura(&vtStructs[inxStruct]);
-			printf("craindo estrutura: %d\n", vtStructs[inxStruct]);
-            return TST_CompararInt( CondRetEsp , CondRet_PES ,
-                     "Condicao de retorno errada ao tentar criar uma estrutura.") ;
-
-		 }
-		 /* fim ativa: teste criar estrutura */
-
-		 /* Testar Obter valor iniciais */
-
-		 else if ( strcmp( ComandoTeste , OBTER_VALOR_INICIAIS_CMD ) == 0 )
-         {
-
-            numLidos = LER_LerParametros( "isi" ,&inxStruct,StringDado, &CondRetEsp ) ;
-			if ( ( numLidos != 3 )
-              || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-			pDado = ( char * ) malloc( (strlen( StringDado ) + 1 )*sizeof(char)) ;
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-
-            CondRet_PES = PES_ObterValorIniciais( &pDado, vtStructs[inxStruct] );
-
-            if(!strcmp(pDado, StringDado)){
-				CondRet_PES = PES_CondRetOK;
-			} else {
-				CondRet_PES = PES_CondRetStringDiferente;
-			}
-
-            if ( CondRet_PES != PES_CondRetOK )
-            {
-               free( pDado ) ;
-            } /* if */
-
-
-            return TST_CompararInt( CondRetEsp , CondRet_PES ,
-                     "Condicao de retorno errada ao tentar obter valor das iniciais de uma estrutura.") ;
-
-		 }
-
-		 /* fim ativa: teste Obter Valor Iniciais */
-
-		 /* Testar Obter Valor Nome */	
-
-		  else if ( strcmp( ComandoTeste , OBTER_VALOR_NOME_CMD ) == 0 )
-         {
-            numLidos = LER_LerParametros( "isi" ,&inxStruct,StringDado, &CondRetEsp ) ;
-			if ( ( numLidos != 3 )
-              || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-			pDado = ( char * ) malloc( (strlen( StringDado ) + 1)*sizeof(char) ) ;
-
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-
-            CondRet_PES = PES_ObterValorNome( &pDado, vtStructs[inxStruct] );
-
-			if(!strcmp(pDado, StringDado)){
-				CondRet_PES = PES_CondRetOK;
-			} else {
-				CondRet_PES = PES_CondRetStringDiferente;
-			}
-
-            if ( CondRet_PES != PES_CondRetOK )
-            {
-               free( pDado ) ;
-            } /* if */
-
-            return TST_CompararInt( CondRetEsp , CondRet_PES ,
-                     "Condicao de retorno errada ao tentar obter valor das iniciais de uma estrutura.") ;
-
-		 }
-
-		 /* fim ativa: teste Obter Valor Nome */
-
-	     /* Testar preencherErstrutura */												
-
-		 else if ( strcmp( ComandoTeste , PREENCHE_ESTR_CMD ) == 0 )
-         {
-
-			int condRet_CriarEstrutura;
-
-            numLidos = LER_LerParametros( "issi" ,&inxStruct,
-                       StringDado, StringDado_2 , &CondRetEsp ) ;
-
-			if ( ( numLidos != 4 )
-              || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-			pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-
-			pDado_2 = ( char * ) malloc( strlen( StringDado_2 ) + 1 ) ;
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-
-            strcpy( pDado , StringDado ) ;
-            strcpy( pDado_2 , StringDado_2 ) ;
-
-			//condRet_CriarEstrutura = PES_Criar_Estrutura(&vtStructs[inxStruct]);
-
-            CondRet_PES = PES_preencher_estrutura(&vtStructs[ inxStruct ] , pDado , pDado_2) ;
-
-            if ( CondRet_PES != PES_CondRetOK )
-            {
-               free( pDado ) ;
-			   free(pDado_2) ;
-            } /* if */
-
-            return TST_CompararInt( CondRetEsp , CondRet_PES ,
-                     "Condicao de retorno errada ao tentar preencher a estrutura.") ;
-
-		 }
-		 /* fim ativa: teste preencher estrutura */
-
-		 //*FIM TESTES PESSOA
-
-         /* Testar Procurar Valor */	
-
-		 else if ( strcmp( ComandoTeste , PROCURA_VALOR_LISTA_CMD ) == 0 )
-         {
-
-            numLidos = LER_LerParametros( "iii" ,&inxLista, &inxStruct, &CondRetEsp ) ;
-			
-			if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO ))  )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-			CondRet_LIS = LIS_ProcurarValor( vtListas[inxLista] , vtStructs[inxStruct]);
-
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
-                     "Condicao de retorno errada ao tentar procurar valor na lista.") ;
-		 }
-
-		 /* fim ativa: procurar valor */
-
-	     /* Testar InsereOrdenado */
-
-		 else if ( strcmp( ComandoTeste , INSERE_ORD_CMD ) == 0 )
-         {
-
-			numLidos = LER_LerParametros( "iii" ,
-                       &inxLista ,&inxStruct, &CondRetEsp ) ;
-
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO ))  )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-            CondRet_LIS = LIS_insereOrdenado(vtListas[inxLista], vtStructs[inxStruct]);
-
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
-                     "Condicao de retorno errada ao tentar inserir ordenando.") ;
-		 }
-
-		 /* Testar Exibe */
-
-		 else if ( strcmp( ComandoTeste , EXIBE_ELEM_CMD ) == 0 )
-         {
-
-			numLidos = LER_LerParametros( "ii" ,
-                       &inxLista, &CondRetEsp ) ;
-
-            if ( ( numLidos != 2 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-            CondRet_LIS = ExibeElemLista(vtListas[inxLista]);
-
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
-                     "Condicao de retorno errada ao tentar exibir lista.") ;
-		 }
-
-
-      /* Testar CriarLista */                                                                  
+      /* Testar CriarLista */
 
          else if ( strcmp( ComandoTeste , CRIAR_LISTA_CMD ) == 0 )
          {
 
             numLidos = LER_LerParametros( "i" ,
                        &inxLista ) ;
-
-			printf("inserindo estrutura: %d\n", vtStructs[inxStruct]);
 
             if ( ( numLidos != 1 )
               || ( ! ValidarInxLista( inxLista , VAZIO )))
@@ -376,7 +145,7 @@ Infonome	*vtStructs[DIM_VT_LISTA];
 
          } /* fim ativa: Testar CriarLista */
 
-      /* Testar Esvaziar lista lista */                                                         
+      /* Testar Esvaziar lista lista */
 
          else if ( strcmp( ComandoTeste , ESVAZIAR_LISTA_CMD ) == 0 )
          {
@@ -391,8 +160,6 @@ Infonome	*vtStructs[DIM_VT_LISTA];
             } /* if */
 
             LIS_EsvaziarLista( vtListas[ inxLista ] ) ;
-
-			if(vtListas[inxLista] != NULL) return TST_CondRetErro;
 
             return TST_CondRetOK ;
 
@@ -419,44 +186,37 @@ Infonome	*vtStructs[DIM_VT_LISTA];
 
          } /* fim ativa: Testar Destruir lista */
 
-		 /* Testar Exibir Valor */
-
-         else if ( strcmp( ComandoTeste , INS_ELEM_ANTES_CMD ) == 0 )
-         {
-
-            numLidos = LER_LerParametros( "iii" ,
-                       &inxLista , &inxStruct , &CondRetEsp ) ;
-
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO )) )
-            {
-               return TST_CondRetParm ;
-            } /* if */
-
-            CondRet_LIS = LIS_InserirElementoAntes( vtListas[ inxLista ] , vtStructs[inxStruct] ) ;    
-
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
-                     "Condicao de retorno errada ao inserir antes."                   ) ;
-
-         } /* fim ativa: Testar inserir elemento antes */
-
       /* Testar inserir elemento antes */
 
          else if ( strcmp( ComandoTeste , INS_ELEM_ANTES_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iii" ,
-                       &inxLista , &inxStruct , &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "isi" ,
+                       &inxLista , StringDado , &CondRetEsp ) ;
 
             if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO ))  )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
             } /* if */
 
-            CondRet_LIS = LIS_InserirElementoAntes( vtListas[ inxLista ] , vtStructs[inxStruct] ) ;
+            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
+            if ( pDado == NULL )
+            {
+               return TST_CondRetMemoria ;
+            } /* if */
 
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
+            strcpy( pDado , StringDado ) ;
+
+
+            CondRet = LIS_InserirElementoAntes( vtListas[ inxLista ] , pDado ) ;
+
+            if ( CondRet != LIS_CondRetOK )
+            {
+               free( pDado ) ;
+            } /* if */
+
+            return TST_CompararInt( CondRetEsp , CondRet ,
                      "Condicao de retorno errada ao inserir antes."                   ) ;
 
          } /* fim ativa: Testar inserir elemento antes */
@@ -466,18 +226,32 @@ Infonome	*vtStructs[DIM_VT_LISTA];
          else if ( strcmp( ComandoTeste , INS_ELEM_APOS_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iii" ,
-                       &inxLista , &inxStruct , &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "isi" ,
+                       &inxLista , StringDado , &CondRetEsp ) ;
 
             if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) || ( ! ValidarInxStruct( inxStruct , NAO_VAZIO ))  )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
             } /* if */
 
-            CondRet_LIS = LIS_InserirElementoApos( vtListas[ inxLista ] , vtStructs[inxStruct] ) ;
+            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
+            if ( pDado == NULL )
+            {
+               return TST_CondRetMemoria ;
+            } /* if */
 
-            return TST_CompararInt( CondRetEsp , CondRet_LIS ,
+            strcpy( pDado , StringDado ) ;
+
+
+            CondRet = LIS_InserirElementoApos( vtListas[ inxLista ] , pDado ) ;
+
+            if ( CondRet != LIS_CondRetOK )
+            {
+               free( pDado ) ;
+            } /* if */
+
+            return TST_CompararInt( CondRetEsp , CondRet ,
                      "Condicao de retorno errada ao inserir apos."                   ) ;
 
          } /* fim ativa: Testar inserir elemento apos */
@@ -505,56 +279,33 @@ Infonome	*vtStructs[DIM_VT_LISTA];
       /* Testar obter valor do elemento corrente */
 
          else if ( strcmp( ComandoTeste , OBTER_VALOR_CMD ) == 0 )
-         {	
-			char **ppDado_Nome;
-			Infonome * pDado;
-		
-            numLidos = LER_LerParametros( "iisi" , &inxLista,&inxStruct , StringDado , &ValEsp ) ;
+         {
 
-			ppDado_Nome = ( char ** ) malloc( strlen( (StringDado ) + 1)*sizeof(char) ) ;
-			
+            numLidos = LER_LerParametros( "isi" ,
+                       &inxLista , StringDado , &ValEsp ) ;
 
-            if ( ( numLidos != 4 ) || ( ! ValidarInxLista( inxLista , NAO_VAZIO )))
+            if ( ( numLidos != 3 )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
             } /* if */
-			
-			if( ! ValidarInxStruct( inxStruct , NAO_VAZIO )){
-				return TST_CompararPonteiroNulo( 0 , vtStructs[inxStruct] ,
-                         "Valor não deveria existir." ) ;
-			}
-			
-            if ( pDado == NULL )
-            {
-               return TST_CondRetMemoria ;
-            } /* if */
-			
-            CondRet_LIS =  LIS_ObterValor( vtListas[ inxLista ] , &pDado );
-		    
-			PES_ObterValorNome(ppDado_Nome , vtStructs[inxStruct]);
 
-		    if (TST_CompararString( StringDado , *ppDado_Nome , "Valor do elemento errado." ) == TST_CondOK){
-
-				TST_CompararString( StringDado , *ppDado_Nome , "Valor do elemento errado." );
-			}
+            pDado = ( char * ) LIS_ObterValor( vtListas[ inxLista ] ) ;
 
             if ( ValEsp == 0 )
             {
-               return TST_CompararPonteiroNulo( 0 , vtStructs[inxStruct] ,
+               return TST_CompararPonteiroNulo( 0 , pDado ,
                          "Valor não deveria existir." ) ;
             } /* if */
-			
-            if ( vtStructs[inxStruct] == NULL )
+
+            if ( pDado == NULL )
             {
-               return TST_CompararPonteiroNulo( 1 , vtStructs[inxStruct] ,
+               return TST_CompararPonteiroNulo( 1 , pDado ,
                          "Dado tipo um deveria existir." ) ;
             } /* if */
-			
-			return TST_CompararInt( (long)vtStructs[inxStruct] ,
-                                  (long)pDado   ,
-                                  "ponteiros diferem."       ) ;
 
-            //return TST_CompararString( StringDado , *ppDado_Nome , "Valor do elemento errado." ) ;
+            return TST_CompararString( StringDado , pDado ,
+                         "Valor do elemento errado." ) ;
 
          } /* fim ativa: Testar obter valor do elemento corrente */
 
@@ -670,40 +421,6 @@ Infonome	*vtStructs[DIM_VT_LISTA];
       return TRUE ;
 
    } /* Fim função: TLIS -Validar indice de lista */
-
-   /***********************************************************************
-*
-*  $FC Função: TLIS -Validar indice de estrutura
-*
-***********************************************************************/
-
-   int ValidarInxStruct( int inxStruct , int Modo )
-   {
-
-      if ( ( inxStruct <  0 )
-        || ( inxStruct >= DIM_VT_LISTA ))
-      {
-         return FALSE ;
-      } /* if */
-         
-      if ( Modo == VAZIO )
-      {
-         if ( vtStructs[ inxStruct ] != 0 )
-         {
-            return FALSE ;
-         } /* if */
-      } else
-      {
-         if ( vtStructs[ inxStruct ] == 0 )
-         {
-            return FALSE ;
-         } /* if */
-      } /* if */
-         
-      return TRUE ;
-
-   } /* Fim função: TLIS -Validar indice de lista */
-
 
 /********** Fim do módulo de implementação: TLIS Teste lista de símbolos **********/
 
