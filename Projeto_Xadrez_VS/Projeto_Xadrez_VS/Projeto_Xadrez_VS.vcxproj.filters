@@ -29,11 +29,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Arcabouco\lista\LISTA.C">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Arcabouco\lista\TESTLIS.C">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Arcabouco\lista\LISTA.C">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
