@@ -146,11 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Arcabouco\lista\GENERICO.H" />
+    <ClInclude Include="..\..\Arcabouco\lista\LERPARM.H" />
     <ClInclude Include="..\..\Arcabouco\lista\LISTA.H" />
+    <ClInclude Include="..\..\Arcabouco\lista\TST_ESPC.H" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Arcabouco\lista\LISTA.C" />
     <ClCompile Include="..\..\Arcabouco\lista\TESTLIS.C" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\Arcabouco\arcabouc\Objetos\ArcaboucoTeste.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
