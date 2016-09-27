@@ -27,3 +27,22 @@
 #include "TABULEIRO.h"
 #undef LISTA_OWN
 
+TAB_tpCondRet inserirPeca()
+{
+	return TAB_CondRetOK;
+}
+
+TAB_tpCondRet moverPeca()
+{
+	return TAB_CondRetOK;
+}
+
+TAB_tpCondRet retirarPeca()
+{
+	return TAB_CondRetOK;
+}
+
+TAB_tpCondRet obterPeca()
+{
+	return TAB_CondRetOK;
+}
