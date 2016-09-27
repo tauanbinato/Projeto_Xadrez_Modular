@@ -71,8 +71,11 @@
          int numElem ;
                /* N�mero de elementos da lista */
 
-         void ( * ExcluirValor ) ( void * pValor ) ;
-               /* Ponteiro para a fun��o de destrui��o do valor contido em um elemento */
+		 char idLista[5];
+			   /*Identificação da lista*/
+
+		 void(*ExcluirValor) (void * pValor);
+		 /* Ponteiro para a função de destruição do valor contido em um elemento */
 
    } LIS_tpLista ;
 
@@ -93,23 +96,19 @@
 *  Fun��o: LIS  &Criar lista
 *  ****/
 
-   LIS_tppLista LIS_CriarLista(
-             void   ( * ExcluirValor ) ( void * pDado ) )
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista)
    {
-
-      LIS_tpLista * pLista = NULL ;
-
-      pLista = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
+      pLista = ( LIS_tppLista * ) malloc( sizeof( LIS_tppLista )) ;
       if ( pLista == NULL )
       {
-         return NULL ;
+         return  LIS_CondRetFaltouMemoria;
       } /* if */
 
       LimparCabeca( pLista ) ;
 
-      pLista->ExcluirValor = ExcluirValor ;
+	  strcpy(pLista->idLista, idLista);
 
-      return pLista ;
+      return LIS_CondRetOK ;
 
    } /* Fim fun��o: LIS  &Criar lista */
 
@@ -132,6 +131,18 @@
    } /* Fim fun��o: LIS  &Destruir lista */
 
 /***************************************************************************
+*
+*  Fun��o: LIS  &ObeterId
+*  ****/
+
+  void LIS_ObterId(LIS_tppLista pLista, char* pDado) {
+
+	  strcpy(pDado, pLista->idLista);
+   
+   } /* Fim Fun��o: LIS  &ObterId */
+    
+/***************************************************************************
+
 *
 *  Fun��o: LIS  &Esvaziar lista
 *  ****/
@@ -450,7 +461,7 @@
 *  Fun��o: LIS  &Procurar elemento contendo valor
 *  ****/
 
-   LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
+   /*LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
                                     void * pValor        )
    {
 
@@ -465,7 +476,7 @@
          return LIS_CondRetListaVazia ;
       } /* if */
 
-      for ( pElem  = pLista->pElemCorr ;
+      /*for ( pElem  = pLista->pElemCorr ;
             pElem != NULL ;
             pElem  = pElem->pProx )
       {
@@ -474,9 +485,9 @@
             pLista->pElemCorr = pElem ;
             return LIS_CondRetOK ;
          } /* if */
-      } /* for */
+     /* } /* for */
 
-      return LIS_CondRetNaoAchou ;
+     /* return LIS_CondRetNaoAchou ;
 
    } /* Fim fun��o: LIS  &Procurar elemento contendo valor */
 

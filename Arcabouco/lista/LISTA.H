@@ -79,14 +79,17 @@ typedef struct LIS_tagLista * LIS_tppLista ;
          LIS_CondRetOK ,
                /* Concluiu corretamente */
 
-         LIS_CondRetListaVazia ,
+         LIS_CondRetListaVazia = 2 ,
                /* A lista não contém elementos */
 
-         LIS_CondRetFimLista ,
-               /* Foi atingido o fim de lista */
+         LIS_CondRetListaNaoExiste,
+               /* Lista não existe */
 
-         LIS_CondRetNaoAchou ,
-               /* Não encontrou o valor procurado */
+         LIS_CondRetFimLista ,
+               /* Foi atingido o final da lista */
+
+		 LIS_CondRetInicioLista,
+			   /*Foi atingido o início da lista */
 
          LIS_CondRetFaltouMemoria
                /* Faltou memória ao tentar criar um elemento de lista */
@@ -99,29 +102,28 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *  $FC Função: LIS  &Criar lista
 *
 *  $ED Descrição da função
-*     Cria uma lista genérica duplamente encadeada.
+*     Cria uma cabeça de lista genérica duplamente encadeada.
 *     Os possíveis tipos são desconhecidos a priori.
 *     A tipagem é implicita.
 *     Não existe identificador de tipo associado à lista.
 *
 *  $EP Parâmetros
-*     ExcluirValor  - ponteiro para a função que processa a
-*                     exclusão do valor referenciado pelo elemento
-*                     a ser excluído.
-*                     Ver descrição do módulo.
+*     pLista  -		  ponteiro para a estrutura do tipo LIS_tpLista*
+*					  a ser criada.
+*
+*     idLista -       string de identificação da lista
 *
 *  $FV Valor retornado
-*     Se executou corretamente retorna o ponteiro para a lista.
-*     Este ponteiro será utilizado pelas funções que manipulem esta lista.
-*
+*     Se executou corretamente retorna a condição de retorno LIS_CondRetOK.
+*     
 *     Se ocorreu algum erro, por exemplo falta de memória ou dados errados,
-*     a função retornará NULL.
+*     LIS_CondRetFaltouMemoria.
+*
 *     Não será dada mais informação quanto ao problema ocorrido.
 *
 ***********************************************************************/
 
-   LIS_tppLista LIS_CriarLista(
-             void   ( * ExcluirValor ) ( void * pDado ) ) ;
+   LIS_tpCondRet LIS_CriarLista(LIS_tppLista pLista, char idLista[5]);
 
 
 /***********************************************************************
@@ -142,6 +144,19 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
    void LIS_DestruirLista( LIS_tppLista pLista ) ;
 
+/***********************************************************************
+*
+*  $FC Função: LIS  &Obter Id
+*
+*  $ED Descrição da função
+*     Obtem o Id contido dentro da cabeça da Lista passada
+*
+*  $EP Parâmetros
+*     pLista - ponteiro para a cabeça a ser encontrado o Id
+*
+***********************************************************************/
+
+   void LIS_ObterId(LIS_tppLista pLista, char* pDado);
 
 /***********************************************************************
 *

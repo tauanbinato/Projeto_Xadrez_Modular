@@ -44,6 +44,7 @@ static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
+static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"   ;
 
 
 
@@ -101,7 +102,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
       TST_tpCondRet CondRet ;
 
       char   StringDado[  DIM_VALOR ] ;
-      char * pDado ;
+      char * pDado = NULL;
 
       int ValEsp = -1 ;
 
@@ -130,22 +131,43 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
          else if ( strcmp( ComandoTeste , CRIAR_LISTA_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "i" ,
-                       &inxLista ) ;
+            numLidos = LER_LerParametros( "isi" ,
+                       &inxLista,  StringDado, &CondRetEsp) ;
 
-            if ( ( numLidos != 1 )
+            if ( ( numLidos != 3 )
               || ( ! ValidarInxLista( inxLista , VAZIO )))
             {
                return TST_CondRetParm ;
             } /* if */
 
-            vtListas[ inxLista ] =
-                 LIS_CriarLista( DestruirValor ) ;
+            LIS_CriarLista(vtListas[inxLista], StringDado) ;
 
-            return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
+            return TST_CompararPonteiroNulo( 0 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
 
          } /* fim ativa: Testar CriarLista */
+
+		   /* Testar Obter Id */
+
+		 else if (strcmp(ComandoTeste, OBTER_ID_LISTA_CMD) == 0)
+		 {
+
+			 numLidos = LER_LerParametros("is",
+				 &inxLista, StringDado);
+
+			 if ((numLidos != 2)
+				 || (!ValidarInxLista(inxLista, VAZIO)))
+			 {
+				 
+				 return TST_CondRetParm;
+			 } /* if */
+
+			 LIS_ObterId(vtListas[inxLista], pDado);
+
+			 return TST_CompararString(pDado, StringDado,
+				 "Id obtida pela função diferente da esperada");
+
+		 } /* fim ativa: Testar CriarLista */
 
       /* Testar Esvaziar lista lista */
 
