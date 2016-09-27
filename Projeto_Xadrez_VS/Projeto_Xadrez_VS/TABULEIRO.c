@@ -27,6 +27,7 @@
 #include "TABULEIRO.h"
 #undef LISTA_OWN
 
+// AREA DO TAUAN------------------
 TAB_tpCondRet inserirPeca()
 {
 	return TAB_CondRetOK;
@@ -46,7 +47,10 @@ TAB_tpCondRet obterPeca()
 {
 	return TAB_CondRetOK;
 }
+// FIM AREA DO TAUAN----------------
 
+
+// AREA DA JULIA--------------------
 TAB_tpCondRet obterListaAmeacantes()
 {
 	return TAB_CondRetOK;
@@ -61,3 +65,4 @@ TAB_tpCondRet destruirTabuleiro()
 {
 	return TAB_CondRetOK;
 }
+// FIM AREA DA JULIA-----------------

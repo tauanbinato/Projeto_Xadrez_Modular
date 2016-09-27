@@ -3,7 +3,7 @@
 #define TABULEIRO_
 /***************************************************************************
 *
-*  $MCD Módulo de definição: LIS  Lista duplamente encadeada
+*  $MCD Módulo de definição: TAB  Matriz de listas duplamente encadeadas
 *
 *  Arquivo gerado:              TABULEIRO.h
 *  Letras identificadoras:      TAB
