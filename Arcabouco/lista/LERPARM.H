@@ -27,7 +27,7 @@
 *     Parâmetros simbólicos devem ser declarados antes de serem utilizados.
 *
 ***************************************************************************/
- 
+
 #if defined( LerParm_OWN )
    #define LerParm_EXT
 #else

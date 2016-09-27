@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteControleEspaco.comp
 
    Nome do Construto:           TesteControleEspaco
-   Diretório base:              C:\Users\tauan\Desktop\modular\Arcabouco\arcabouc\composicao
+   Diretório base:              C:\Users\user\Desktop\Projeto_Xadrez_Modular\Arcabouco\arcabouc\composicao
 
    Arquivo composição:          TesteControleEspaco.comp
    Arquivo plataforma:          gmake.parm

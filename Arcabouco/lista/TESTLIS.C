@@ -19,6 +19,7 @@
 *     1       avs   16/abr/2003 início desenvolvimento
 *
 ***************************************************************************/
+#define _CRT_SECURE_NO_DEPRECATE
 
 #include    <string.h>
 #include    <stdio.h>
@@ -43,6 +44,7 @@ static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
+
 
 
 #define TRUE  1

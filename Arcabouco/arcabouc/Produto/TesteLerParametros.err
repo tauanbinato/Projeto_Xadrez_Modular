@@ -1,0 +1,34 @@
+
+
+#################### Compilacao do construto: TesteLerParametros
+
+princip.c
+generico.c
+..\Fontes\generico.c(201): warning C4474: 'fprintf' : too many arguments passed for format string
+..\Fontes\generico.c(201): note: placeholders and their parameters expect 0 variadic arguments, but 2 were provided
+..\Fontes\generico.c(211): warning C4474: 'fprintf' : too many arguments passed for format string
+..\Fontes\generico.c(211): note: placeholders and their parameters expect 0 variadic arguments, but 2 were provided
+tabsimb.c
+lerparm.c
+cespdin.c
+conta.c
+..\Fontes\conta.c(429): warning C4459: declaration of 'numLinha' hides global declaration
+..\Fontes\conta.c(145): note: see declaration of 'numLinha'
+..\Fontes\conta.c(703): warning C4459: declaration of 'pContadorCorr' hides global declaration
+..\Fontes\conta.c(124): note: see declaration of 'pContadorCorr'
+..\Fontes\conta.c(1053): warning C4459: declaration of 'pContadorCorr' hides global declaration
+..\Fontes\conta.c(124): note: see declaration of 'pContadorCorr'
+..\Fontes\conta.c(1234): warning C4459: declaration of 'numLinha' hides global declaration
+..\Fontes\conta.c(145): note: see declaration of 'numLinha'
+geraalt.c
+intrpced.c
+intrpcnt.c
+testler.c
+Microsoft (R) Incremental Linker Version 14.00.24215.1
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteLerParametros.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+princip.obj generico.obj tabsimb.obj lerparm.obj cespdin.obj 
+conta.obj geraalt.obj intrpced.obj intrpcnt.obj testler.obj 
