@@ -84,6 +84,9 @@ TAB_tpCondRet obterPeca();
  Obs. no 4º. trabalho será examinado se ocorre vazamento de memória. 
 */
 
+TAB_tpCondRet obterListaAmeacantes();
+TAB_tpCondRet obterListaAmeacados();
+TAB_tpCondRet destruirTabuleiro();
 
 
 

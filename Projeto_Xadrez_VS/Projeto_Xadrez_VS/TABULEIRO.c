@@ -46,3 +46,18 @@ TAB_tpCondRet obterPeca()
 {
 	return TAB_CondRetOK;
 }
+
+TAB_tpCondRet obterListaAmeacantes()
+{
+	return TAB_CondRetOK;
+}
+
+TAB_tpCondRet obterListaAmeacados()
+{
+	return TAB_CondRetOK;
+}
+
+TAB_tpCondRet destruirTabuleiro()
+{
+	return TAB_CondRetOK;
+}
