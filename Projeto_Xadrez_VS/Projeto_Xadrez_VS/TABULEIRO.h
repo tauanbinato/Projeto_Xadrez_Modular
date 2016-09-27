@@ -15,6 +15,9 @@
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: Julia Aleixo , Lucas Palma , Tauan Binato
 *
+*  $HA Histórico de evolução:
+*     Versão  Autor    Data     Observações
+*     1       tbf   26/set/2016 início desenvolvimento.
 *
 *  $ED Descrição do módulo
 *
