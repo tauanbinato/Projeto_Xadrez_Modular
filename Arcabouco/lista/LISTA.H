@@ -222,7 +222,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,
+   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,
                                           void * pValor        )
        ;
 
