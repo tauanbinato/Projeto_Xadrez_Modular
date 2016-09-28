@@ -161,7 +161,7 @@
     <ClCompile Include="TESTLIS.C" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\Arcabouco\arcabouc\Objetos\ArcaboucoTeste.lib" />
+    <Library Include="ArcaboucoTeste.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

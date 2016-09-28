@@ -49,7 +49,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\Arcabouco\arcabouc\Objetos\ArcaboucoTeste.lib">
+    <Library Include="ArcaboucoTeste.lib">
       <Filter>Header Files</Filter>
     </Library>
   </ItemGroup>
