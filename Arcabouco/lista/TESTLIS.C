@@ -142,8 +142,6 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
            
 			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado, DestruirValor) ;
 
-			printf("\nCONDRET\t%d\n", CondRet);
-
             return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
 

@@ -108,10 +108,15 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *     Não existe identificador de tipo associado à lista.
 *
 *  $EP Parâmetros
-*     pLista  -		  ponteiro para a estrutura do tipo LIS_tpLista*
+*     pLista        - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
 *					  a ser criada.
 *
-*     idLista -       string de identificação da lista
+*     idLista       - string de identificação da lista
+*
+*     ExcluirValor  - ponteiro para a função que processa a
+*                     exclusão do valor referenciado pelo elemento
+*                     a ser excluído.
+*                     Ver descrição do módulo.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna a condição de retorno LIS_CondRetOK.
@@ -123,8 +128,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_CriarLista(LIS_tppLista *pLista, char* idLista, void(*ExcluirValor) (void * pDado));
-
+   LIS_tpCondRet LIS_CriarLista(LIS_tppLista ** pLista, char* idLista, void(*ExcluirValor) (void * pDado)) ;
 
 /***********************************************************************
 *
