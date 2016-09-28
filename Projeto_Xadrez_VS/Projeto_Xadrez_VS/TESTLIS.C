@@ -43,7 +43,8 @@ static const char OBTER_NO_CMD            [ ] = "=obterno"              ;
 static const char EXC_NO_CORRENTE_CMD     [ ] = "=excluirnocorrente"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"             ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"              ;
-static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"          ;
+static const char AVANCAR_ELEM_CMD        [ ] = "=irprox"               ;
+static const char VOLTAR_ELEM_CMD         [ ] = "=irant"                ;
 static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"         ;
 
 
@@ -374,10 +375,10 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
          else if ( strcmp( ComandoTeste , AVANCAR_ELEM_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iii" , &inxLista , &numElem ,
+            numLidos = LER_LerParametros( "ii" , &inxLista , 
                                 &CondRetEsp ) ;
 
-            if ( ( numLidos != 3 )
+            if ( ( numLidos != 2 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
@@ -388,6 +389,28 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                       "Condicao de retorno errada ao avancar" ) ;
 
          } /* fim ativa: LIS  &Avançar elemento */
+
+		   /* LIS  &Voltar elemento */
+
+		 else if (strcmp(ComandoTeste, VOLTAR_ELEM_CMD) == 0)
+		 {
+
+			 numLidos = LER_LerParametros("ii", &inxLista,
+				 &CondRetEsp);
+
+			 if ((numLidos != 2)
+				 || (!ValidarInxLista(inxLista, NAO_VAZIO)))
+			 {
+				 return TST_CondRetParm;
+			 } /* if */
+
+			 return TST_CompararInt(CondRetEsp,
+				 LIS_VoltarElementoCorrente(vtListas[inxLista], numElem),
+				 "Condicao de retorno errada ao avancar");
+
+		 } /* fim ativa: LIS  &Voltar elemento */
+
+		 return TST_CondRetNaoConhec;
 
       return TST_CondRetNaoConhec ;
 

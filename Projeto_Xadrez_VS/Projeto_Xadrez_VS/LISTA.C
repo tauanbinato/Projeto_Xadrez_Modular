@@ -386,13 +386,10 @@
 *  Fun��o: LIS  &Avan�ar elemento
 *  ****/
 
-   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista ,
-                                              int numElem )
+   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista)
    {
 
       int i ;
-
-      tpElemLista * pElem ;
 
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
@@ -408,60 +405,57 @@
          } /* fim ativa: Tratar lista vazia */
 
       /* Tratar avan�ar para frente */
+		 if (pLista->pElemCorr->pProx != NULL) {
 
-         if ( numElem > 0 )
-         {
+			 pLista->pElemCorr = pLista->pElemCorr->pProx;
 
-            pElem = pLista->pElemCorr ;
-            for( i = numElem ; i > 0 ; i-- )
-            {
-               if ( pElem == NULL )
-               {
-                  break ;
-               } /* if */
-               pElem    = pElem->pProx ;
-            } /* for */
+			 return LIS_CondRetOK;
+		 }
 
-            if ( pElem != NULL )
-            {
-               pLista->pElemCorr = pElem ;
-               return LIS_CondRetOK ;
-            } /* if */
+		 /* fim ativa: Tratar avan�ar para frente */
+		 
+		 /* Tratar No corrente é o ultimo */
+		 else if (pLista->pElemCorr->pProx == NULL)
+			 return LIS_CondRetFimLista;
 
-            pLista->pElemCorr = pLista->pFimLista ;
-            return LIS_CondRetFimLista ;
+   } /* Fim fun��o: LIS  &Avan�ar elemento */
 
-         } /* fim ativa: Tratar avan�ar para frente */
+/***************************************************************************
+*
+*  Fun��o: LIS  &Voltar elemento
+*  ****/
 
-      /* Tratar avan�ar para tr�s */
+LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
+   {
 
-         else if ( numElem < 0 )
-         {
+	   int i;
 
-            pElem = pLista->pElemCorr ;
-            for( i = numElem ; i < 0 ; i++ )
-            {
-               if ( pElem == NULL )
-               {
-                  break ;
-               } /* if */
-               pElem    = pElem->pAnt ;
-            } /* for */
+		#ifdef _DEBUG
+			assert(pLista != NULL);
+		#endif
 
-            if ( pElem != NULL )
-            {
-               pLista->pElemCorr = pElem ;
-               return LIS_CondRetOK ;
-            } /* if */
+	   /* Tratar lista vazia */
 
-            pLista->pElemCorr = pLista->pOrigemLista ;
-            return LIS_CondRetFimLista ;
+	   if (pLista->pElemCorr == NULL)
+	   {
 
-         } /* fim ativa: Tratar avan�ar para tr�s */
+		   return LIS_CondRetListaVazia;
 
-      /* Tratar n�o avan�ar */
+	   } /* fim ativa: Tratar lista vazia */
 
-         return LIS_CondRetOK ;
+		 /* Tratar avan�ar para tras */
+	   if (pLista->pElemCorr->pAnt != NULL) {
+
+		   pLista->pElemCorr = pLista->pElemCorr->pAnt;
+
+		   return LIS_CondRetOK;
+	   }
+
+	   /* fim ativa: Tratar avan�ar para tras */
+
+	   /* Tratar No corrente é o primeiro */
+	   else if (pLista->pElemCorr->pAnt == NULL)
+		   return LIS_CondRetInicioLista;
 
    } /* Fim fun��o: LIS  &Avan�ar elemento */
 
