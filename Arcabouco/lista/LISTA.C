@@ -331,19 +331,21 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-   void * LIS_ObterValor( LIS_tppLista pLista )
+LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
    {
+#ifdef _DEBUG
+	   assert(pLista != NULL);
+#endif
 
-      #ifdef _DEBUG
-         assert( pLista != NULL ) ;
-      #endif
+	   if (pLista->pElemCorr == NULL)
+	   {
+		   *pValor = NULL;
+		   return LIS_CondRetListaVazia;
+	   } /* if */
 
-      if ( pLista->pElemCorr == NULL )
-      {
-        return NULL ;
-      } /* if */
+	   strcpy(pValor, pLista->pElemCorr->pValor);
 
-      return pLista->pElemCorr->pValor ;
+	   return LIS_CondRetOK;
 
    } /* Fim fun��o: LIS  &Obter refer�ncia para o valor contido no elemento */
 
