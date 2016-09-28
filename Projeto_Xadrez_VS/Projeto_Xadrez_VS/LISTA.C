@@ -122,16 +122,21 @@
 *  Fun��o: LIS  &Destruir lista
 *  ****/
 
-   void LIS_DestruirLista( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_DestroiLista( LIS_tppLista pLista )
    {
 
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
 
+	  if (pLista == NULL)
+		  return LIS_CondRetListaNaoExiste;
+
       LIS_EsvaziarLista( pLista ) ;
 
       free( pLista ) ;
+
+	  return LIS_CondRetOK;
 
    } /* Fim fun��o: LIS  &Destruir lista */
 

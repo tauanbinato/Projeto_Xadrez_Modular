@@ -35,7 +35,7 @@
 
 static const char RESET_LISTA_CMD         [ ] = "=resetteste"           ;
 static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"           ;
-static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"        ;
+static const char DESTROI_LISTA_CMD      [ ] = "=destroilista"        ;
 static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"        ;
 static const char INS_ELEM_ANTES_CMD      [ ] = "=inselemantes"         ;
 static const char INS_NO_CMD              [ ] = "=inserirno"            ;
@@ -197,22 +197,21 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       /* Testar Destruir lista */
 
-         else if ( strcmp( ComandoTeste , DESTRUIR_LISTA_CMD ) == 0 )
+         else if ( strcmp( ComandoTeste , DESTROI_LISTA_CMD) == 0 )
          {
 
-            numLidos = LER_LerParametros( "i" ,
-                               &inxLista ) ;
-
-            if ( ( numLidos != 1 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )))
+            numLidos = LER_LerParametros( "ii" ,
+                               &inxLista, &CondRetEsp ) ;
+            if ( ( numLidos != 2 ))
             {
                return TST_CondRetParm ;
             } /* if */
 
-            LIS_DestruirLista( vtListas[ inxLista ] ) ;
+            CondRet = LIS_DestroiLista( vtListas[ inxLista ] ) ;
             vtListas[ inxLista ] = NULL ;
 
-            return TST_CondRetOK ;
+			return TST_CompararInt(CondRetEsp, CondRet,
+				"Condicao de retorno errada ao inserir antes.");
 
          } /* fim ativa: Testar Destruir lista */
 

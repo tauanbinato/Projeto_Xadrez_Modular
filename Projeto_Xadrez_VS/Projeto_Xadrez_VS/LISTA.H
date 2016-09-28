@@ -146,7 +146,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   void LIS_DestruirLista( LIS_tppLista pLista ) ;
+   LIS_tpCondRet LIS_DestroiLista( LIS_tppLista pLista ) ;
 
 /***********************************************************************
 *
