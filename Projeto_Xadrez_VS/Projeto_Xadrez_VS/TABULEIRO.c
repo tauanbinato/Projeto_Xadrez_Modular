@@ -22,6 +22,7 @@
 #include   <memory.h>
 #include   <malloc.h>
 #include   <assert.h>
+#include   "LISTA.H"
 
 #define LISTA_OWN
 #include "TABULEIRO.h"

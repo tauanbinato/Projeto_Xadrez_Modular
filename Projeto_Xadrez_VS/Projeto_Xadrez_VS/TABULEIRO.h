@@ -71,6 +71,7 @@ typedef enum {
 
 */
 
+
 TAB_tpCondRet inserirPeca();
 TAB_tpCondRet moverPeca();
 TAB_tpCondRet retirarPeca();
