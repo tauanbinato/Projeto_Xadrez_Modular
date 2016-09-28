@@ -102,7 +102,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
       TST_tpCondRet CondRet ;
 
       char   StringDado[  DIM_VALOR ] ;
-      char * pDado = NULL;
+	  char* pDado;
 
       int ValEsp = -1 ;
 
@@ -139,10 +139,12 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             {
                return TST_CondRetParm ;
             } /* if */
+           
+			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado, DestruirValor) ;
 
-            LIS_CriarLista(vtListas[inxLista], StringDado) ;
+			printf("\nCONDRET\t%d\n", CondRet);
 
-            return TST_CompararPonteiroNulo( 0 , vtListas[ inxLista ] ,
+            return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
 
          } /* fim ativa: Testar CriarLista */
@@ -156,13 +158,13 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 				 &inxLista, StringDado);
 
 			 if ((numLidos != 2)
-				 || (!ValidarInxLista(inxLista, VAZIO)))
+				 || (!ValidarInxLista(inxLista, NAO_VAZIO)))
 			 {
 				 
 				 return TST_CondRetParm;
 			 } /* if */
 
-			 LIS_ObterId(vtListas[inxLista], pDado);
+			 pDado = LIS_ObterId((vtListas[inxLista]));
 
 			 return TST_CompararString(pDado, StringDado,
 				 "Id obtida pela função diferente da esperada");

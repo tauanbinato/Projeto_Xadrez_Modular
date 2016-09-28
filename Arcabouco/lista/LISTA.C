@@ -23,7 +23,7 @@
 #include   <stdio.h>
 #include   <string.h>
 #include   <memory.h>
-#include   <malloc.h>
+#include   <stdlib.h>
 #include   <assert.h>
 
 #define LISTA_OWN
@@ -96,17 +96,24 @@
 *  Fun��o: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista)
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista, void(*ExcluirValor) (void * pDado))
    {
-      pLista = ( LIS_tppLista * ) malloc( sizeof( LIS_tppLista )) ;
-      if ( pLista == NULL )
+	  LIS_tppLista aux = NULL;
+     
+	  aux = ( LIS_tppLista  ) malloc( sizeof( LIS_tppLista )) ;
+     
+	  if ( aux == NULL )
       {
          return  LIS_CondRetFaltouMemoria;
       } /* if */
 
-      LimparCabeca( pLista ) ;
+      LimparCabeca( aux ) ;
 
-	  strcpy(pLista->idLista, idLista);
+	  strcpy(aux->idLista, idLista);
+
+	  aux->ExcluirValor = ExcluirValor;
+
+	  *pLista = aux;
 
       return LIS_CondRetOK ;
 
@@ -135,9 +142,9 @@
 *  Fun��o: LIS  &ObeterId
 *  ****/
 
-  void LIS_ObterId(LIS_tppLista pLista, char* pDado) {
+   char* LIS_ObterId(LIS_tppLista pLista) {
 
-	  strcpy(pDado, pLista->idLista);
+	   return pLista->idLista;
    
    } /* Fim Fun��o: LIS  &ObterId */
     
