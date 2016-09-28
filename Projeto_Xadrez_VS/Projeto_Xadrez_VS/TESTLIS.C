@@ -33,18 +33,18 @@
 #include    "Lista.h"
 
 
-static const char RESET_LISTA_CMD         [ ] = "=resetteste"     ;
-static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"     ;
-static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"  ;
-static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"  ;
-static const char INS_ELEM_ANTES_CMD      [ ] = "=inselemantes"   ;
-static const char INS_NO_CMD              [ ] = "=inserirno"      ;
-static const char OBTER_NO_CMD            [ ] = "=obterno"        ;
-static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
-static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
-static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
-static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"    ;
-static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"   ;
+static const char RESET_LISTA_CMD         [ ] = "=resetteste"           ;
+static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"           ;
+static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"        ;
+static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"        ;
+static const char INS_ELEM_ANTES_CMD      [ ] = "=inselemantes"         ;
+static const char INS_NO_CMD              [ ] = "=inserirno"            ;
+static const char OBTER_NO_CMD            [ ] = "=obterno"              ;
+static const char EXC_NO_CORRENTE_CMD     [ ] = "=excluirnocorrente"    ;
+static const char IR_INICIO_CMD           [ ] = "=irinicio"             ;
+static const char IR_FIM_CMD              [ ] = "=irfinal"              ;
+static const char AVANCAR_ELEM_CMD        [ ] = "=avancarelem"          ;
+static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"         ;
 
 
 
@@ -288,19 +288,19 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       /* Testar excluir simbolo */
 
-         else if ( strcmp( ComandoTeste , EXC_ELEM_CMD ) == 0 )
+         else if ( strcmp( ComandoTeste , EXC_NO_CORRENTE_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii" ,
-                  &inxLista , &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "i" ,
+                  &inxLista  ) ;
 
-            if ( ( numLidos != 2 )
+            if ( ( numLidos != 1 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
             } /* if */
 
-            return TST_CompararInt( CondRetEsp ,
+            return TST_CompararInt( 0 ,
                       LIS_ExcluirElemento( vtListas[ inxLista ] ) ,
                      "Condição de retorno errada ao excluir."   ) ;
 

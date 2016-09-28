@@ -42,12 +42,17 @@ typedef struct TAB_tagTabuleiro {
 
 } TAB_ancoraTabuleiro;
 
+/***** Protótipos das funções encapuladas no módulo *****/
+
+static void DestruirValor(void * pValor);
+
+/********************************************************/
 
 TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna , TAB_ancoraTabuleiro **ancora_matriz , char * idMatriz) {
 
 	//Cria as listas
-	LIS_CriarLista(linha, "Lin");
-	LIS_CriarLista(coluna, "Colu");
+	LIS_CriarLista(linha, "Lin", DestruirValor);
+	LIS_CriarLista(coluna, "Colu", DestruirValor);
 	
 	//Preenche as linhas e colunas com vazios 'V'
 	int numLinhasxColunas;
@@ -106,3 +111,16 @@ TAB_tpCondRet destruirTabuleiro()
 	return TAB_CondRetOK;
 }
 // FIM AREA DA JULIA-----------------
+
+/***********************************************************************
+*
+*  $FC Função: TLIS -Destruir valor
+*
+***********************************************************************/
+
+void DestruirValor(void * pValor)
+{
+
+	free(pValor);
+
+} /* Fim função: TLIS -Destruir valor */
