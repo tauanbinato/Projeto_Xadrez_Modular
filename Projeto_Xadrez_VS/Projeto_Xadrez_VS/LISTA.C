@@ -243,6 +243,7 @@
       /* Criar elemento a inerir ap�s */
 
          pElem = CriarElemento( pLista , pValor ) ;
+
          if ( pElem == NULL )
          {
             return LIS_CondRetFaltouMemoria ;
@@ -270,8 +271,8 @@
 
          } /* if */
 		
-		 strcpy(pElem->pValor, pValor);
-		 
+		 pElem->pValor = pValor;
+
 		 pLista->pElemCorr = pElem ;
 		 
          return LIS_CondRetOK ;
@@ -331,19 +332,20 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-   LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char* CharObtido )
+   LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char *CharObtido )
    {
-
+	   
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
-
+	
       if ( pLista->pElemCorr == NULL )
-      {
+	  {
+		  
         return LIS_CondRetListaVazia ;
       } /* if */
 
-	  strcpy(CharObtido, pLista->pElemCorr->pValor);
+	  *CharObtido = pLista->pElemCorr->pValor;
 
       return LIS_CondRetOK ;
 
@@ -485,7 +487,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 	} /* fim ativa: Tratar lista vazia */
 	
 	  /* Tratar troca */
-
+	
 	pLista->pElemCorr->pValor = CharDado;
 	
 	/* fim ativa: Tratar troca */

@@ -266,7 +266,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* CharObtido) ;
+   LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char *CharObtido) ;
 
 
 /***********************************************************************

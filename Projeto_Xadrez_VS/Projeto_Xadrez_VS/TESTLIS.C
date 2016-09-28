@@ -257,7 +257,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
          {
 
             numLidos = LER_LerParametros( "ici" ,
-                       &inxLista , StringDado , &CondRetEsp ) ;
+                       &inxLista , &CharDado , &CondRetEsp ) ;
 
             if ( ( numLidos != 3 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
@@ -265,14 +265,14 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-            
+            pDado = ( char * ) malloc( sizeof(char)) ;
+
 			if ( pDado == NULL )
             {
                return TST_CondRetMemoria ;
             } /* if */
 
-            strcpy( pDado , StringDado ) ;
+			pDado = CharDado;
 
             CondRet = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
 
