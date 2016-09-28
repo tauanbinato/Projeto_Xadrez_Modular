@@ -458,6 +458,41 @@ LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
 		   return LIS_CondRetInicioLista;
 
    } /* Fim fun��o: LIS  &Avan�ar elemento */
+/***************************************************************************
+*
+*  Fun��o: LIS  &Alterar elemento corrente
+*  ****/
+
+LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
+{
+#ifdef _DEBUG
+	assert(pLista != NULL);
+#endif
+	/* Tratar se Lista Existe */
+	
+	if (pLista == NULL)
+
+		return LIS_CondRetListaNaoExiste;
+
+	/* fim ativa: Tratar se Lista Existe */
+
+	/* Tratar lista vazia */
+
+	if (pLista->pElemCorr == NULL)
+	{
+		return LIS_CondRetListaVazia;
+
+	} /* fim ativa: Tratar lista vazia */
+	
+	  /* Tratar troca */
+
+	pLista->pElemCorr->pValor = CharDado;
+	
+	/* fim ativa: Tratar troca */
+
+	return LIS_CondRetOK;
+
+} /* Fim fun��o: LIS  &Avan�ar elemento */
 
 /***************************************************************************
 *
@@ -560,7 +595,7 @@ LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
       pLista->pOrigemLista = NULL ;
       pLista->pFimLista = NULL ;
       pLista->pElemCorr = NULL ;
-      pLista->numElem   = 0 ;
+	  pLista->numElem = 0;
 
    } /* Fim fun��o: LIS  -Limpar a cabe�a da lista */
 

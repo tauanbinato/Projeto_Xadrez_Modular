@@ -46,6 +46,7 @@ static const char IR_FIM_CMD              [ ] = "=irfinal"              ;
 static const char AVANCAR_ELEM_CMD        [ ] = "=irprox"               ;
 static const char VOLTAR_ELEM_CMD         [ ] = "=irant"                ;
 static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"         ;
+static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 
 
 
@@ -385,7 +386,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
 
             return TST_CompararInt( CondRetEsp ,
-                      LIS_AvancarElementoCorrente( vtListas[ inxLista ] , numElem ) ,
+                      LIS_AvancarElementoCorrente( vtListas[ inxLista ] ) ,
                       "Condicao de retorno errada ao avancar" ) ;
 
          } /* fim ativa: LIS  &Avançar elemento */
@@ -405,12 +406,28 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 			 } /* if */
 
 			 return TST_CompararInt(CondRetEsp,
-				 LIS_VoltarElementoCorrente(vtListas[inxLista], numElem),
+				 LIS_VoltarElementoCorrente(vtListas[inxLista]),
 				 "Condicao de retorno errada ao avancar");
 
 		 } /* fim ativa: LIS  &Voltar elemento */
 
-		 return TST_CondRetNaoConhec;
+		 else if (strcmp(ComandoTeste, ALTERA_NO_CORRENTE_CMD) == 0)
+		 {
+
+			 numLidos = LER_LerParametros("ici", &inxLista, &CharDado,
+				 &CondRetEsp);
+
+			 if ((numLidos != 3))
+				 //|| (!ValidarInxLista(inxLista, NAO_VAZIO)))
+			 {
+				 return TST_CondRetParm;
+			 } /* if */
+
+			 return TST_CompararInt(CondRetEsp,
+				 LIS_AlterarElementoCorrente( vtListas[inxLista] , CharDado),
+				 "Condicao de retorno errada ao avancar");
+
+		 } /* fim ativa: LIS  &Voltar elemento */
 
       return TST_CondRetNaoConhec ;
 
@@ -421,7 +438,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
 /***********************************************************************
 *
-*  $FC Função: TLIS -Validar indice de lista
+*  $FC Função: TLIS -Validar indice de lista              
 *
 ***********************************************************************/
 
