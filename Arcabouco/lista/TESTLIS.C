@@ -38,7 +38,7 @@ static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"     ;
 static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"  ;
 static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"  ;
 static const char INS_ELEM_ANTES_CMD      [ ] = "=inselemantes"   ;
-static const char INS_ELEM_APOS_CMD       [ ] = "=inselemapos"    ;
+static const char INS_NO_CMD              [ ] = "=inserirNo"      ;
 static const char OBTER_VALOR_CMD         [ ] = "=obtervalorelem" ;
 static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
@@ -141,6 +141,12 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
            
 			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado, DestruirValor) ;
+			
+			if (CondRet == 6) {
+
+				return TST_CondRetMemoria;
+
+			}
 
             return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
@@ -247,10 +253,10 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       /* Testar inserir elemento apos */
 
-         else if ( strcmp( ComandoTeste , INS_ELEM_APOS_CMD ) == 0 )
+         else if ( strcmp( ComandoTeste , INS_NO_CMD) == 0 )                                        // =inserirNo <inx> <char> <condRetorno>
          {
 
-            numLidos = LER_LerParametros( "isi" ,
+            numLidos = LER_LerParametros( "ici" ,
                        &inxLista , StringDado , &CondRetEsp ) ;
 
             if ( ( numLidos != 3 )
@@ -260,7 +266,8 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
 
             pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-            if ( pDado == NULL )
+            
+			if ( pDado == NULL )
             {
                return TST_CondRetMemoria ;
             } /* if */
@@ -268,7 +275,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             strcpy( pDado , StringDado ) ;
 
 
-            CondRet = LIS_InserirElementoApos( vtListas[ inxLista ] , pDado ) ;
+            CondRet = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
 
             if ( CondRet != LIS_CondRetOK )
             {
