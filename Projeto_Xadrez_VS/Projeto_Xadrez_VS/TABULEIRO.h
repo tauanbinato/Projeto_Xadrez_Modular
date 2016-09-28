@@ -124,7 +124,7 @@ TAB_tpCondRet destruirTabuleiro();
 *
 ***********************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna, TAB_ancoraTabuleiro **ancora_matriz, char * idMatriz);
+//TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna, TAB_ancoraTabuleiro **ancora_matriz, char * idMatriz);
 
 
 

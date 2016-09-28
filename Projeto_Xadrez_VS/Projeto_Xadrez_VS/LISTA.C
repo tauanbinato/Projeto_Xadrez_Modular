@@ -271,9 +271,11 @@
             pLista->pElemCorr->pProx = pElem ;
 
          } /* if */
-                  
-         pLista->pElemCorr = pElem ;
-                  
+		
+		 strcpy(pElem->pValor, pValor);
+		 
+		 pLista->pElemCorr = pElem ;
+		 
          return LIS_CondRetOK ;
 
    } /* Fim fun��o: LIS  &Inserir elemento ap�s */
@@ -331,7 +333,7 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-   void * LIS_ObterValor( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char* CharObtido )
    {
 
       #ifdef _DEBUG
@@ -340,10 +342,12 @@
 
       if ( pLista->pElemCorr == NULL )
       {
-        return NULL ;
+        return LIS_CondRetListaVazia ;
       } /* if */
 
-      return pLista->pElemCorr->pValor ;
+	  strcpy(CharObtido, pLista->pElemCorr->pValor);
+
+      return LIS_CondRetOK ;
 
    } /* Fim fun��o: LIS  &Obter refer�ncia para o valor contido no elemento */
 

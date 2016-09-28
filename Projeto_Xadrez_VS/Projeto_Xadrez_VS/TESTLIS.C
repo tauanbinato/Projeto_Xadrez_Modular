@@ -38,8 +38,8 @@ static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"     ;
 static const char DESTRUIR_LISTA_CMD      [ ] = "=destruirlista"  ;
 static const char ESVAZIAR_LISTA_CMD      [ ] = "=esvaziarlista"  ;
 static const char INS_ELEM_ANTES_CMD      [ ] = "=inselemantes"   ;
-static const char INS_NO_CMD              [ ] = "=inserirNo"      ;
-static const char OBTER_VALOR_CMD         [ ] = "=obtervalorelem" ;
+static const char INS_NO_CMD              [ ] = "=inserirno"      ;
+static const char OBTER_NO_CMD            [ ] = "=obterno"        ;
 static const char EXC_ELEM_CMD            [ ] = "=excluirelem"    ;
 static const char IR_INICIO_CMD           [ ] = "=irinicio"       ;
 static const char IR_FIM_CMD              [ ] = "=irfinal"        ;
@@ -101,7 +101,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       TST_tpCondRet CondRet ;
 
-      char   StringDado[  DIM_VALOR ] ;
+      char   StringDado[  DIM_VALOR ], CharDado, CharObtido ;
 	  char* pDado;
 
       int ValEsp = -1 ;
@@ -253,7 +253,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       /* Testar inserir elemento apos */
 
-         else if ( strcmp( ComandoTeste , INS_NO_CMD) == 0 )                                        // =inserirNo <inx> <char> <condRetorno>
+         else if ( strcmp( ComandoTeste , INS_NO_CMD) == 0 )                                   
          {
 
             numLidos = LER_LerParametros( "ici" ,
@@ -273,7 +273,6 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
 
             strcpy( pDado , StringDado ) ;
-
 
             CondRet = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
 
@@ -309,11 +308,11 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
       /* Testar obter valor do elemento corrente */
 
-         else if ( strcmp( ComandoTeste , OBTER_VALOR_CMD ) == 0 )
+         else if ( strcmp( ComandoTeste , OBTER_NO_CMD) == 0 )
          {
 
-            numLidos = LER_LerParametros( "isi" ,
-                       &inxLista , StringDado , &ValEsp ) ;
+            numLidos = LER_LerParametros( "ici" ,
+                       &inxLista , &CharDado , &CondRetEsp ) ;
 
             if ( ( numLidos != 3 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
@@ -321,21 +320,15 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            pDado = ( char * ) LIS_ObterValor( vtListas[ inxLista ] ) ;
-
-            if ( ValEsp == 0 )
+			CondRet = LIS_ObterNo(vtListas[inxLista], &CharObtido);
+			
+			if ( CondRet == 2 )
             {
-               return TST_CompararPonteiroNulo( 0 , pDado ,
-                         "Valor não deveria existir." ) ;
+				return  TST_CompararPonteiroNulo( 1 , CharObtido ,
+					"Erro Lista Vazia");
             } /* if */
 
-            if ( pDado == NULL )
-            {
-               return TST_CompararPonteiroNulo( 1 , pDado ,
-                         "Dado tipo um deveria existir." ) ;
-            } /* if */
-
-            return TST_CompararString( StringDado , pDado ,
+            return TST_CompararChar(  CharObtido,  CharDado,
                          "Valor do elemento errado." ) ;
 
          } /* fim ativa: Testar obter valor do elemento corrente */
