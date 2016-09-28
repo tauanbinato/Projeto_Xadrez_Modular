@@ -418,7 +418,6 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 				 &CondRetEsp);
 
 			 if ((numLidos != 3))
-				 //|| (!ValidarInxLista(inxLista, NAO_VAZIO)))
 			 {
 				 return TST_CondRetParm;
 			 } /* if */
