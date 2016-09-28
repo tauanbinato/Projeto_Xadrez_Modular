@@ -61,8 +61,6 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
 /***** Protótipos das funções encapuladas no módulo *****/
 
-   static void DestruirValor( void * pValor ) ;
-
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
@@ -140,7 +138,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
            
-			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado, DestruirValor) ;
+			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado) ;
 			
 			if (CondRet == 6) {
 
@@ -397,21 +395,6 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
 
 /*****  Código das funções encapsuladas no módulo  *****/
-
-
-/***********************************************************************
-*
-*  $FC Função: TLIS -Destruir valor
-*
-***********************************************************************/
-
-   void DestruirValor( void * pValor )
-   {
-
-      free( pValor ) ;
-
-   } /* Fim função: TLIS -Destruir valor */
-
 
 /***********************************************************************
 *

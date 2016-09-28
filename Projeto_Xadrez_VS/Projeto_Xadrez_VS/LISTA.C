@@ -96,7 +96,7 @@
 *  Fun��o: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista, void(*ExcluirValor) (void * pDado))
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista)
    {
 	  LIS_tppLista aux = NULL;
      
@@ -110,8 +110,6 @@
       LimparCabeca( aux ) ;
 
 	  strcpy(aux->idLista, idLista);
-
-	  aux->ExcluirValor = ExcluirValor;
 
 	  *pLista = aux;
 
@@ -519,14 +517,6 @@
    void LiberarElemento( LIS_tppLista   pLista ,
                          tpElemLista  * pElem   )
    {
-
-      /*if ( ( pLista->ExcluirValor != NULL )
-        && ( pElem->pValor != NULL        ))
-      {
-
-         pLista->ExcluirValor( pElem->pValor ) ;
-
-      } /* if */
 
       free( pElem ) ;
 
