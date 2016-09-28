@@ -231,7 +231,7 @@
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
-   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,
+   LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,
                                           void * pValor        )
       
    {
@@ -504,7 +504,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Liberar elemento da lista (ESTATICA)
+*  $FC Fun��o: LIS  -Liberar elemento da lista
 *
 *  $ED Descri��o da fun��o
 *     Elimina os espa�os apontados pelo valor do elemento e o
@@ -531,7 +531,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Criar o elemento (ESTATICA)
+*  $FC Fun��o: LIS  -Criar o elemento
 *
 ***********************************************************************/
 
@@ -560,7 +560,7 @@
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Limpar a cabe�a da lista (ESTATICA)
+*  $FC Fun��o: LIS  -Limpar a cabe�a da lista
 *
 ***********************************************************************/
 
