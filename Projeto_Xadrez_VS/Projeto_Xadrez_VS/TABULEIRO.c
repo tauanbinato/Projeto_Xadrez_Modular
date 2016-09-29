@@ -84,7 +84,7 @@ typedef struct TAB_tagCasa {
 *
 *  *************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz ) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz, TAB_ancoraCasa **ancora_casa ) {
 
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami");
@@ -102,9 +102,9 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_m
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
 			//Cria 8 colunas para cada linha
-			LIS_InserirNo(colunas_matriz, NULL);
+			LIS_InserirNo(colunas_matriz, ancora_casa);								// <- Digo que cada elemento da matriz aponta pra uma cabeça de casa
 			(*ancora_matriz)->num_de_colunas++;
-																				// Temos que apontar cada elemento para uma casa (ainda n temos casa)
+																				
 		}
 	} /* endFor */
 
