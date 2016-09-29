@@ -160,6 +160,7 @@
     <ClCompile Include="PECA.c" />
     <ClCompile Include="TABULEIRO.c" />
     <ClCompile Include="TESTLIS.C" />
+    <ClCompile Include="TESTTAB.C" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ArcaboucoTeste.lib" />

@@ -7,7 +7,7 @@
 *  Nome da base de software:    Arcabouço para a automaçãoo de testes de programas redigidos em C
 *  Arquivo da base de software: D:\AUTOTEST\PROJETOS\TABULEIRO.BSW
 *
-*  Projeto: INF 1301 / 1628 Automatiza��o dos testes de módulos C
+*  Projeto: INF 1301 / 1628 Automatizacao dos testes de módulos C
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: avs
 *
@@ -30,6 +30,12 @@
 #include "TABULEIRO.h"
 #undef LISTA_OWN
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor da cabeca (ancora) da matriz
+*
+***********************************************************************/
+
 typedef struct TAB_tagTabuleiro {
 
 	LIS_tppLista * pCabecaLista;
@@ -45,36 +51,71 @@ typedef struct TAB_tagTabuleiro {
 } TAB_ancoraTabuleiro;
 
 
-/********************************************************/
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor da cabeca (ancora) de uma casa
+*
+***********************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz ) {
+typedef struct TAB_tagAncoraCasa {
+
+	TAB_casaMatriz * pCasaMatriz;
+	/* Ponteiro para uma casa */
+
+} TAB_ancoraCasa;
+
+
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor de uma estrutura casa
+*
+***********************************************************************/
+
+typedef struct TAB_tagCasa {
+
+	LIS_tppLista * pListaAmeacantes;
+	LIS_tppLista * pListaAmeacados;
+
+} TAB_casaMatriz;
+
+
+/***************************************************************************
+*
+*  Funcao: LIS  &Criar Tabuleiro
+*
+*  *************************************************************************/
+
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz, TAB_ancoraCasa **ancora_casa ) {
 
 	//Cria as listas
-	LIS_CriarLista(caminho_matriz, "Lin");
+	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 	
-	//Preenche as linhas e colunas com vazios 'V'
+	//Preenche os valores das listas criadas.
 	
 	int numDoCaminho , numColunas;
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
-		//Cria 8 linhas
+		//Cria 8 caminhos (linhas)
 		LIS_InserirNo(caminho_matriz, colunas_matriz);
+		(*ancora_matriz)->num_de_linhas++;
 
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
 			//Cria 8 colunas para cada linha
-			LIS_InserirNo(colunas_matriz, NULL);                                    // Temos que apontar cada elemento para uma casa (ainda n temos casa)
+			LIS_InserirNo(colunas_matriz, ancora_casa);								// <- Digo que cada elemento da matriz aponta pra uma cabeça de casa
+			(*ancora_matriz)->num_de_colunas++;
+																				
 		}
-
 	} /* endFor */
 
-
 	//Linka a ancora com linha da matriz.
-	ancora_matriz = caminho_matriz;
+	(*ancora_matriz)->pCabecaLista = caminho_matriz;
 
 	return TAB_CondRetOK;
+
 }
+/* Fim funcao: LIS  &Criar tabuleiro */
 
 
 
