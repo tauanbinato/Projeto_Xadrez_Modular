@@ -185,7 +185,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
 
             CondRet = LIS_DestroiLista( vtListas[ inxLista ] ) ;
-			printf("\ndestruiu");
+
             vtListas[ inxLista ] = NULL ;
 
 			return TST_CompararInt(CondRetEsp, CondRet,
