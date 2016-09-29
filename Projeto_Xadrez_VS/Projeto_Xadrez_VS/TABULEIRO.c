@@ -7,7 +7,7 @@
 *  Nome da base de software:    Arcabouço para a automaçãoo de testes de programas redigidos em C
 *  Arquivo da base de software: D:\AUTOTEST\PROJETOS\TABULEIRO.BSW
 *
-*  Projeto: INF 1301 / 1628 Automatiza��o dos testes de módulos C
+*  Projeto: INF 1301 / 1628 Automatizacao dos testes de módulos C
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: avs
 *
