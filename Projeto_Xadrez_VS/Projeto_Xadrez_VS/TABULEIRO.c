@@ -30,17 +30,21 @@
 
 typedef struct TAB_tagTabuleiro {
 
-	LIS_tppLista * pLinha;
-	/* Ponteiro para a cabeça da linha */
-
-	LIS_tppLista * pColuna;
-	/* Ponteiro para a cabeça da coluna */
+	LIS_tppLista * pCabecaLista;
+	/* Ponteiro para a cabeça da lista que representa as linhas */
 
 	char idMatriz[5];
 	/*Identificação da matriz*/
 
+	int num_de_linhas;
+	/*Numero de linhas do tabuleiro(matriz)*/
+
+	int num_de_colunas;
+	/*Numero de colunas do tabuleiro(matriz)*/
+
 
 } TAB_ancoraTabuleiro;
+
 
 /********************************************************/
 
