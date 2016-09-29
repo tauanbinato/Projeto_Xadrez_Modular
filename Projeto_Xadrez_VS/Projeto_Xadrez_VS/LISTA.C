@@ -440,7 +440,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Criar o elemento (ESTATICA)
+*  $FC Funcao: LIS  -Criar o elemento (ESTATICA)
 *
 ***********************************************************************/
 
