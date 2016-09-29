@@ -1,0 +1,94 @@
+// Script:    TesteListaT2.script
+// Autor:     Arndt von Staa, Júlia Aleixo, Lucas Palma, Tauan Binato
+// Data:      27/set/2016
+// Propósito: Testar o módulo lista genérica duplamente encadeada para todas as suas funções e retornos possíveis
+
+== Inicializar valores
+=declararparm   lista0         int  0
+=declararparm   lista1         int  1
+=declararparm   lista2         int  2
+
+=declararparm   idList0        string  "casa"
+=declararparm   idList1        string  "king"
+
+=declararparm   chr0           char    'P'
+=declararparm   chr1           char    'L'
+=declararparm   chr2           char    'B'
+=declararparm   chr3           char    'F'
+
+
+=declararparm   OK	       int  0
+=declararparm   ListaVazia     int  2
+=declararparm   NaoExiste      int  3
+=declararparm   FimLista       int  4
+=declararparm   InicioLista    int  5
+=declararparm	FaltouMemoria  int  6
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+== RESET DO TESTE
+=resetteste
+
+== CRIAR LISTA 0                           
+=criarlista         lista0    idList0     OK
+
+== CRIAR LISTA 1                           
+=criarlista         lista1    idList1     OK
+
+== OBTER NO EM LISTA VAZIA
+=obterno            lista0    'P'         ListaVazia
+=recuperar
+
+== INSERIR NO0
+=inserirno          lista0    chr0        OK
+
+== INSERIR NO1
+=inserirno          lista0    chr1        OK
+
+== OBTER NO1
+=obterno            lista0    chr1         OK
+
+== OBTER NO1 ERRADO
+=obterno            lista0    chr2         OK
+=recuperar
+
+== AVANCAR ELEMENTO CORRENTE (JA NO FIM DA LISTA)
+=irprox             lista0                FimLista
+
+== VOLTAR ELEMENTO CORRENTE
+=irant              lista0                OK
+
+== VOLTAR ELEMENTO CORRENTE (JA NO INICIO DA LISTA)
+=irant              lista0                InicioLista
+
+== AVANCAR ELEMENTO CORRENTE
+=irprox             lista0                OK
+
+== ALTERAR NO CORRENTE
+=alterarnocorrente  lista0     chr2       OK
+
+== ALTERAR NO CORRENTE EM LISTA VAZIA
+=alterarnocorrente  lista1     chr3       ListaVazia
+
+== ALTERAR NO CORRENTE EM LISTA INEXISTENTE
+=alterarnocorrente  lista2     chr3       NaoExiste
+
+== OBTER NO1 APOS ALTERACOES
+=obterno            lista0     chr2         OK
+
+== EXCLUIR NO CORRENTE
+=excluirnocorrente  lista0
+
+== INSERIR NO1
+=inserirno          lista0    chr1        OK
+
+== DESTRUIR LISTA1
+=destroilista       lista1      OK
+
+== DESTRUIR LISTA1 INEXISTENTE E CONDRET ERRADA
+=destroilista       lista1      OK
+=recuperar
+
+== DESTRUIR LISTA1 INEXISTENTE
+=destroilista       lista1      NaoExiste

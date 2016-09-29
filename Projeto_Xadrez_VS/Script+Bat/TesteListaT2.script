@@ -1,0 +1,39 @@
+// Script:    TesteListaT2.script
+// Autor:     Arndt von Staa, Júlia Aleixo, Lucas Palma, Tauan Binato
+// Data:      27/set/2016
+// Propósito: Testar o módulo lista genérica duplamente encadeada para todas as suas funções e retornos possíveis
+
+== Inicializar valores
+=declararparm   lista0         int  0
+=declararparm   lista1         int  1
+
+=declararparm   idList0        string  "casa"
+=declararparm   idList1        string  "king"
+
+=declararparm   chr0           char    'P'
+
+=declararparm   OK	       int  0
+=declararparm   ListaVazia     int  2
+=declararparm   NaoExiste      int  3
+=declararparm   FimLista       int  4
+=declararparm   InicioLista    int  5
+=declararparm	FaltouMemoria  int  6
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+== Reset do teste
+=resetteste
+
+== Criar a lista 0                           
+=criarlista      lista0    idList0     OK  
+
+== Obter id lista 0
+=obteridlista    lista0    idList0
+
+== Inserir No0 na lista 0
+=inserirno       lista0    chr0        OK
+
+== Obter No0 na lista 0
+=obterno         lista0    'P'        OK
+

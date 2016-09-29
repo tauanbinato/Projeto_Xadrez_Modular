@@ -22,10 +22,51 @@
 #include   <memory.h>
 #include   <malloc.h>
 #include   <assert.h>
+#include   "lista.h"
 
 #define LISTA_OWN
 #include "TABULEIRO.h"
 #undef LISTA_OWN
+
+typedef struct TAB_tagTabuleiro {
+
+	LIS_tppLista * pLinha;
+	/* Ponteiro para a cabeça da linha */
+
+	LIS_tppLista * pColuna;
+	/* Ponteiro para a cabeça da coluna */
+
+	char idMatriz[5];
+	/*Identificação da matriz*/
+
+
+} TAB_ancoraTabuleiro;
+
+/********************************************************/
+
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna , TAB_ancoraTabuleiro **ancora_matriz , char * idMatriz) {
+
+	//Cria as listas
+	LIS_CriarLista(linha, "Lin");
+	LIS_CriarLista(coluna, "Colu");
+	
+	//Preenche as linhas e colunas com vazios 'V'
+	int numLinhasxColunas;
+	for ( numLinhasxColunas = 0; numLinhasxColunas < 8; numLinhasxColunas++)
+	{
+		LIS_InserirNo(linha, 'V');
+		LIS_InserirNo(coluna, 'V');
+	}
+
+	//Criando uma cabeça para essa matriz
+	strcpy((*ancora_matriz)->idMatriz, idMatriz);
+	(*ancora_matriz)->pLinha = linha;
+	(*ancora_matriz)->pColuna = coluna;
+
+	return TAB_CondRetOK;
+}
+
+
 
 // AREA DO TAUAN------------------
 TAB_tpCondRet inserirPeca()

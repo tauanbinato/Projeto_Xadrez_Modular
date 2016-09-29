@@ -60,7 +60,7 @@ typedef enum {
 } TAB_tpCondRet;
 
 /* 
-------FUNÇÕES POR TAUAN--------
+------FUNÇÕES NÃO PRONTAS DO TAUAN--------
 
 -Função InserirPeca – Receberá a coordenada linha-coluna, o identificador da peça a ser inserida e a sua cor.
  Crie os retornos necessários inclusive prevendo a colocação da peça em uma coordenada inexistente.
@@ -77,8 +77,9 @@ TAB_tpCondRet retirarPeca();
 TAB_tpCondRet obterPeca();
 
 
+
 /*
-------FUNÇÕES POR JULIA--------
+------FUNÇÕES NÃO PRONTAS DA JULIA--------
 
 -Função ObterListaAmeacantes – Receberá uma coordenada linha-coluna e retornará o ponteiro para a correspondente cabeça de lista.
  Não se esqueça de projetar uma forma de operar sobre esta lista no módulo de teste.
@@ -91,6 +92,39 @@ TAB_tpCondRet obterListaAmeacantes();
 TAB_tpCondRet obterListaAmeacados();
 TAB_tpCondRet destruirTabuleiro();
 
+
+/***********************************************************************
+*
+*  $FC Função: TAB  &Criar Tabuleiro
+*
+*  $ED Descrição da função
+*     Cria uma ancora que aponta para o inicio de uma lista e coluna de tamanho fixo
+*     Cria uma lista duplamente encadeada com um identificador para representar a linha de uma matriz	
+*	  Cria uma lista duplamente encadeada com um identificador para representar a coluna de uma matriz	
+*
+*  $EP Parâmetros
+*     linha         - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
+*					  a ser criada.
+*
+*	  coluna        - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
+*					  a ser criada.
+*
+*	  ancora_matriz - ponteiro de ponteiro para uma estrutura do tipo TAB_ancoraTabuleiro
+*
+*     idMatriz       - string de identificação da matriz
+*
+*
+*  $FV Valor retornado
+*     Se executou corretamente retorna a condição de retorno LIS_CondRetOK.
+*
+*     Se ocorreu algum erro, por exemplo falta de memória ou dados errados,
+*     LIS_CondRetFaltouMemoria.
+*
+*     Não será dada mais informação quanto ao problema ocorrido.
+*
+***********************************************************************/
+
+//TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna, TAB_ancoraTabuleiro **ancora_matriz, char * idMatriz);
 
 
 
