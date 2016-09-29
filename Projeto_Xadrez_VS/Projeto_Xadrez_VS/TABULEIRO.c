@@ -30,6 +30,12 @@
 #include "TABULEIRO.h"
 #undef LISTA_OWN
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor da cabeca (ancora) da matriz
+*
+***********************************************************************/
+
 typedef struct TAB_tagTabuleiro {
 
 	LIS_tppLista * pCabecaLista;
@@ -45,36 +51,70 @@ typedef struct TAB_tagTabuleiro {
 } TAB_ancoraTabuleiro;
 
 
-/********************************************************/
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor da cabeca (ancora) de uma casa
+*
+***********************************************************************/
+
+typedef struct TAB_tagAncoraCasa {
+
+	TAB_casaMatriz * pCasaMatriz;
+	/* Ponteiro para uma casa */
+
+} TAB_ancoraCasa;
+
+
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor de uma estrutura casa
+*
+***********************************************************************/
+
+typedef struct TAB_tagCasa {
+
+
+
+} TAB_casaMatriz;
+
+
+/***************************************************************************
+*
+*  Funcao: LIS  &Criar Tabuleiro
+*
+*  *************************************************************************/
 
 TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz ) {
 
 	//Cria as listas
-	LIS_CriarLista(caminho_matriz, "Lin");
+	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 	
-	//Preenche as linhas e colunas com vazios 'V'
+	//Preenche os valores das listas criadas.
 	
 	int numDoCaminho , numColunas;
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
-		//Cria 8 linhas
+		//Cria 8 caminhos (linhas)
 		LIS_InserirNo(caminho_matriz, colunas_matriz);
+		(*ancora_matriz)->num_de_linhas++;
 
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
 			//Cria 8 colunas para cada linha
-			LIS_InserirNo(colunas_matriz, NULL);                                    // Temos que apontar cada elemento para uma casa (ainda n temos casa)
+			LIS_InserirNo(colunas_matriz, NULL);
+			(*ancora_matriz)->num_de_colunas++;
+																				// Temos que apontar cada elemento para uma casa (ainda n temos casa)
 		}
-
 	} /* endFor */
 
-
 	//Linka a ancora com linha da matriz.
-	ancora_matriz = caminho_matriz;
+	(*ancora_matriz)->pCabecaLista = caminho_matriz;
 
 	return TAB_CondRetOK;
+
 }
+/* Fim funcao: LIS  &Criar tabuleiro */
 
 
 
