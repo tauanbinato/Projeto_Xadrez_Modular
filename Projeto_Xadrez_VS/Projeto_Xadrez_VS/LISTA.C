@@ -134,8 +134,6 @@
 
       LIS_EsvaziarLista( pLista ) ;
 
-      free( pLista ) ;
-
 	  return LIS_CondRetOK;
 
    } /* Fim fun��o: LIS  &Destruir lista */

@@ -145,8 +145,8 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 
 			}
 
-            return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
-               "Erro em ponteiro de nova lista."  ) ;
+			return TST_CompararInt(CondRetEsp, CondRet,
+				"Condicao de retorno errada ao criar lista");
 
          } /* fim ativa: Testar CriarLista */
 
@@ -185,6 +185,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
 
             CondRet = LIS_DestroiLista( vtListas[ inxLista ] ) ;
+			printf("\ndestruiu");
             vtListas[ inxLista ] = NULL ;
 
 			return TST_CompararInt(CondRetEsp, CondRet,
@@ -255,8 +256,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             numLidos = LER_LerParametros( "ici" ,
                        &inxLista , &CharDado , &CondRetEsp ) ;
 
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+            if ( ( numLidos != 3 ))
             {
                return TST_CondRetParm ;
             } /* if */
