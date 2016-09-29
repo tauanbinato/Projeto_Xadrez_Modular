@@ -24,6 +24,8 @@
 #include   <assert.h>
 #include   "lista.h"
 
+#define	   tamanho_matriz	8
+
 #define LISTA_OWN
 #include "TABULEIRO.h"
 #undef LISTA_OWN
@@ -32,9 +34,6 @@ typedef struct TAB_tagTabuleiro {
 
 	LIS_tppLista * pCabecaLista;
 	/* Ponteiro para a cabeça da lista que representa as linhas */
-
-	char idMatriz[5];
-	/*Identificação da matriz*/
 
 	int num_de_linhas;
 	/*Numero de linhas do tabuleiro(matriz)*/
@@ -48,24 +47,31 @@ typedef struct TAB_tagTabuleiro {
 
 /********************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna , TAB_ancoraTabuleiro **ancora_matriz , char * idMatriz) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz ) {
 
 	//Cria as listas
-	LIS_CriarLista(linha, "Lin");
-	LIS_CriarLista(coluna, "Colu");
+	LIS_CriarLista(caminho_matriz, "Lin");
+	LIS_CriarLista(colunas_matriz, "Colu");
 	
 	//Preenche as linhas e colunas com vazios 'V'
-	int numLinhasxColunas;
-	for ( numLinhasxColunas = 0; numLinhasxColunas < 8; numLinhasxColunas++)
+	
+	int numDoCaminho , numColunas;
+	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
-		LIS_InserirNo(linha, 'V');
-		LIS_InserirNo(coluna, 'V');
-	}
+		//Cria 8 linhas
+		LIS_InserirNo(caminho_matriz, colunas_matriz);
 
-	//Criando uma cabeça para essa matriz
-	strcpy((*ancora_matriz)->idMatriz, idMatriz);
-	(*ancora_matriz)->pLinha = linha;
-	(*ancora_matriz)->pColuna = coluna;
+		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
+		{
+			//Cria 8 colunas para cada linha
+			LIS_InserirNo(colunas_matriz, NULL);                                    // Temos que apontar cada elemento para uma casa (ainda n temos casa)
+		}
+
+	} /* endFor */
+
+
+	//Linka a ancora com linha da matriz.
+	ancora_matriz = caminho_matriz;
 
 	return TAB_CondRetOK;
 }
