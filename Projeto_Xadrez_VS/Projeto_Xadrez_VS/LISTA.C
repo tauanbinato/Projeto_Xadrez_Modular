@@ -181,56 +181,6 @@
 
 /***************************************************************************
 *
-*  Fun��o: LIS  &Inserir elemento antes
-*  ****/
-
-   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista ,
-                                           void * pValor        )
-   {
-
-      tpElemLista * pElem ;
-
-      #ifdef _DEBUG
-         assert( pLista != NULL ) ;
-      #endif
-
-      /* Criar elemento a inerir antes */
-
-         pElem = CriarElemento( pLista , pValor ) ;
-         if ( pElem == NULL )
-         {
-            return LIS_CondRetFaltouMemoria ;
-         } /* if */
-
-      /* Encadear o elemento antes do elemento corrente */
-
-         if ( pLista->pElemCorr == NULL )
-         {
-            pLista->pOrigemLista = pElem ;
-            pLista->pFimLista = pElem ;
-         } else
-         {
-            if ( pLista->pElemCorr->pAnt != NULL )
-            {
-               pElem->pAnt  = pLista->pElemCorr->pAnt ;
-               pLista->pElemCorr->pAnt->pProx = pElem ;
-            } else
-            {
-               pLista->pOrigemLista = pElem ;
-            } /* if */
-
-            pElem->pProx = pLista->pElemCorr ;
-            pLista->pElemCorr->pAnt = pElem ;
-         } /* if */
-
-         pLista->pElemCorr = pElem ;
-
-         return LIS_CondRetOK ;
-
-   } /* Fim fun��o: LIS  &Inserir elemento antes */
-
-/***************************************************************************
-*
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
@@ -289,7 +239,7 @@
 *  Fun��o: LIS  &Excluir elemento
 *  ****/
 
-   LIS_tpCondRet LIS_ExcluirElemento( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_ExcluirNoCorrente( LIS_tppLista pLista )
    {
 
       tpElemLista * pElem ;
@@ -355,38 +305,6 @@
       return LIS_CondRetOK ;
 
    } /* Fim fun��o: LIS  &Obter refer�ncia para o valor contido no elemento */
-
-/***************************************************************************
-*
-*  Fun��o: LIS  &Ir para o elemento inicial
-*  ****/
-
-   void IrInicioLista( LIS_tppLista pLista )
-   {
-
-      #ifdef _DEBUG
-         assert( pLista != NULL ) ;
-      #endif
-
-      pLista->pElemCorr = pLista->pOrigemLista ;
-
-   } /* Fim fun��o: LIS  &Ir para o elemento inicial */
-
-/***************************************************************************
-*
-*  Fun��o: LIS  &Ir para o elemento final
-*  ****/
-
-   void IrFinalLista( LIS_tppLista pLista )
-   {
-
-      #ifdef _DEBUG
-         assert( pLista != NULL ) ;
-      #endif
-
-      pLista->pElemCorr = pLista->pFimLista ;
-
-   } /* Fim fun��o: LIS  &Ir para o elemento final */
 
 /***************************************************************************
 *
@@ -500,45 +418,6 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 	return LIS_CondRetOK;
 
 } /* Fim fun��o: LIS  &Avan�ar elemento */
-
-/***************************************************************************
-*
-*  Fun��o: LIS  &Procurar elemento contendo valor
-*  ****/
-
-   /*LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
-                                    void * pValor        )
-   {
-
-      tpElemLista * pElem ;
-
-      #ifdef _DEBUG
-         assert( pLista  != NULL ) ;
-      #endif
-
-      if ( pLista->pElemCorr == NULL )
-      {
-         return LIS_CondRetListaVazia ;
-      } /* if */
-
-      /*for ( pElem  = pLista->pElemCorr ;
-            pElem != NULL ;
-            pElem  = pElem->pProx )
-      {
-         if ( pElem->pValor == pValor )
-         {
-            pLista->pElemCorr = pElem ;
-            return LIS_CondRetOK ;
-         } /* if */
-     /* } /* for */
-
-     /* return LIS_CondRetNaoAchou ;
-
-   } /* Fim fun��o: LIS  &Procurar elemento contendo valor */
-
-
-/*****  C�digo das fun��es encapsuladas no m�dulo  *****/
-
 
 /***********************************************************************
 *

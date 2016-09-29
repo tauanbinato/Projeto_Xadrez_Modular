@@ -15,11 +15,12 @@
 *  Autores: avs
 *
 *  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     4       avs   01/fev/2006 criar linguagem script simbólica
-*     3       avs   08/dez/2004 uniformização dos exemplos
-*     2       avs   07/jul/2003 unificação de todos os módulos em um só projeto
-*     1       avs   16/abr/2003 início desenvolvimento
+*     Versão  Autor        Data          Observações
+*     5       lp,ja, tb 28/nov/2016   alteração de funções e edição do scrpit de teste
+*     4       avs       01/fev/2006   criar linguagem script simbólica
+*     3       avs       08/dez/2004	  uniformização dos exemplos
+*     2       avs       07/jul/2003	  unificação de todos os módulos em um só projeto
+*     1       avs       16/abr/2003	  início desenvolvimento
 *
 *  $ED Descrição do módulo
 *     Implementa listas genéricas duplamente encadeadas.
@@ -113,10 +114,6 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 *     idLista       - string de identificação da lista
 *
-*     ExcluirValor  - ponteiro para a função que processa a
-*                     exclusão do valor referenciado pelo elemento
-*                     a ser excluído.
-*                     Ver descrição do módulo.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna a condição de retorno LIS_CondRetOK.
@@ -139,10 +136,10 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *     O parâmetro ponteiro para a lista não é modificado.
 *     Se ocorrer algum erro durante a destruição, a lista resultará
 *     estruturalmente incorreta.
-*     OBS. não existe previsão para possíveis falhas de execução.
 *
 *  $FV Valor retornado
-*     LIS_CondRetOK    - destruiu sem problemas
+*     LIS_CondRetOK                - destruiu sem problemas
+*     LIS_CondRetListaNaoExiste    - lista nao existe
 *
 ***********************************************************************/
 
@@ -179,30 +176,7 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Inserir elemento antes
-*
-*  $ED Descrição da função
-*     Insere novo elemento antes do elemento corrente.
-*     Caso a lista esteja vazia, insere o primeiro elemento da lista.
-*
-*  $EP Parâmetros
-*     pLista - ponteiro para a lista onde deve ser inserido o elemento
-*     pValor - ponteiro para o valor do novo elemento
-*              Pode ser NULL
-*
-*  $FV Valor retornado
-*     LIS_CondRetOK
-*     LIS_CondRetFaltouMemoria
-*
-***********************************************************************/
-
-   LIS_tpCondRet LIS_InserirElementoAntes( LIS_tppLista pLista ,
-                                           void * pValor        ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: LIS  &Inserir elemento após
+*  $FC Função: LIS  &Inserir No
 *
 *  $ED Descrição da função
 *     Insere novo elemento apás o elemento corrente.
@@ -229,10 +203,10 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Excluir elemento
+*  $FC Função: LIS  &Excluir no corrente
 *
 *  $ED Descrição da função
-*     Exclui o elemento corrente da lista dada.
+*     Exclui o elemento do no corrente da lista dada.
 *     Se existir o elemento aa esquerda do corrente será o novo corrente.
 *     Se não existir e existir o elemento à direita, este se tornará corrente.
 *     Se este também não existir a lista tornou-se vazia.
@@ -246,23 +220,23 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *
 ***********************************************************************/
 
-   LIS_tpCondRet LIS_ExcluirElemento( LIS_tppLista pLista ) ;
+   LIS_tpCondRet LIS_ExcluirNoCorrente( LIS_tppLista pLista ) ;
 
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Obter referência para o valor contido no elemento
+*  $FC Função: LIS  &Obter referência para o caracter contido no elemento
 *
 *  $ED Descrição da função
-*     Obtem a referência para o valor contido no elemento corrente da lista
+*     Obtem a referência para o caracter contido no elemento corrente da lista
 *
 *  $EP Parâmetros
-*     pLista - ponteiro para a lista de onde se quer o valor
+*     pLista     - ponteiro para a lista de onde se quer o valor
+*     CharObtido - referência para o char a ser passado pela função
 *
 *  $FV Valor retornado
-*     não NULL - se o elemento corrente existe
-*     NULL     - se a lista estiver vazia
-*                Pode retornar NULL se o valor inserido no elemento for NULL.
+*     LIS_CondRetOK             - se o elemento corrente existe
+*     LIS_CondRetListaVazia     - se a lista estiver vazia
 *
 ***********************************************************************/
 
@@ -271,56 +245,17 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Ir para o elemento inicial
+*  $FC Função: LIS  &AvancarElementoCorrente
 *
 *  $ED Descrição da função
-*     Torna corrente o primeiro elemento da lista.
-*     Faz nada se a lista está vazia.
-*
-*  $EP Parâmetros
-*     pLista - ponteiro para a lista a manipular
-*
-***********************************************************************/
-
-   void IrInicioLista( LIS_tppLista pLista ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: LIS  &Ir para o elemento final
-*
-*  $ED Descrição da função
-*     Torna corrente o elemento final da lista.
-*     Faz nada se a lista está vazia.
-*
-*  $EP Parâmetros
-*     pLista - ponteiro para a lista a manipular
-*
-***********************************************************************/
-
-   void IrFinalLista( LIS_tppLista pLista ) ;
-
-
-/***********************************************************************
-*
-*  $FC Função: LIS  &Avançar elemento
-*
-*  $ED Descrição da função
-*     Avança o elemento corrente numElem elementos na lista
-*     Se numElem for positivo avança em direção ao final
-*     Se numElem for negativo avança em direção ao início
-*     numElem pode ser maior do que o númro de elementos existentes na
-*               direção desejada
-*     Se numElem for zero somente verifica se a lista está vazia
+*     Avança o elemento corrente um elemento na lista
 *
 *  $EP Parâmetros
 *     pLista  - ponteiro para a lista a ser manipulada
-*     numElem - o número de elementos a andar
 *
 *  $FV Valor retornado
-*     CondRetOK         - se numElem elementos tiverem sido andados
-*     CondRetFimLista   - se encontrou o fim da lista antes de andar numElem
-*                         elementos
+*     CondRetOK         - se um elemento tiver sido andado
+*     CondRetFimLista   - se encontrou o fim da lista antes de andar um elemento
 *     CondRetListaVazia - se a lista está vazia
 *
 ***********************************************************************/
@@ -330,53 +265,18 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Procurar elemento contendo valor
+*  $FC Função: LIS  &Voltar Elemento Corrente
 *
 *  $ED Descrição da função
-*     Procura o elemento que referencia o valor dado.
-*     A função compara ponteiro e não conteúdo apontado.
-*
-*  $EP Parâmetros
-*     pLista  - ponteiro para a lista onde procura
-*     pValor  - ponteiro para o valor procurado
-*               Pode ser NULL
-*
-*  $FV Valor retornado
-*     LIS_CondRetOK  - se encontrou.
-*                      O elemento corrente é o primeiro elemento do
-*                      elemento corrente inclusive para o fim da lista
-*                      e que contém o ponteiro procurado
-*
-*     LIS_CondRetNaoEncontrou - se o ponteiro não foi encontrado
-*                      O elemento corrente continua o mesmo
-*     LIS_CondRetListaVazia   - se a lista estiver vazia
-*
-***********************************************************************/
-
-   LIS_tpCondRet LIS_ProcurarValor( LIS_tppLista pLista ,
-                                    void * pValor        ) ;
-
-/***********************************************************************
-*
-*  $FC Função: LIS  &Avançar elemento
-*
-*  $ED Descrição da função
-*     Avança o elemento corrente numElem elementos na lista
-*     Se numElem for positivo avança em direção ao final
-*     Se numElem for negativo avança em direção ao início
-*     numElem pode ser maior do que o númro de elementos existentes na
-*               direção desejada
-*     Se numElem for zero somente verifica se a lista está vazia
+*     Volta o elemento corrente um elemento na lista
 *
 *  $EP Parâmetros
 *     pLista  - ponteiro para a lista a ser manipulada
-*     numElem - o número de elementos a andar
 *
 *  $FV Valor retornado
-*     CondRetOK         - se numElem elementos tiverem sido andados
-*     CondRetFimLista   - se encontrou o fim da lista antes de andar numElem
-*                         elementos
-*     CondRetListaVazia - se a lista está vazia
+*     CondRetOK            - se um elemento tiver sido voltado
+*     CondRetInicioLista   - se encontrou o inicio da lista antes de voltar um elemento
+*     CondRetListaVazia    - se a lista está vazia
 *
 ***********************************************************************/
 
@@ -384,25 +284,20 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 
 /***********************************************************************
 *
-*  $FC Função: LIS  &Avançar elemento
+*  $FC Função: LIS  &Alterar no corrente
 *
 *  $ED Descrição da função
-*     Avança o elemento corrente numElem elementos na lista
-*     Se numElem for positivo avança em direção ao final
-*     Se numElem for negativo avança em direção ao início
-*     numElem pode ser maior do que o númro de elementos existentes na
-*               direção desejada
-*     Se numElem for zero somente verifica se a lista está vazia
+*     Altera o elemento o caracter contido no elemento corrente
+*	  para o fornecido na função
 *
 *  $EP Parâmetros
-*     pLista  - ponteiro para a lista a ser manipulada
-*     numElem - o número de elementos a andar
+*     pLista   - ponteiro para a lista a ser manipulada
+*     CharDado - caracter fornecido
 *
 *  $FV Valor retornado
-*     CondRetOK         - se numElem elementos tiverem sido andados
-*     CondRetFimLista   - se encontrou o fim da lista antes de andar numElem
-*                         elementos
-*     CondRetListaVazia - se a lista está vazia
+*     CondRetOK               - se o caracter for alterado com sucesso
+*     CondRetListaNaoExiste   - se a lista não existe
+*     CondRetListaVazia       - se a lista está vazia
 *
 ***********************************************************************/
 
