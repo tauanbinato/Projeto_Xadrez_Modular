@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteLerParametros.comp
 
    Nome do Construto:           TesteLerParametros
-   Diretório base:              C:\Users\user\Desktop\Projeto_Xadrez_Modular\Arcabouco\arcabouc\composicao
+   Diretório base:              C:\Users\Julia\Desktop\Projeto_Xadrez_Modular\Arcabouco\arcabouc\composicao
 
    Arquivo composição:          TesteLerParametros.comp
    Arquivo plataforma:          gmake.parm

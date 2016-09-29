@@ -19,7 +19,6 @@
 *     1       avs   16/abr/2003 in�cio desenvolvimento
 *
 ***************************************************************************/
-
 #include   <stdio.h>
 #include   <string.h>
 #include   <memory.h>
@@ -29,6 +28,7 @@
 #define LISTA_OWN
 #include "LISTA.h"
 #undef LISTA_OWN
+
 
 /***********************************************************************
 *
