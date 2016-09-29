@@ -73,7 +73,8 @@ typedef struct TAB_tagAncoraCasa {
 
 typedef struct TAB_tagCasa {
 
-
+	LIS_tppLista * pListaAmeacantes;
+	LIS_tppLista * pListaAmeacados;
 
 } TAB_casaMatriz;
 

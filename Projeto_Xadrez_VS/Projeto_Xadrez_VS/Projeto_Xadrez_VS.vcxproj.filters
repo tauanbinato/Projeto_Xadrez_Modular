@@ -47,6 +47,9 @@
     <ClCompile Include="TESTLIS.C">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TESTTAB.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="ArcaboucoTeste.lib">
