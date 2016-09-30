@@ -50,6 +50,19 @@ typedef struct TAB_tagTabuleiro {
 
 } TAB_ancoraTabuleiro;
 
+/***********************************************************************
+*
+*  $TC Tipo de dados: TAB Descritor de uma estrutura casa
+*
+***********************************************************************/
+
+typedef struct TAB_tagCasa {
+
+	LIS_tppLista * pListaAmeacantes;
+	LIS_tppLista * pListaAmeacados;
+
+} TAB_casaMatriz;
+
 
 /***********************************************************************
 *
@@ -65,19 +78,11 @@ typedef struct TAB_tagAncoraCasa {
 } TAB_ancoraCasa;
 
 
-/***********************************************************************
-*
-*  $TC Tipo de dados: TAB Descritor de uma estrutura casa
-*
-***********************************************************************/
 
-typedef struct TAB_tagCasa {
 
-	LIS_tppLista * pListaAmeacantes;
-	LIS_tppLista * pListaAmeacados;
 
-} TAB_casaMatriz;
-
+TAB_ancoraTabuleiro **ancora_matriz;
+TAB_ancoraCasa **ancora_casa;
 
 /***************************************************************************
 *
@@ -85,7 +90,7 @@ typedef struct TAB_tagCasa {
 *
 *  *************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz,  TAB_ancoraTabuleiro **ancora_matriz, TAB_ancoraCasa **ancora_casa ) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz) {
 
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami");

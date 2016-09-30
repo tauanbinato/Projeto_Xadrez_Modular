@@ -32,8 +32,12 @@
 #include    "LerParm.h"
 
 #include    "Lista.h"
+#include	"Tabuleiro.h"
 
 
+/**************************COMANDOS SCRIPT**************************/
+
+static const char CRIAR_TABULEIRO_CMD	  [ ] = "=criartabuleiro"		;
 static const char RESET_LISTA_CMD         [ ] = "=resetteste"           ;
 static const char CRIAR_LISTA_CMD         [ ] = "=criarlista"           ;
 static const char DESTROI_LISTA_CMD       [ ] = "=destroilista"         ;
@@ -45,6 +49,7 @@ static const char VOLTAR_ELEM_CMD         [ ] = "=irant"                ;
 static const char OBTER_ID_LISTA_CMD      [ ] = "=obteridlista"         ;
 static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 
+/************************FIM COMANDOS SCRIPT************************/
 
 
 #define TRUE  1
@@ -57,6 +62,7 @@ static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 #define DIM_VALOR     100
 
 LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
+LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
 /***** Protótipos das funções encapuladas no módulo *****/
 
@@ -74,38 +80,37 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 *
 *     Comandos disponíveis:
 *
-*     =resetteste
-*           - anula o vetor de listas. Provoca vazamento de memória
-*     =criarlista                   inxLista  idLista   CondRetEsp
+*     =resetteste                   - anula o vetor de listas. Provoca vazamento de memória
+*     =criarlista                   inxLista  idLista      CondRetEsp
 *     =obteridlista                 inxLista  idLista
 *     =excluirnocorrente            inxLista
 *     =irprox						inxLista  CondRetEsp
 *     =irant						inxLista  CondRetEsp
-*     =alterarnocorrente			inxLista  char      CondRetEsp
+*     =alterarnocorrente			inxLista  char         CondRetEsp
 *     =destroilista                 inxLista  CondRetEsp
-*     ==inserirno                   inxLista  char      CondRetEsp
-*     =obterno                      inxLista  char      CondRetEsp
+*     ==inserirno                   inxLista  char         CondRetEsp
+*     =obterno                      inxLista  char         CondRetEsp
 *     =excluirelem                  inxLista  CondRetEsp
+*	  =criartabuleiro				inxLista  inxLista_2   CondRetEsp
 *
 ***********************************************************************/
 
    TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
    {
 
-      int inxLista  = -1 ,
-          numLidos   = -1 ,
-          CondRetEsp = -1  ;
+	   /*Inteiros*/
+	   int inxLista = -1,
+		   inxLista_2 = -1,
+		   numLidos = -1,
+		   CondRetEsp = -1,
+		   numElem = -1,
+		   ValEsp = -1,
+		   i;
 
       TST_tpCondRet CondRet ;
 
       char   StringDado[  DIM_VALOR ], CharDado, CharObtido ;
 	  char* pDado;
-
-      int ValEsp = -1 ;
-
-      int i ;
-
-      int numElem = -1 ;
 
       StringDado[ 0 ] = 0 ;
 
@@ -122,6 +127,34 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
             return TST_CondRetOK ;
 
          } /* fim ativa: Efetuar reset de teste de lista */
+
+
+		   /* Testar CriarTabuleiro */
+
+		 if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
+		 {
+
+			 numLidos = LER_LerParametros("iii",
+				 &inxLista, &inxLista_2, &CondRetEsp);
+
+			 if ((numLidos != 3)
+				 || (!ValidarInxLista(inxLista, VAZIO)) || (!ValidarInxLista(inxLista_2, VAZIO)))
+			 {
+				 return TST_CondRetParm;
+			 } /* if */
+
+			 CondRet = cria_tabuleiro(vtListas[inxLista], vtListas_2[inxLista_2]);
+
+			 if (CondRet == 6) {
+
+				 return TST_CondRetMemoria;
+
+			 }
+
+			 return TST_CompararInt(CondRetEsp, CondRet,
+				 "Condicao de retorno errada ao criar tabuleiro");
+
+		 } /* fim ativa: Testar CriarTabuleiro */
 
       /* Testar CriarLista */
 

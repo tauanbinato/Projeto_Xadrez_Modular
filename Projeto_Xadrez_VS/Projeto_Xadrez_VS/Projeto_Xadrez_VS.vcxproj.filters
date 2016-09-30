@@ -44,10 +44,7 @@
     <ClCompile Include="LISTA.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TESTLIS.C">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TESTTAB.C">
+    <ClCompile Include="TESTJOG.C">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
