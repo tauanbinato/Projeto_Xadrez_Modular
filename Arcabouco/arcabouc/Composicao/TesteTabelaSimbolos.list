@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteTabelaSimbolos.comp
 
    Nome do Construto:           TesteTabelaSimbolos
-   Diretório base:              C:\Users\user\Desktop\Projeto_Xadrez_Modular\Arcabouco\arcabouc\composicao
+   Diretório base:              C:\Users\Julia\Desktop\Projeto_Xadrez_Modular\Arcabouco\arcabouc\composicao
 
    Arquivo composição:          TesteTabelaSimbolos.comp
    Arquivo plataforma:          gmake.parm

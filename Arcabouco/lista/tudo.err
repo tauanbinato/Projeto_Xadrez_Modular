@@ -1,0 +1,17 @@
+TestLis.c
+.\TestLis.c(22): warning C4005: '_CRT_SECURE_NO_DEPRECATE': macro redefinition
+.\TestLis.c(22): note: command-line arguments:  see previous definition of '_CRT_SECURE_NO_DEPRECATE'
+.\TestLis.c(143): warning C4047: 'function': 'LIS_tppLista **' differs in levels of indirection from 'LIS_tppLista *'
+.\TestLis.c(143): warning C4024: 'LIS_CriarLista': different types for formal and actual parameter 1
+Lista.c
+.\Lista.c(116): warning C4047: '=': 'LIS_tppLista *' differs in levels of indirection from 'LIS_tppLista'
+Microsoft (R) Incremental Linker Version 14.00.24215.1
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:TesteLista.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+TestLis.obj Lista.obj 
+ArcaboucoTeste.lib 
+LINK : fatal error LNK1561: entry point must be defined
+

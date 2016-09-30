@@ -96,7 +96,7 @@
 *  Fun��o: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista)
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista)
    {
 	  LIS_tppLista aux = NULL;
      
@@ -111,7 +111,7 @@
 
 	  strcpy(aux->idLista, idLista);
 
-	  *pLista = aux;
+	  pLista = aux;
 
       return LIS_CondRetOK ;
 

@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteLista.comp
 
    Nome do Construto:           TesteLista
-   Diretório base:              D:\AutoTest\Lista
+   Diretório base:              C:\Users\Julia\Desktop\Projeto_Xadrez_Modular\Arcabouco\lista
 
    Arquivo composição:          TesteLista.comp
    Arquivo plataforma:          gmake.parm
@@ -31,10 +31,10 @@ Estatísticas do construto
       TestLis.c
 
    Estatísticas do arquivo: LISTA.h
-      Total linhas:             346
-      Linhas de código:          35
-      Linhas de comentário:     262
-      Linhas em branco:          49
+      Total linhas:             365
+      Linhas de código:          36
+      Linhas de comentário:     279
+      Linhas em branco:          50
    Arquivos em que é incluído
       Lista.c
 
@@ -47,18 +47,18 @@ Estatísticas do construto
       TestLis.c
 
    Estatísticas do arquivo: Lista.c
-      Total linhas:             560
-      Linhas de código:         288
-      Linhas de comentário:     136
-      Linhas em branco:         154
+      Total linhas:             578
+      Linhas de código:         270
+      Linhas de comentário:     169
+      Linhas em branco:         157
    Arquivos de inclusão de que necessita
       LISTA.h
 
    Estatísticas do arquivo: Lista.h
-      Total linhas:             346
-      Linhas de código:          35
-      Linhas de comentário:     262
-      Linhas em branco:          49
+      Total linhas:             365
+      Linhas de código:          36
+      Linhas de comentário:     279
+      Linhas em branco:          50
    Arquivos em que é incluído
       TestLis.c
 
@@ -72,10 +72,10 @@ Estatísticas do construto
       TestLis.c
 
    Estatísticas do arquivo: TestLis.c
-      Total linhas:             426
-      Linhas de código:         231
-      Linhas de comentário:      83
-      Linhas em branco:         126
+      Total linhas:             457
+      Linhas de código:         248
+      Linhas de comentário:      86
+      Linhas em branco:         139
    Arquivos de inclusão de que necessita
       Generico.h
       LerParm.h
@@ -99,24 +99,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      1924
-         Linhas de código:           188
-         Linhas de comentário:      1469
-         Linhas em branco:           267
+         Total linhas do tipo:      1962
+         Linhas de código:           190
+         Linhas de comentário:      1503
+         Linhas em branco:           269
          Arquivos deste tipo:          5
 
   Tipo: c        Path: .
-         Total linhas do tipo:       986
-         Linhas de código:           519
-         Linhas de comentário:       219
-         Linhas em branco:           280
+         Total linhas do tipo:      1035
+         Linhas de código:           518
+         Linhas de comentário:       255
+         Linhas em branco:           296
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteLista
 
-   Total linhas:              2910
-   Linhas de código:           707
-   Linhas de comentário:      1688
-   Linhas em branco:           547
+   Total linhas:              2997
+   Linhas de código:           708
+   Linhas de comentário:      1758
+   Linhas em branco:           565
    Arquivos processados:         7
 

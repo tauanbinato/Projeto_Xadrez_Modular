@@ -19,7 +19,6 @@
 *     1       avs   16/abr/2003 in�cio desenvolvimento
 *
 ***************************************************************************/
-
 #include   <stdio.h>
 #include   <string.h>
 #include   <memory.h>
@@ -29,6 +28,7 @@
 #define LISTA_OWN
 #include "LISTA.h"
 #undef LISTA_OWN
+
 
 /***********************************************************************
 *
@@ -231,7 +231,7 @@
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
-   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,
+   LIS_tpCondRet LIS_InserirElementoApos( LIS_tppLista pLista ,
                                           void * pValor        )
       
    {
@@ -506,7 +506,7 @@ LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Liberar elemento da lista (ESTATICA)
+*  $FC Fun��o: LIS  -Liberar elemento da lista
 *
 *  $ED Descri��o da fun��o
 *     Elimina os espa�os apontados pelo valor do elemento e o
@@ -533,7 +533,7 @@ LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Criar o elemento (ESTATICA)
+*  $FC Fun��o: LIS  -Criar o elemento
 *
 ***********************************************************************/
 
@@ -562,7 +562,7 @@ LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
 
 /***********************************************************************
 *
-*  $FC Fun��o: LIS  -Limpar a cabe�a da lista (ESTATICA)
+*  $FC Fun��o: LIS  -Limpar a cabe�a da lista
 *
 ***********************************************************************/
 
