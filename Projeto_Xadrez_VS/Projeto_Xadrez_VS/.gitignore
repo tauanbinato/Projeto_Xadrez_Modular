@@ -273,7 +273,7 @@ ModelManifest.xml
 *.swp
 *.swo
 
-lib
+
 bin
 obj
 headers
