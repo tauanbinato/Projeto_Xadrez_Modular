@@ -52,7 +52,7 @@
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: LIS Descritor da cabe�a de lista
+*  $TC Tipo de dados: LIS Descritor da cabeca de lista
 *
 *
 ***********************************************************************/
@@ -79,7 +79,7 @@
 
    } LIS_tpLista ;
 
-/***** Prot�tipos das fun��es encapuladas no m�dulo *****/
+/***** Prototipos das fun��es encapuladas no m�dulo *****/
 
    static void LiberarElemento( LIS_tppLista   pLista ,
                                 tpElemLista  * pElem   ) ;
@@ -93,7 +93,7 @@
 
 /***************************************************************************
 *
-*  Fun��o: LIS  &Criar lista
+*  Funcao: LIS  &Criar lista
 *  ****/
 
    LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista)
@@ -119,7 +119,7 @@
 
 /***************************************************************************
 *
-*  Fun��o: LIS  &Destruir lista
+*  Funcao: LIS  &Destruir lista
 *  ****/
 
    LIS_tpCondRet LIS_DestroiLista( LIS_tppLista pLista )
@@ -140,7 +140,7 @@
 
 /***************************************************************************
 *
-*  Fun��o: LIS  &ObeterId
+*  Funcao: LIS  &ObeterId
 *  ****/
 
    char* LIS_ObterId(LIS_tppLista pLista) {
@@ -152,7 +152,7 @@
 /***************************************************************************
 
 *
-*  Fun��o: LIS  &Esvaziar lista
+*  Funcao: LIS  &Esvaziar lista
 *  ****/
 
    void LIS_EsvaziarLista( LIS_tppLista pLista )
