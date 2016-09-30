@@ -218,11 +218,11 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetParm ;
             } /* if */
 
-            CondRet = LIS_DestroiLista( vtListas[ inxLista ] ) ;
+            CondRet_LIS = LIS_DestroiLista( vtListas[ inxLista ] ) ;
 
             vtListas[ inxLista ] = NULL ;
 
-			return TST_CompararInt(CondRetEsp, CondRet,
+			return TST_CompararInt(CondRetEsp, CondRet_LIS,
 				"Condicao de retorno errada ao inserir antes.");
 
          } /* fim ativa: Testar Destruir lista */
