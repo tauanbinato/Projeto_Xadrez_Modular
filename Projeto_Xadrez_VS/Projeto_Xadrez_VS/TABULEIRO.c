@@ -92,13 +92,14 @@ TAB_ancoraCasa **ancora_casa;
 
 TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz) {
 
+	int numDoCaminho , numColunas;
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 	
 	//Preenche os valores das listas criadas.
 	
-	int numDoCaminho , numColunas;
+	
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
 		//Cria 8 caminhos (linhas)
