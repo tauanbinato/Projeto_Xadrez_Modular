@@ -131,7 +131,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
 		   /* Testar CriarTabuleiro */
 
-		 if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
+		 else if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
 		 {
 
 			 numLidos = LER_LerParametros("iii",
