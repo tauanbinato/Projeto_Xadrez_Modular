@@ -240,3 +240,40 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+*.gch
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Swap files
+
+*~
+*.swp
+*.swo
+
+lib
+bin
+obj
+headers
+src
+
