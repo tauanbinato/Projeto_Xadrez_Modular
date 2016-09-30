@@ -109,6 +109,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
       TST_tpCondRet CondRet ;
 	  LIS_tpCondRet CondRet_LIS;
+	  TAB_tpCondRet CondRet_TAB;
 
       char   StringDado[  DIM_VALOR ], CharDado, CharObtido ;
 	  char* pDado;
@@ -144,7 +145,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 				 return TST_CondRetParm;
 			 } /* if */
 
-			 CondRet = cria_tabuleiro(vtListas[inxLista], vtListas_2[inxLista_2]);
+			 CondRet_TAB = cria_tabuleiro(vtListas[inxLista], vtListas_2[inxLista_2]);
 
 			 if (CondRet == 6) {
 
@@ -189,17 +190,16 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 		 else if (strcmp(ComandoTeste, OBTER_ID_LISTA_CMD) == 0)
 		 {
 
-			 numLidos = LER_LerParametros("is",
-				 &inxLista, StringDado);
+			 numLidos = LER_LerParametros("isi",
+				 &inxLista, StringDado,&CondRetEsp);
 
-			 if ((numLidos != 2)
-				 || (!ValidarInxLista(inxLista, NAO_VAZIO)))
+			 if (numLidos != 3)
 			 {
-				 
 				 return TST_CondRetParm;
 			 } /* if */
 
-			 pDado = LIS_ObterId((vtListas[inxLista]));
+			 strcpy(pDado,StringDado);
+			 CondRet_LIS = LIS_ObterId(vtListas[inxLista],pDado);
 
 			 return TST_CompararString(pDado, StringDado,
 				 "Id obtida pela função diferente da esperada");
@@ -248,9 +248,9 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetMemoria ;
             } /* if */
 
-			pDado = CharDado;
+			*pDado = CharDado;
 
-            CondRet = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
+            CondRet_LIS = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
 
             if ( CondRet != LIS_CondRetOK )
             {
@@ -295,7 +295,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetParm ;
             } /* if */
 
-			CondRet = LIS_ObterNo(vtListas[inxLista], &CharObtido);
+			CondRet_LIS = LIS_ObterNo(vtListas[inxLista], &CharObtido);
 			
 			if ( CondRet == 2 )
             {
