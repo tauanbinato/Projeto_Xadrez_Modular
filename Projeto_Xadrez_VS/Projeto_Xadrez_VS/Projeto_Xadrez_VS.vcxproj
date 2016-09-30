@@ -160,10 +160,9 @@
     <ClCompile Include="PECA.c" />
     <ClCompile Include="TABULEIRO.c" />
     <ClCompile Include="TESTLIS.C" />
-    <ClCompile Include="TESTTAB.C" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="ArcaboucoTeste.lib" />
+    <Library Include="..\..\Arcabouco\arcabouc\Objetos\ArcaboucoTeste.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
