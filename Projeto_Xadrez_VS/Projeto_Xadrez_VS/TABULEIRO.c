@@ -90,12 +90,12 @@ TAB_ancoraCasa **ancora_casa;
 *
 *  *************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, void   ( * ExcluirValor ) ( void * pDado )) {
 
 	int numDoCaminho , numColunas;
 	//Cria as listas
-	LIS_CriarLista(caminho_matriz, "Cami");
-	LIS_CriarLista(colunas_matriz, "Colu");
+	LIS_CriarLista(caminho_matriz, "Cami", ExcluirValor);
+	LIS_CriarLista(colunas_matriz, "Colu", ExcluirValor);
 	
 	//Preenche os valores das listas criadas.
 	
@@ -116,7 +116,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_m
 	} /* endFor */
 
 	//Linka a ancora com linha da matriz.
-	(*ancora_matriz)->pCabecaLista = caminho_matriz;
+	*(*ancora_matriz)->pCabecaLista = caminho_matriz;
 
 	return TAB_CondRetOK;
 

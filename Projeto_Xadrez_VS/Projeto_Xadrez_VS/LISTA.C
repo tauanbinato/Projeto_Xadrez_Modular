@@ -96,21 +96,19 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista)
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
    {
-	  LIS_tppLista aux = NULL;
-     
-	  aux = ( LIS_tppLista  ) malloc( sizeof( LIS_tppLista )) ;
-     
-	  if ( aux == NULL )
+	  LIS_tpLista * aux ;
+	  
+      aux = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
+      if ( aux == NULL )
       {
-         return  LIS_CondRetFaltouMemoria;
+         return LIS_CondRetFaltouMemoria ;
       } /* if */
-
+	  
       LimparCabeca( aux ) ;
-
+      aux->ExcluirValor = ExcluirValor ;
 	  strcpy(aux->idLista, idLista);
-
 	  pLista = aux;
 
       return LIS_CondRetOK ;
@@ -189,20 +187,19 @@
    {
 
       tpElemLista * pElem ;
-
+	  char * aux;
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
 
-      /* Criar elemento a inerir ap�s */
-
+      /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
 
          if ( pElem == NULL )
          {
             return LIS_CondRetFaltouMemoria ;
          } /* if */
-
+		
       /* Encadear o elemento ap�s o elemento */
 
          if ( pLista->pElemCorr == NULL )
@@ -299,7 +296,6 @@
         return LIS_CondRetListaVazia ;
       } /* if */
 
-	  printf("nome: %c", (char)pLista->pElemCorr->pValor);
 	  aux = (char*)pLista->pElemCorr->pValor;
 	  *CharObtido = *aux;
 
@@ -452,19 +448,20 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
    {
 
       tpElemLista * pElem ;
+	
 
       pElem = ( tpElemLista * ) malloc( sizeof( tpElemLista )) ;
       if ( pElem == NULL )
       {
          return NULL ;
       } /* if */
-
+	   
       pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
       pElem->pProx  = NULL  ;
-
+	  printf("ngfhf000");
       pLista->numElem ++ ;
-
+	  printf("ngfhf");
       return pElem ;
 
    } /* Fim fun��o: LIS  -Criar o elemento */
@@ -478,7 +475,6 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 
    void LimparCabeca( LIS_tppLista pLista )
    {
-
       pLista->pOrigemLista = NULL ;
       pLista->pFimLista = NULL ;
       pLista->pElemCorr = NULL ;

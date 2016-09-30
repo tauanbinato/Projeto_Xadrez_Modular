@@ -65,7 +65,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
 /***** Protótipos das funções encapuladas no módulo *****/
-
+   void DestruirValor( void * pValor );
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
@@ -171,8 +171,8 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
             {
                return TST_CondRetParm ;
             } /* if */
-           
-			CondRet_LIS = LIS_CriarLista(vtListas[inxLista], StringDado) ;
+            
+			CondRet_LIS = LIS_CriarLista(vtListas[inxLista], StringDado, DestruirValor) ;
 			
 			if (CondRet_LIS == 6) {
 
@@ -235,9 +235,8 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
             numLidos = LER_LerParametros( "ici" ,
                        &inxLista , &CharDado , &CondRetEsp ) ;
 
-            if ( ( numLidos != 3 )
-              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
-            {
+            if  ( numLidos != 3 )
+			{
                return TST_CondRetParm ;
             } /* if */
 
@@ -249,9 +248,9 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
             } /* if */
 
 			*pDado = CharDado;
-
-            CondRet_LIS = LIS_InserirNo( vtListas[ inxLista ] , pDado ) ;
-
+			printf("pDado na teste: %c",*pDado);
+            CondRet_LIS = LIS_InserirNo( vtListas[ inxLista ] , &CharDado ) ;
+			printf("saiu da funcao");
             if ( CondRet != LIS_CondRetOK )
             {
                free( pDado ) ;
@@ -286,7 +285,6 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
          else if ( strcmp( ComandoTeste , OBTER_NO_CMD) == 0 )
          {
-
             numLidos = LER_LerParametros( "ici" ,
                        &inxLista , &CharDado , &CondRetEsp ) ;
 
@@ -299,7 +297,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 			
 			if ( CondRet == 2 )
             {
-				return  TST_CompararPonteiroNulo( 1 , CharObtido ,
+				return  TST_CompararPonteiroNulo( 1 , &CharObtido ,
 					"Erro Lista Vazia");
             } /* if */
 
@@ -371,6 +369,19 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
 
 /*****  Código das funções encapsuladas no módulo  *****/
+
+/***********************************************************************
+*
+*  $FC Função: TLIS -Destruir valor
+*
+***********************************************************************/
+
+   void DestruirValor( void * pValor )
+   {
+
+      free( pValor ) ;
+
+   } /* Fim função: TLIS -Destruir valor */
 
 /***********************************************************************
 *
