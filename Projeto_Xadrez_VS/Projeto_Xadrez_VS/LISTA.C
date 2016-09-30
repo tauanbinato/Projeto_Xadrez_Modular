@@ -39,7 +39,7 @@
 
    typedef struct tagElemLista {
 
-         void * pValor ;
+         void *pValor ;
                /* Ponteiro para o valor contido no elemento */
 
          struct tagElemLista * pAnt ;
@@ -143,9 +143,10 @@
 *  Funcao: LIS  &ObeterId
 *  ****/
 
-   char* LIS_ObterId(LIS_tppLista pLista) {
+   LIS_tpCondRet LIS_ObterId(LIS_tppLista pLista, char *idLista) {
 
-	   return pLista->idLista;
+	   idLista = pLista->idLista;
+	   return LIS_CondRetOK;
    
    } /* Fim Fun��o: LIS  &ObterId */
     
@@ -291,14 +292,16 @@
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
-	
+	  char* aux;
       if ( pLista->pElemCorr == NULL )
 	  {
 		  
         return LIS_CondRetListaVazia ;
       } /* if */
 
-	  *CharObtido = pLista->pElemCorr->pValor;
+	  printf("nome: %c", (char)pLista->pElemCorr->pValor);
+	  aux = (char*)pLista->pElemCorr->pValor;
+	  *CharObtido = *aux;
 
       return LIS_CondRetOK ;
 
@@ -409,7 +412,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 	
 	  /* Tratar troca */
 	
-	pLista->pElemCorr->pValor = CharDado;
+	pLista->pElemCorr->pValor = &CharDado;
 	
 	/* fim ativa: Tratar troca */
 

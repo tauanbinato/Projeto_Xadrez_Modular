@@ -153,11 +153,12 @@ typedef struct LIS_tagLista * LIS_tppLista ;
 *     Obtem o Id contido dentro da cabeça da Lista passada
 *
 *  $EP Parâmetros
-*     pLista - ponteiro para a cabeça a ser encontrado o Id
+*     pLista  - ponteiro para a cabeça a ser encontrado o Id
+*	  idLista - ponteiro para identificacao da Id da lista
 *
 ***********************************************************************/
 
-   char* LIS_ObterId(LIS_tppLista pLista) ;
+   LIS_tpCondRet LIS_ObterId(LIS_tppLista pLista, char *idLista);
 
 /***********************************************************************
 *
