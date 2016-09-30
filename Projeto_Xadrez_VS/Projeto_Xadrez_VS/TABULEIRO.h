@@ -30,14 +30,6 @@
 #define TABULEIRO_EXT extern
 #endif
 
-//Estruturas-----------------------------------------
-typedef struct TAB_tagTabuleiro *TAB_ancoraTabuleiro;
-typedef struct TAB_tagAncoraCasa *TAB_ancoraCasa;
-typedef struct TAB_tagCasa *TAB_casaMatriz;
-//FIM Estruturas-----------------------------------------
-
-
-
 /***********************************************************************
 *
 *  $TC Tipo de dados: TAB Condições de retorno
@@ -66,7 +58,6 @@ typedef enum {
 	/* Faltou memória ao tentar criar um elemento de lista = 4 */
 
 } TAB_tpCondRet;
-
 
 /* 
 ------FUNÇÕES NÃO PRONTAS DO TAUAN--------
@@ -112,16 +103,16 @@ TAB_tpCondRet destruirTabuleiro();
 *	  Cria uma lista duplamente encadeada com um identificador para representar a coluna de uma matriz	
 *
 *  $EP Parâmetros
-*     caminho_matriz         - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
-*							 a ser criada.
+*     linha         - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
+*					  a ser criada.
 *
-*	  colunas_matriz		 - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
-*						     a ser criada.
+*	  coluna        - ponteiro de ponteiro para a estrutura do tipo LIS_tpLista*
+*					  a ser criada.
 *
-*	  ancora_matriz			 - ponteiro de ponteiro para uma estrutura do tipo TAB_ancoraTabuleiro , usada para ancorar o tabuleiro criado
+*	  ancora_matriz - ponteiro de ponteiro para uma estrutura do tipo TAB_ancoraTabuleiro
 *
-*     ancora_casa		     - ponteiro de ponteiro para uma estrutura do tipo TAB_ancoraCasa , usada para ligar cada elemento do tabuleiro a uma cabeça de casa
-*	
+*     idMatriz       - string de identificação da matriz
+*
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna a condição de retorno LIS_CondRetOK.
@@ -133,7 +124,7 @@ TAB_tpCondRet destruirTabuleiro();
 *
 ***********************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, TAB_ancoraTabuleiro **ancora_matriz, TAB_ancoraCasa **ancora_casa);
+//TAB_tpCondRet cria_tabuleiro(LIS_tppLista linha, LIS_tppLista coluna, TAB_ancoraTabuleiro **ancora_matriz, char * idMatriz);
 
 
 
