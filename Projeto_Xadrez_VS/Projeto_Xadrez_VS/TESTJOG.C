@@ -222,7 +222,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 
             vtListas[ inxLista ] = NULL ;
 
-			return TST_CompararInt(CondRetEsp, CondRet,
+			return TST_CompararInt(CondRetEsp, CondRet_LIS,
 				"Condicao de retorno errada ao inserir antes.");
 
          } /* fim ativa: Testar Destruir lista */

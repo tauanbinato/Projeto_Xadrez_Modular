@@ -96,7 +96,11 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
+<<<<<<< HEAD
    LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
+=======
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista **pLista, char* idLista)
+>>>>>>> origin/master
    {
 	  LIS_tpLista * aux ;
 	  
