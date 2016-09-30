@@ -108,6 +108,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
 		   i;
 
       TST_tpCondRet CondRet ;
+	  LIS_tpCondRet CondRet_LIS;
 
       char   StringDado[  DIM_VALOR ], CharDado, CharObtido ;
 	  char* pDado;
@@ -170,15 +171,15 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetParm ;
             } /* if */
            
-			CondRet = LIS_CriarLista(vtListas[inxLista], StringDado) ;
+			CondRet_LIS = LIS_CriarLista(vtListas[inxLista], StringDado) ;
 			
-			if (CondRet == 6) {
+			if (CondRet_LIS == 6) {
 
 				return TST_CondRetMemoria;
 
 			}
 
-			return TST_CompararInt(CondRetEsp, CondRet,
+			return TST_CompararInt(CondRetEsp, CondRet_LIS,
 				"Condicao de retorno errada ao criar lista");
 
          } /* fim ativa: Testar CriarLista */
