@@ -170,7 +170,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetParm ;
             } /* if */
            
-			CondRet = LIS_CriarLista(&vtListas[inxLista], StringDado) ;
+			CondRet = LIS_CriarLista(vtListas[inxLista], StringDado) ;
 			
 			if (CondRet == 6) {
 
