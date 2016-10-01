@@ -219,7 +219,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
                return TST_CondRetParm ;
             } /* if */
 
-            CondRet_LIS = LIS_DestroiLista( &vtListas[ inxLista ] ) ;
+            CondRet_LIS = LIS_DestroiLista( vtListas[ inxLista ] ) ;
 
             vtListas[ inxLista ] = NULL ;
 
@@ -235,6 +235,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 
             numLidos = LER_LerParametros( "ici" ,
                        &inxLista , &CharDado , &CondRetEsp ) ;
+
             if  ( numLidos != 3 )
 			{
                return TST_CondRetParm ;
@@ -249,7 +250,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 
 			pDado = CharDado;
 
-            CondRet_LIS = LIS_InserirNo( &vtListas[ inxLista ] , CharDado ) ;
+            CondRet_LIS = LIS_InserirNo( &vtListas[ inxLista ] , pDado ) ;
 
             if ( CondRet_LIS != LIS_CondRetOK )
             {
@@ -294,7 +295,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
             } /* if */
 
 			CondRet_LIS = LIS_ObterNo(&vtListas[inxLista], &CharObtido);
-			
+
 			if ( CondRet_LIS == 2 )
             {
 				return  TST_CompararPonteiroNulo( 1 , CharObtido ,
