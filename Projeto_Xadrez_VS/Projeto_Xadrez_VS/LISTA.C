@@ -96,7 +96,7 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista *pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
    {
 	  LIS_tpLista * aux ;
 	  
@@ -283,23 +283,20 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-   LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char *CharObtido )
-   {
-	   
-      #ifdef _DEBUG
-         assert( pLista != NULL ) ;
-      #endif
-	  char* aux;
-      if ( pLista->pElemCorr == NULL )
-	  {
-		  
-        return LIS_CondRetListaVazia ;
-      } /* if */
+LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char* CharObtido ) {
+#ifdef _DEBUG
+	   assert(pLista != NULL);
+#endif
 
-	  aux = (char*)pLista->pElemCorr->pValor;
-	  *CharObtido = *aux;
+	   if (pLista->pElemCorr == NULL)
+	   {
+		   *CharObtido = NULL;
+		   return LIS_CondRetListaVazia;
+	   } /* if */
 
-      return LIS_CondRetOK ;
+	   *CharObtido = pLista->pElemCorr->pValor;
+	  
+	   return LIS_CondRetOK;
 
    } /* Fim fun��o: LIS  &Obter refer�ncia para o valor contido no elemento */
 
@@ -390,26 +387,28 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 #ifdef _DEBUG
 	assert(pLista != NULL);
 #endif
+
 	/* Tratar se Lista Existe */
-	
-	if (pLista == NULL)
-
+	if (pLista == NULL) {
+		printf("\noie1");
 		return LIS_CondRetListaNaoExiste;
-
+	}
 	/* fim ativa: Tratar se Lista Existe */
 
 	/* Tratar lista vazia */
 
 	if (pLista->pElemCorr == NULL)
 	{
+		printf("\noie2");
 		return LIS_CondRetListaVazia;
 
 	} /* fim ativa: Tratar lista vazia */
-	
-	  /* Tratar troca */
-	
-	pLista->pElemCorr->pValor = &CharDado;
-	
+	printf("\noie3");
+	printf("\nelemento corrente: %c", pLista->pElemCorr->pValor);	
+   
+	/* Tratar troca */
+	pLista->pElemCorr->pValor = CharDado;
+	printf("\nelemento corrente depois: %c", pLista->pElemCorr->pValor);
 	/* fim ativa: Tratar troca */
 
 	return LIS_CondRetOK;
@@ -459,9 +458,8 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
       pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
       pElem->pProx  = NULL  ;
-	  printf("ngfhf000");
       pLista->numElem ++ ;
-	  printf("ngfhf");
+
       return pElem ;
 
    } /* Fim fun��o: LIS  -Criar o elemento */

@@ -96,7 +96,7 @@
 *  Fun��o: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista, void(*ExcluirValor) (void * pDado))
+    LIS_tpCondRet LIS_CriarLista (LIS_tppLista ** pLista, char* idLista, void(*ExcluirValor) (void * pDado))
    {
 	  LIS_tppLista aux = NULL;
      
@@ -331,12 +331,12 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
+   LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
    {
 #ifdef _DEBUG
 	   assert(pLista != NULL);
 #endif
-
+	   
 	   if (pLista->pElemCorr == NULL)
 	   {
 		   *pValor = NULL;
@@ -344,7 +344,7 @@ LIS_tpCondRet LIS_ObterNo(LIS_tppLista pLista, char* pValor)
 	   } /* if */
 
 	   strcpy(pValor, pLista->pElemCorr->pValor);
-
+	  
 	   return LIS_CondRetOK;
 
    } /* Fim fun��o: LIS  &Obter refer�ncia para o valor contido no elemento */
