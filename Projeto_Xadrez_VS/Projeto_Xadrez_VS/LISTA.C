@@ -306,7 +306,7 @@ LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
 *  Fun��o: LIS  &Avan�ar elemento
 *  ****/
 
-   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista pLista)
+   LIS_tpCondRet LIS_AvancarElementoCorrente( LIS_tppLista* pLista)
    {
 
       int i ;
@@ -317,7 +317,7 @@ LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
 
       /* Tratar lista vazia */
 
-         if ( pLista->pElemCorr == NULL )
+         if ( (*pLista)->pElemCorr == NULL )
          {
 
             return LIS_CondRetListaVazia ;
@@ -325,9 +325,9 @@ LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
          } /* fim ativa: Tratar lista vazia */
 
       /* Tratar avan�ar para frente */
-		 if (pLista->pElemCorr->pProx != NULL) {
+		 if ((*pLista)->pElemCorr->pProx != NULL) {
 
-			 pLista->pElemCorr = pLista->pElemCorr->pProx;
+			 (*pLista)->pElemCorr = (*pLista)->pElemCorr->pProx;
 
 			 return LIS_CondRetOK;
 		 }
@@ -335,7 +335,7 @@ LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
 		 /* fim ativa: Tratar avan�ar para frente */
 		 
 		 /* Tratar No corrente é o ultimo */
-		 else if (pLista->pElemCorr->pProx == NULL)
+		 else if ((*pLista)->pElemCorr->pProx == NULL)
 			 return LIS_CondRetFimLista;
 
    } /* Fim fun��o: LIS  &Avan�ar elemento */
@@ -345,7 +345,7 @@ LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
 *  Fun��o: LIS  &Voltar elemento
 *  ****/
 
-LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
+LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista* pLista)
    {
 
 	   int i;
@@ -356,7 +356,7 @@ LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
 
 	   /* Tratar lista vazia */
 
-	   if (pLista->pElemCorr == NULL)
+	   if ((*pLista)->pElemCorr == NULL)
 	   {
 
 		   return LIS_CondRetListaVazia;
@@ -364,9 +364,9 @@ LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
 	   } /* fim ativa: Tratar lista vazia */
 
 		 /* Tratar avan�ar para tras */
-	   if (pLista->pElemCorr->pAnt != NULL) {
+	   if ((*pLista)->pElemCorr->pAnt != NULL) {
 
-		   pLista->pElemCorr = pLista->pElemCorr->pAnt;
+		   (*pLista)->pElemCorr = (*pLista)->pElemCorr->pAnt;
 
 		   return LIS_CondRetOK;
 	   }
@@ -374,7 +374,7 @@ LIS_tpCondRet LIS_VoltarElementoCorrente(LIS_tppLista pLista)
 	   /* fim ativa: Tratar avan�ar para tras */
 
 	   /* Tratar No corrente é o primeiro */
-	   else if (pLista->pElemCorr->pAnt == NULL)
+	   else if ((*pLista)->pElemCorr->pAnt == NULL)
 		   return LIS_CondRetInicioLista;
 
    } /* Fim fun��o: LIS  &Avan�ar elemento */
