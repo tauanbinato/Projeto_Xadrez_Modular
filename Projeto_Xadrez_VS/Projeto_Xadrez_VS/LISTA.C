@@ -96,7 +96,7 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista *pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
    {
 	  LIS_tpLista * aux ;
 	  
@@ -109,7 +109,7 @@
       LimparCabeca( aux ) ;
       aux->ExcluirValor = ExcluirValor ;
 	  strcpy(aux->idLista, idLista);
-	  pLista = aux;
+	  *pLista = aux;
 
       return LIS_CondRetOK ;
 
@@ -387,10 +387,10 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 #ifdef _DEBUG
 	assert(pLista != NULL);
 #endif
-
+	
 	/* Tratar se Lista Existe */
 	if (pLista == NULL) {
-		printf("\noie1");
+		printf("\nNAO EXISTE");
 		return LIS_CondRetListaNaoExiste;
 	}
 	/* fim ativa: Tratar se Lista Existe */
@@ -399,16 +399,15 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 
 	if (pLista->pElemCorr == NULL)
 	{
-		printf("\noie2");
+		printf("\nVAZIAO DA MASSA");
 		return LIS_CondRetListaVazia;
 
 	} /* fim ativa: Tratar lista vazia */
-	printf("\noie3");
-	printf("\nelemento corrente: %c", pLista->pElemCorr->pValor);	
+	printf("\nTA ROLANDO");
    
 	/* Tratar troca */
 	pLista->pElemCorr->pValor = CharDado;
-	printf("\nelemento corrente depois: %c", pLista->pElemCorr->pValor);
+
 	/* fim ativa: Tratar troca */
 
 	return LIS_CondRetOK;

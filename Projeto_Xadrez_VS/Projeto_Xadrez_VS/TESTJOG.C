@@ -62,7 +62,7 @@ static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 #define DIM_VALOR     100
 
 LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
-LIS_tppLista   vtListas_2[DIM_VT_LISTA];
+LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 
 /***** Protótipos das funções encapuladas no módulo *****/
    void DestruirValor( void * pValor );
@@ -172,8 +172,8 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA];
                return TST_CondRetParm ;
             } /* if */
             
-			CondRet_LIS = LIS_CriarLista(&vtListas[inxLista], StringDado, DestruirValor) ;
-			
+			CondRet_LIS = LIS_CriarLista( &vtListas[inxLista], StringDado, DestruirValor) ;
+
 			if (CondRet_LIS == 6) {
 
 				return TST_CondRetMemoria;
