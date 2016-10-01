@@ -92,11 +92,14 @@ TAB_ancoraCasa **ancora_casa;
 
 TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, void   ( * ExcluirValor ) ( void * pDado )) {
 
+
 	int numDoCaminho , numColunas;
+    printf("Entrou para pra criar tabuleiro");
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami", ExcluirValor);
 	LIS_CriarLista(colunas_matriz, "Colu", ExcluirValor);
 	
+	printf("Criou as listas");
 	//Preenche os valores das listas criadas.
 	
 	
