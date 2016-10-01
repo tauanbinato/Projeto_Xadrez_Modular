@@ -188,9 +188,11 @@
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
-
+		 printf("Entrou inserir NO\n");
       /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
+
+		 printf("Criou elemento dentro da inserir NO\n");
 
          if ( pElem == NULL )
          {
