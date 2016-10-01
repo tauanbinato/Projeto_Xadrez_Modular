@@ -8,7 +8,6 @@
 =declararparm   lista1         int  1
 =declararparm   lista2         int  2
 =declararparm   lista3         int  3
-=declararparm   lista3         int  4
 
 =declararparm   idList0        string  "casa"
 =declararparm   idList1        string  "king"
@@ -49,7 +48,7 @@
 =inserirno          lista0    chr1        OK
 
 == OBTER NO1
-=obterno            lista0    chr1         OK
+=obterno            lista0    chr1        OK
 
 == OBTER NO1 ERRADO
 =obterno            lista0    chr2         OK

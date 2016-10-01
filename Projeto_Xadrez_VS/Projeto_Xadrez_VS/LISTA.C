@@ -234,7 +234,7 @@
 *  Fun��o: LIS  &Excluir elemento
 *  ****/
 
-   LIS_tpCondRet LIS_ExcluirNoCorrente( LIS_tppLista pLista )
+   LIS_tpCondRet LIS_ExcluirNoCorrente( LIS_tppLista* pLista )
    {
 
       tpElemLista * pElem ;
@@ -243,22 +243,22 @@
          assert( pLista  != NULL ) ;
       #endif
 
-      if ( pLista->pElemCorr == NULL )
+      if ((*pLista)->pElemCorr == NULL )
       {
          return LIS_CondRetListaVazia ;
       } /* if */
 
-      pElem = pLista->pElemCorr ;
+      pElem = (*pLista)->pElemCorr ;
 
       /* Desencadeia � esquerda */
 
          if ( pElem->pAnt != NULL )
          {
             pElem->pAnt->pProx   = pElem->pProx ;
-            pLista->pElemCorr    = pElem->pAnt ;
+			(*pLista)->pElemCorr    = pElem->pAnt ;
          } else {
-            pLista->pElemCorr    = pElem->pProx ;
-            pLista->pOrigemLista = pLista->pElemCorr ;
+			 (*pLista)->pElemCorr    = pElem->pProx ;
+			 (*pLista)->pOrigemLista = (*pLista)->pElemCorr ;
          } /* if */
 
       /* Desencadeia � direita */
@@ -268,10 +268,10 @@
             pElem->pProx->pAnt = pElem->pAnt ;
          } else
          {
-            pLista->pFimLista = pElem->pAnt ;
+			 (*pLista)->pFimLista = pElem->pAnt ;
          } /* if */
 
-      LiberarElemento( pLista , pElem ) ;
+      LiberarElemento( &pLista , pElem ) ;
 
       return LIS_CondRetOK ;
 
