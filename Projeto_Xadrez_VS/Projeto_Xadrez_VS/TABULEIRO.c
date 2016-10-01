@@ -88,16 +88,18 @@ TAB_ancoraCasa **ancora_casa;
 *
 *  *************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, void(*ExcluirValor) (void * pDado)) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas_matriz) {
 
 
 	int numDoCaminho, numColunas;
-	printf("Entrou para pra criar tabuleiro/n");
+	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
+	
 	//Cria as listas
-	LIS_CriarLista(caminho_matriz, "Cami", ExcluirValor);
-	LIS_CriarLista(colunas_matriz, "Colu", ExcluirValor);
+	LIS_CriarLista(caminho_matriz, "Cami");
+	LIS_CriarLista(colunas_matriz, "Colu");
 
-	printf("Criou as listas\n");
+	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
+
 	//Preenche os valores das listas criadas.
 
 
@@ -105,19 +107,19 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_m
 	{
 		//Cria 8 caminhos (linhas)
 		LIS_InserirNo(caminho_matriz, colunas_matriz);
-		(*ancora_matriz)->num_de_linhas++;
+		//(*ancora_matriz)->num_de_linhas++;
 
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
 			//Cria 8 colunas para cada linha
 			LIS_InserirNo(colunas_matriz, ancora_casa);								// <- Digo que cada elemento da matriz aponta pra uma cabeça de casa
-			(*ancora_matriz)->num_de_colunas++;
+			//(*ancora_matriz)->num_de_colunas++;
 
 		}
 	} /* endFor */
 
 	//Linka a ancora com linha da matriz.
-	*(*ancora_matriz)->pCabecaLista = caminho_matriz;
+	//*(*ancora_matriz)->pCabecaLista = caminho_matriz;
 
 	return TAB_CondRetOK;
 

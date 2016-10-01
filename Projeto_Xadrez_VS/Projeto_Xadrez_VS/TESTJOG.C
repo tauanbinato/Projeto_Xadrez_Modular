@@ -65,7 +65,7 @@ LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
 LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 
 /***** Protótipos das funções encapuladas no módulo *****/
-   void DestruirValor( void * pValor );
+  // void DestruirValor( void * pValor );
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
 /*****  Código das funções exportadas pelo módulo  *****/
@@ -147,16 +147,22 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 				 return TST_CondRetParm;
 			 } /* if */
 
+			 printf("CRIOU");
+			 printf("\n %d", vtListas[0]);
+			 printf("\n %d\n", vtListas[1]);
 
-			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas_2[inxLista_2]);
+			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas[inxLista_2]);
 
-			 if (CondRet == 6) {
+			 printf("\n %d", vtListas[0]);
+			 printf("\n %d\n", vtListas[1]);
+
+			 if (CondRet_TAB == 6) {
 
 				 return TST_CondRetMemoria;
 
 			 }
 
-			 return TST_CompararInt(CondRetEsp, CondRet,
+			 return TST_CompararInt(CondRetEsp, CondRet_TAB,
 				 "Condicao de retorno errada ao criar tabuleiro");
 
 		 } /* fim ativa: Testar CriarTabuleiro */
@@ -175,7 +181,10 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
                return TST_CondRetParm ;
             } /* if */
             
-			CondRet_LIS = LIS_CriarLista( &vtListas[inxLista], StringDado, DestruirValor) ;
+
+			CondRet_LIS = LIS_CriarLista( &vtListas[inxLista], StringDado) ;
+
+
 
 			if (CondRet_LIS == 6) {
 
