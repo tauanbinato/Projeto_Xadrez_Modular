@@ -74,7 +74,7 @@
 		 char idLista[5];
 			   /*Identificação da lista*/
 
-		 void(*ExcluirValor) (void * pValor);
+		// void(*ExcluirValor) (void * pValor);                                              Acho q n tem necessidade disso.
 		 /* Ponteiro para a função de destruição do valor contido em um elemento */
 
    } LIS_tpLista ;
@@ -84,7 +84,7 @@
    static void LiberarElemento( LIS_tppLista   pLista ,
                                 tpElemLista  * pElem   ) ;
 
-   static tpElemLista * CriarElemento( LIS_tppLista* pLista ,
+   static tpElemLista * CriarElemento( LIS_tppLista pLista ,
                                        void *       pValor  ) ;
 
    static void LimparCabeca( LIS_tppLista pLista ) ;
@@ -96,8 +96,8 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
-   {
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista) {
+
 	  LIS_tpLista * aux ;
 	  
       aux = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
@@ -107,7 +107,6 @@
       } /* if */
 	  
       LimparCabeca( aux ) ;
-      aux->ExcluirValor = ExcluirValor ;
 	  strcpy(aux->idLista, idLista);
 	  *pLista = aux;
 
@@ -127,9 +126,8 @@
          assert( pLista != NULL ) ;
       #endif
 
-	  if (pLista == NULL) {
+	  if (pLista == NULL)
 		  return LIS_CondRetListaNaoExiste;
-	  }
 
       LIS_EsvaziarLista( pLista ) ;
 
@@ -182,19 +180,19 @@
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
-   LIS_tpCondRet LIS_InserirNo( LIS_tppLista* pLista ,
-                                          void * pValor        )
+   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,void * pValor        )
       
    {
-
       tpElemLista * pElem ;
 	  char * aux;
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
 
+		 printf("entrou para inserir no\n");
       /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
+		 printf("criou o elemento a ser inserido");
 
          if ( pElem == NULL )
          {
@@ -203,29 +201,29 @@
 		
       /* Encadear o elemento ap�s o elemento */
 
-         if ( (*pLista)->pElemCorr == NULL )
+         if ( pLista->pElemCorr == NULL )
          {
-			 (*pLista)->pOrigemLista = pElem ;
-			 (*pLista)->pFimLista = pElem ;
+            pLista->pOrigemLista = pElem ;
+            pLista->pFimLista = pElem ;
          } else
          {
-            if ((*pLista)->pElemCorr->pProx != NULL )
+            if ( pLista->pElemCorr->pProx != NULL )
             {
-               pElem->pProx  = (*pLista)->pElemCorr->pProx ;
-			   (*pLista)->pElemCorr->pProx->pAnt = pElem ;
+               pElem->pProx  = pLista->pElemCorr->pProx ;
+               pLista->pElemCorr->pProx->pAnt = pElem ;
             } else
             {
-				(*pLista)->pFimLista = pElem ;
+               pLista->pFimLista = pElem ;
             } /* if */
 
-            pElem->pAnt = (*pLista)->pElemCorr ;
-			(*pLista)->pElemCorr->pProx = pElem ;
+            pElem->pAnt = pLista->pElemCorr ;
+            pLista->pElemCorr->pProx = pElem ;
 
          } /* if */
 		
 		 pElem->pValor = pValor;
 
-		 (*pLista)->pElemCorr = pElem ;
+		 pLista->pElemCorr = pElem ;
 		 
          return LIS_CondRetOK ;
 
@@ -284,18 +282,18 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
+LIS_tpCondRet LIS_ObterNo( LIS_tppLista pLista, char* CharObtido ) {
 #ifdef _DEBUG
 	   assert(pLista != NULL);
 #endif
 
-	   if ((*pLista)->pElemCorr == NULL)
+	   if (pLista->pElemCorr == NULL)
 	   {
 		   *CharObtido = NULL;
 		   return LIS_CondRetListaVazia;
 	   } /* if */
 
-	   *CharObtido = (*pLista)->pElemCorr->pValor;
+	   *CharObtido = pLista->pElemCorr->pValor;
 	  
 	   return LIS_CondRetOK;
 
@@ -391,6 +389,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 	
 	/* Tratar se Lista Existe */
 	if (pLista == NULL) {
+		printf("\nNAO EXISTE");
 		return LIS_CondRetListaNaoExiste;
 	}
 	/* fim ativa: Tratar se Lista Existe */
@@ -399,9 +398,11 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 
 	if (pLista->pElemCorr == NULL)
 	{
+		printf("\nVAZIAO DA MASSA");
 		return LIS_CondRetListaVazia;
 
 	} /* fim ativa: Tratar lista vazia */
+	printf("\nTA ROLANDO");
    
 	/* Tratar troca */
 	pLista->pElemCorr->pValor = CharDado;
@@ -439,7 +440,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
 *
 ***********************************************************************/
 
-   tpElemLista * CriarElemento( LIS_tppLista* pLista ,
+   tpElemLista * CriarElemento( LIS_tppLista pLista ,
                                 void *       pValor  )
    {
 
@@ -455,7 +456,7 @@ LIS_tpCondRet LIS_AlterarElementoCorrente(LIS_tppLista pLista, char CharDado)
       pElem->pValor = pValor ;
       pElem->pAnt   = NULL  ;
       pElem->pProx  = NULL  ;
-	  (*pLista)->numElem ++ ;
+      pLista->numElem ++ ;
 
       return pElem ;
 

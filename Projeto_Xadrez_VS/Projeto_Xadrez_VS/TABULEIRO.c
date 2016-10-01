@@ -27,7 +27,7 @@
 #define	   tamanho_matriz	8
 
 #define LISTA_OWN
-#include "TABULEIRO.h"
+#include "Tabuleiro.h"
 #undef LISTA_OWN
 
 /***********************************************************************
@@ -79,8 +79,6 @@ typedef struct TAB_tagAncoraCasa {
 
 
 
-
-
 TAB_ancoraTabuleiro **ancora_matriz;
 TAB_ancoraCasa **ancora_casa;
 
@@ -90,19 +88,19 @@ TAB_ancoraCasa **ancora_casa;
 *
 *  *************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, void   ( * ExcluirValor ) ( void * pDado )) {
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz, void(*ExcluirValor) (void * pDado)) {
 
 
-	int numDoCaminho , numColunas;
-    printf("Entrou para pra criar tabuleiro");
+	int numDoCaminho, numColunas;
+	printf("Entrou para pra criar tabuleiro/n");
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami", ExcluirValor);
 	LIS_CriarLista(colunas_matriz, "Colu", ExcluirValor);
-	
-	printf("Criou as listas");
+
+	printf("Criou as listas\n");
 	//Preenche os valores das listas criadas.
-	
-	
+
+
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
 		//Cria 8 caminhos (linhas)
@@ -114,7 +112,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_m
 			//Cria 8 colunas para cada linha
 			LIS_InserirNo(colunas_matriz, ancora_casa);								// <- Digo que cada elemento da matriz aponta pra uma cabeça de casa
 			(*ancora_matriz)->num_de_colunas++;
-																				
+
 		}
 	} /* endFor */
 
