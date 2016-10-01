@@ -133,6 +133,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 
 		   /* Testar CriarTabuleiro */
 
+
 		 else if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
 		 {
 

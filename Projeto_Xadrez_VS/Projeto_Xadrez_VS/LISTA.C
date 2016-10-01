@@ -74,7 +74,7 @@
 		 char idLista[5];
 			   /*Identificação da lista*/
 
-		 void(*ExcluirValor) (void * pValor);
+		// void(*ExcluirValor) (void * pValor);                                              Acho q n tem necessidade disso.
 		 /* Ponteiro para a função de destruição do valor contido em um elemento */
 
    } LIS_tpLista ;
@@ -96,8 +96,8 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista, void   ( * ExcluirValor ) ( void * pDado ))
-   {
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista) {
+
 	  LIS_tpLista * aux ;
 	  
       aux = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
@@ -107,7 +107,6 @@
       } /* if */
 	  
       LimparCabeca( aux ) ;
-      aux->ExcluirValor = ExcluirValor ;
 	  strcpy(aux->idLista, idLista);
 	  *pLista = aux;
 
@@ -181,19 +180,19 @@
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
-   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,
-                                          void * pValor        )
+   LIS_tpCondRet LIS_InserirNo( LIS_tppLista pLista ,void * pValor        )
       
    {
-
       tpElemLista * pElem ;
 	  char * aux;
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
 
+		 printf("entrou para inserir no\n");
       /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
+		 printf("criou o elemento a ser inserido");
 
          if ( pElem == NULL )
          {

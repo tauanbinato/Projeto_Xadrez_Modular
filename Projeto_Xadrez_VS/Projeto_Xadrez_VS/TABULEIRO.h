@@ -24,6 +24,8 @@
 *
 ***************************************************************************/
 
+#include "Lista.h"
+
 #if defined( TABULEIRO_OWN )
 #define TABULEIRO_EXT
 #else
