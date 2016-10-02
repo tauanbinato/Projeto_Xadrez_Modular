@@ -150,6 +150,15 @@ TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
 			 if ((numLidos != 5)
 				 || (!ValidarInxLista(inxLista, VAZIO)) || (!ValidarInxLista(inxLista_2, VAZIO)) )
 			 {
+<<<<<<< HEAD
+				
+				 return TST_CondRetParm;
+			 } /* if */
+
+			
+			 CondRet_TAB = cria_tabuleiro(vtListas[inxLista], vtListas[inxLista_2]);
+
+=======
 				 printf("Entrou");
 				 return TST_CondRetParm;
 			 } /* if */
@@ -157,6 +166,7 @@ TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
 			 printf("Antes criar tab");
 			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas_2[inxLista_2] ,&vtAncora_TAB[inxCabeca_TAB] ,&vtAncora_Casa[inxCabeca_Casa]);
 			 printf("apos criar tab");
+>>>>>>> origin/master
 
 			 if (CondRet_TAB == 6) {
 

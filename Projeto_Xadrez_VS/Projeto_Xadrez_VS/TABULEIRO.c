@@ -91,7 +91,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 
 	int numDoCaminho, numColunas;
 	
-	//Alocando cabeças.
+	//Alocando cabeça da ancora.
 	*cabeca_TAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
 	if (*cabeca_TAB == NULL) {
 		return TAB_CondRetFaltouMemoria;
@@ -101,7 +101,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 
-	// Linka a ancora com linha da matriz.
+	// Linka a cabeca do tabuleiro com a linha da matriz.
 	(*cabeca_TAB)->pCabecaLista = caminho_matriz;
 	
 
