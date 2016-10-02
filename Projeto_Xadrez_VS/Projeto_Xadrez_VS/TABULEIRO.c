@@ -38,6 +38,7 @@
 
 typedef struct TAB_tagTabuleiro {
 
+
 	LIS_tppLista * pCabecaLista;
 	/* Ponteiro para a cabeça da lista que representa as linhas */
 
@@ -92,13 +93,12 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 
 
 	int numDoCaminho, numColunas;
-	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
+	
 	
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 
-	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
 
 	//Preenche os valores das listas criadas.
 
