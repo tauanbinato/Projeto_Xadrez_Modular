@@ -59,10 +59,13 @@ static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 #define NAO_VAZIO 1
 
 #define DIM_VT_LISTA   10
+#define DIM_VT_TAB	   10
 #define DIM_VALOR     100
 
-LIS_tppLista   vtListas[ DIM_VT_LISTA ] ;
-LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
+LIS_tppLista            vtListas[ DIM_VT_LISTA ] ;
+LIS_tppLista            vtListas_2[DIM_VT_LISTA] ;
+TAB_ppAncoraTabuleiro	vtAncora_TAB[DIM_VT_TAB];
+TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
 
 /***** Protótipos das funções encapuladas no módulo *****/
   // void DestruirValor( void * pValor );
@@ -105,15 +108,18 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 		   CondRetEsp = -1,
 		   numElem = -1,
 		   ValEsp = -1,
-		   i;
+		   i,
+		   inxCabeca_TAB = -1, 
+		   inxCabeca_Casa = -1;
 
+	  //Condicoes de Retorno
       TST_tpCondRet CondRet ;
 	  LIS_tpCondRet CondRet_LIS;
 	  TAB_tpCondRet CondRet_TAB;
 
+
       char   StringDado[  DIM_VALOR ], CharDado, CharObtido ;
 	  char* pDado;
-
       StringDado[ 0 ] = 0 ;
 
       /* Efetuar reset de teste de lista */
@@ -137,18 +143,18 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 		 else if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
 		 {
 
-			 numLidos = LER_LerParametros("iii",
-				 &inxLista, &inxLista_2, &CondRetEsp);
+			 numLidos = LER_LerParametros("iiiii",
+				 &inxLista, &inxLista_2, &inxCabeca_TAB , &inxCabeca_Casa, &CondRetEsp);
 
-			 if ((numLidos != 3)
-				 || (!ValidarInxLista(inxLista, NAO_VAZIO)) || (!ValidarInxLista(inxLista_2, NAO_VAZIO)))
+			 if ((numLidos != 5)
+				 || (!ValidarInxLista(inxLista, NAO_VAZIO)) || (!ValidarInxLista(inxLista_2, NAO_VAZIO)) ||
+				 (!ValidarInxLista(inxCabeca_TAB, NAO_VAZIO) || (!ValidarInxLista(inxCabeca_Casa, NAO_VAZIO))))
 			 {
-				 printf("entrou vazio");
 				 return TST_CondRetParm;
 			 } /* if */
 
 			
-			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas[inxLista_2]);
+			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas[inxLista_2] ,&vtAncora_TAB[inxCabeca_TAB] ,&vtAncora_Casa[inxCabeca_Casa]);
 
 
 			 if (CondRet_TAB == 6) {
