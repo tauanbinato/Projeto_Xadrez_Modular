@@ -136,7 +136,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 TAB_tpCondRet inserirPeca()
 {
 	return TAB_CondRetOK;
-}/*Fim funcao: TAB &Inserir Peça
+}/*Fim funcao: TAB &Inserir Peça*/
 
 TAB_tpCondRet moverPeca()
 {
