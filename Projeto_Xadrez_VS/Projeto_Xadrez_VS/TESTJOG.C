@@ -143,18 +143,14 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 			 if ((numLidos != 3)
 				 || (!ValidarInxLista(inxLista, NAO_VAZIO)) || (!ValidarInxLista(inxLista_2, NAO_VAZIO)))
 			 {
-				 printf("entrou vazio");
 				 return TST_CondRetParm;
 			 } /* if */
 
-			 printf("CRIOU");
-			 printf("\n %d", vtListas[0]);
-			 printf("\n %d\n", vtListas[1]);
+			
 
 			 CondRet_TAB = cria_tabuleiro(vtListas[inxLista], vtListas[inxLista_2]);
 
-			 printf("\n %d", vtListas[0]);
-			 printf("\n %d\n", vtListas[1]);
+			
 
 			 if (CondRet_TAB == 6) {
 

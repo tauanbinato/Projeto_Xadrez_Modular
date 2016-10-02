@@ -92,13 +92,13 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 
 
 	int numDoCaminho, numColunas;
-	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
+	
 	
 	//Cria as listas
 	LIS_CriarLista(caminho_matriz, "Cami");
 	LIS_CriarLista(colunas_matriz, "Colu");
 
-	printf("%d %d\n", *caminho_matriz, *colunas_matriz);
+	
 
 	//Preenche os valores das listas criadas.
 
@@ -152,12 +152,13 @@ TAB_tpCondRet obterPeca()
 
 
 // AREA DA JULIA--------------------
-TAB_tpCondRet obterListaAmeacantes()
+TAB_tpCondRet obterListaAmeacantes( int linha, int coluna, LIS_tppLista * pListaAmeacantes )
 {
+
 	return TAB_CondRetOK;
 }
 
-TAB_tpCondRet obterListaAmeacados()
+TAB_tpCondRet obterListaAmeacados( int linha, int coluna, LIS_tppLista * pListaAmeacantes )
 {
 	return TAB_CondRetOK;
 }
