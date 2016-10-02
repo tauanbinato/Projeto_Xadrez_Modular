@@ -151,7 +151,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
 			 printf("\n %d", vtListas[0]);
 			 printf("\n %d\n", vtListas[1]);
 
-			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas[inxLista_2]);
+			 CondRet_TAB = cria_tabuleiro(vtListas[inxLista], vtListas[inxLista_2]);
 
 			 printf("\n %d", vtListas[0]);
 			 printf("\n %d\n", vtListas[1]);
