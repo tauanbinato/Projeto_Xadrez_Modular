@@ -64,8 +64,9 @@ static const char ALTERA_NO_CORRENTE_CMD  [ ] = "=alterarnocorrente"    ;
 
 LIS_tppLista            vtListas[ DIM_VT_LISTA ] ;
 LIS_tppLista            vtListas_2[DIM_VT_LISTA] ;
-TAB_ppAncoraTabuleiro	vtAncora_TAB[DIM_VT_TAB];
+TAB_ppAncoraTabuleiro	vtAncora_TAB[DIM_VT_TAB] ;
 TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
+
 
 /***** Protótipos das funções encapuladas no módulo *****/
   // void DestruirValor( void * pValor );
@@ -147,15 +148,15 @@ TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
 				 &inxLista, &inxLista_2, &inxCabeca_TAB , &inxCabeca_Casa, &CondRetEsp);
 
 			 if ((numLidos != 5)
-				 || (!ValidarInxLista(inxLista, NAO_VAZIO)) || (!ValidarInxLista(inxLista_2, NAO_VAZIO)) ||
-				 (!ValidarInxLista(inxCabeca_TAB, NAO_VAZIO) || (!ValidarInxLista(inxCabeca_Casa, NAO_VAZIO))))
+				 || (!ValidarInxLista(inxLista, VAZIO)) || (!ValidarInxLista(inxLista_2, VAZIO)) )
 			 {
+				 printf("Entrou");
 				 return TST_CondRetParm;
 			 } /* if */
 
-			
-			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas[inxLista_2] ,&vtAncora_TAB[inxCabeca_TAB] ,&vtAncora_Casa[inxCabeca_Casa]);
-
+			 printf("Antes criar tab");
+			 CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas_2[inxLista_2] ,&vtAncora_TAB[inxCabeca_TAB] ,&vtAncora_Casa[inxCabeca_Casa]);
+			 printf("apos criar tab");
 
 			 if (CondRet_TAB == 6) {
 
@@ -414,13 +415,15 @@ TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
          
       if ( Modo == VAZIO )
       {
-         if ( vtListas[ inxLista ] != 0 )
+         if ( vtListas[ inxLista ] != 0  || vtListas_2[inxLista] != 0)
          {
             return FALSE ;
          } /* if */
+
+
       } else
       {
-         if ( vtListas[ inxLista ] == 0 )
+         if ( vtListas[ inxLista ] == 0 || vtListas_2[inxLista] == 0)
          {
             return FALSE ;
          } /* if */
