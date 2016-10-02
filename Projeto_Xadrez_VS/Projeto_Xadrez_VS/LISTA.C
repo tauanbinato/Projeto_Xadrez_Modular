@@ -99,7 +99,7 @@
    LIS_tpCondRet LIS_CriarLista (LIS_tppLista *pLista, char* idLista) {
 
 	  LIS_tpLista * aux ;
-	  printf("%d\n", *pLista);
+	 
       aux = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
       if ( aux == NULL )
       {
