@@ -84,7 +84,7 @@ typedef struct TAB_tagAncoraCasa {
 *
 *  Funcao: TAB  &Criar Tabuleiro
 *
-*  *************************************************************************/
+*  **************************************************************************/
 
 TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas_matriz, TAB_ppAncoraTabuleiro *cabeca_TAB, TAB_ppAncoraCasa *cabeca_Casa) {
 
