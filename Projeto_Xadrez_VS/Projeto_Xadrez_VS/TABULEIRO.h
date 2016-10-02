@@ -35,7 +35,6 @@
 //Estruturas-----------------------------------------
 typedef struct TAB_tagTabuleiro *TAB_ppAncoraTabuleiro;
 typedef struct TAB_tagAncoraCasa *TAB_ppAncoraCasa;
-typedef struct TAB_tagCasa *TAB_ppCasaMatriz;
 //FIM Estruturas-----------------------------------------
 
 
@@ -135,7 +134,7 @@ TAB_tpCondRet destruirTabuleiro();
 *
 ***********************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista caminho_matriz, LIS_tppLista colunas_matriz);
+TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas_matriz, TAB_ppAncoraTabuleiro *cabeca_TAB, TAB_ppAncoraCasa *cabeca_Casa);
 
 
 
