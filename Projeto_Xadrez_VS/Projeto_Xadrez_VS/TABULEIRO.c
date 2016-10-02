@@ -13,7 +13,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
-*     1       tbf   26/set/2016 início desenvolvimento.
+*     1       tb,ja,lp   26/set/2016 início desenvolvimento.
 *
 ***************************************************************************/
 
@@ -147,37 +147,68 @@ TAB_tpCondRet inserirPeca()
 	return TAB_CondRetOK;
 }/*Fim funcao: TAB &Inserir Peça*/
 
+/***************************************************************************
+*
+*  Funcao: TAB  &Mover Peca
+*
+*  **************************************************************************/
 TAB_tpCondRet moverPeca()
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: TAB &Mover Peca*/
 
+/***************************************************************************
+*
+*  Funcao: TAB  &Retirar Peca
+*
+*  **************************************************************************/
 TAB_tpCondRet retirarPeca()
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: TAB &Retirar Peca*/
 
+/***************************************************************************
+*
+*  Funcao: TAB  &Obter Peca
+*
+*  **************************************************************************/
 TAB_tpCondRet obterPeca()
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: &TAB obter Peca*/
 // FIM AREA DO TAUAN----------------
 
 
 // AREA DA JULIA--------------------
+
+/***************************************************************************
+*
+*  Funcao: TAB  &Obter Lista Ameacantes
+*
+*  **************************************************************************/
 TAB_tpCondRet obterListaAmeacantes( int linha, int coluna, LIS_tppLista * pListaAmeacantes )
 {
 
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: &TAB obter Lista Ameacantes*/
 
+/***************************************************************************
+*
+*  Funcao: TAB  &Obter Lista Ameacados
+*
+*  **************************************************************************/
 TAB_tpCondRet obterListaAmeacados( int linha, int coluna, LIS_tppLista * pListaAmeacantes )
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: &TAB obter Lista Ameacados*/
 
+/***************************************************************************
+*
+*  Funcao: TAB  &Destruir Tabuleiro
+*
+*  **************************************************************************/
 TAB_tpCondRet destruirTabuleiro()
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: &TAB Destruir Tabuleiro*/
 // FIM AREA DA JULIA-----------------

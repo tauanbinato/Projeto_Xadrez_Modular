@@ -13,6 +13,7 @@
 *
 *  $HA Hist�rico de evolu��o:
 *     Vers�o  Autor    Data     Observa��es
+*	  5 	  lp,ja,tb 20/set/2016
 *     4       avs   01/fev/2006 criar linguagem script simb�lica
 *     3       avs   08/dez/2004 uniformiza��o dos exemplos
 *     2       avs   07/jul/2003 unifica��o de todos os m�dulos em um s� projeto

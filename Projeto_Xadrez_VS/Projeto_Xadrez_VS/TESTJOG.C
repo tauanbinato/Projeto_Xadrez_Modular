@@ -13,7 +13,7 @@
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor      Data         Observações
-*     5       lp,ja, tb 28/nov/2016   alteração de funções e edição do scrpit de teste
+*     5       lp,ja, tb 28/set/2016   alteração de funções e edição do scrpit de teste
 *     4       avs       01/fev/2006   criar linguagem script simbólica
 *     3       avs       08/dez/2004   uniformização dos exemplos
 *     2       avs       07/jul/2003   unificação de todos os módulos em um só projeto
@@ -262,7 +262,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetMemoria;
 		} /* if */
 
-		pDado = CharDado;
+		*pDado = CharDado;
 
 		CondRet_LIS = LIS_InserirNo(&vtListas[inxLista], pDado);
 
@@ -308,11 +308,11 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetParm;
 		} /* if */
 
-		CondRet_LIS = LIS_ObterNo(&vtListas[inxLista], &CharObtido);
+		CondRet_LIS = LIS_ObterNo(vtListas[inxLista], &CharObtido);
 
 		if (CondRet_LIS == 2)
 		{
-			return  TST_CompararPonteiroNulo(1, CharObtido,
+			return  TST_CompararPonteiroNulo(1, &CharObtido,
 				"Erro Lista Vazia");
 		} /* if */
 
@@ -336,7 +336,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 		return TST_CompararInt(CondRetEsp,
-			LIS_AvancarElementoCorrente(&vtListas[inxLista]),
+			LIS_AvancarElementoCorrente(vtListas[inxLista]),
 			"Condicao de retorno errada ao avancar");
 
 	} /* fim ativa: LIS  &Avançar elemento */
@@ -356,7 +356,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 		return TST_CompararInt(CondRetEsp,
-			LIS_VoltarElementoCorrente(&vtListas[inxLista]),
+			LIS_VoltarElementoCorrente(vtListas[inxLista]),
 			"Condicao de retorno errada ao avancar");
 
 	} /* fim ativa: LIS  &Voltar elemento */
