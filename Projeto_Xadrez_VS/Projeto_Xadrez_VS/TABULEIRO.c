@@ -84,7 +84,7 @@ TAB_ancoraCasa **ancora_casa;
 
 /***************************************************************************
 *
-*  Funcao: LIS  &Criar Tabuleiro
+*  Funcao: TAB  &Criar Tabuleiro
 *
 *  *************************************************************************/
 
@@ -124,15 +124,19 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 	return TAB_CondRetOK;
 
 }
-/* Fim funcao: LIS  &Criar tabuleiro */
+/* Fim funcao: TAB  &Criar tabuleiro */
 
 
 
 // AREA DO TAUAN------------------
+/***************************************************************************
+*
+*  Funcao: TAB &inserir Peça
+*  ****/
 TAB_tpCondRet inserirPeca()
 {
 	return TAB_CondRetOK;
-}
+}/*Fim funcao: TAB &Inserir Peça
 
 TAB_tpCondRet moverPeca()
 {
