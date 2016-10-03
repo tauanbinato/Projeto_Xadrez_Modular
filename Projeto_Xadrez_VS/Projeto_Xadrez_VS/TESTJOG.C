@@ -174,7 +174,7 @@ LIS_tppLista   vtListas_2[DIM_VT_LISTA] ;
             {
                return TST_CondRetParm ;
             } /* if */
-            
+
 			CondRet_LIS = LIS_CriarLista( &vtListas[inxLista], StringDado, DestruirValor) ;
 
 			if (CondRet_LIS == 6) {
