@@ -77,12 +77,13 @@ typedef struct PEC_tagPeca * PEC_tppPeca;
 *
 *  $EP Parâmetros
 *     peca  - ponteiro para a estrutura a ser manipulada
+*	  nome_peca  - nome de uma peca
 *
 *  $FV Valor retornado
 *     CondRetOK            - se um elemento tiver sido voltado
 *
 ***********************************************************************/
-PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
+PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char **nome_peca);
 
 
 /***********************************************************************
@@ -94,14 +95,48 @@ PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
 *
 *  $EP Parâmetros
 *     peca  - ponteiro para a estrutura a ser manipulada
+*	  cor_peca - nome da cor de uma peca
 *
 *  $FV Valor retornado
 *     CondRetOK            - se um elemento tiver sido voltado
 *
 ***********************************************************************/
-PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char *cor_peca);
+PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char **cor_peca);
 
+/***********************************************************************
+*
+*  $FC Função: PEC  &Obtem nome peca
+*
+*  $ED Descrição da função
+*     Funcao de acesso para obter nome de uma estrutura peca
+*
+*  $EP Parâmetros
+*     peca  - ponteiro para a estrutura a ser manipulada
+*	  nome_peca  - nome de uma peca
+*
+*  $FV Valor retornado
+*     CondRetOK            - se um elemento tiver sido voltado
+*
+***********************************************************************/
+PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char **nome_peca);
 
+/***********************************************************************
+*
+*  $FC Função: PEC  &Cria Peca
+*
+*  $ED Descrição da função
+*     Cria e inicializa uma peca
+*
+*  $EP Parâmetros
+*     peca  - ponteiro para a estrutura a ser manipulada
+*	  nome_peca  - nome de uma peca
+*	  cor_peca - nome da cor de uma peca
+*
+*  $FV Valor retornado
+*     CondRetOK            - se um elemento tiver sido voltado
+*
+***********************************************************************/
+PEC_tpCondRet PEC_criaPeca(PEC_tppPeca *peca, char *nome_peca, char *cor_peca);
 
 #undef PECA_EXT
 

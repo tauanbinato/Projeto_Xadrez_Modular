@@ -37,17 +37,18 @@
 
 /**************************COMANDOS SCRIPT**************************/
 
-static const char CRIAR_TABULEIRO_CMD[] = "=criartabuleiro";
-static const char RESET_LISTA_CMD[] = "=resetteste";
-static const char CRIAR_LISTA_CMD[] = "=criarlista";
-static const char DESTROI_LISTA_CMD[] = "=destroilista";
-static const char INS_NO_CMD[] = "=inserirno";
-static const char OBTER_NO_CMD[] = "=obterno";
-static const char EXC_NO_CORRENTE_CMD[] = "=excluirnocorrente";
-static const char AVANCAR_ELEM_CMD[] = "=irprox";
-static const char VOLTAR_ELEM_CMD[] = "=irant";
-static const char OBTER_ID_LISTA_CMD[] = "=obteridlista";
-static const char ALTERA_NO_CORRENTE_CMD[] = "=alterarnocorrente";
+static const char CRIAR_TABULEIRO_CMD[]	    =				"=criartabuleiro";
+static const char INSERIR_PECA_CMD[]		=				"=inserirpeca";
+static const char RESET_LISTA_CMD[]			=				"=resetteste";
+static const char CRIAR_LISTA_CMD[]			=				"=criarlista";
+static const char DESTROI_LISTA_CMD[]		=				"=destroilista";
+static const char INS_NO_CMD[]				=				"=inserirno";
+static const char OBTER_NO_CMD[]			=				"=obterno";
+static const char EXC_NO_CORRENTE_CMD[]	    =			    "=excluirnocorrente";
+static const char AVANCAR_ELEM_CMD[]		=				"=irprox";
+static const char VOLTAR_ELEM_CMD[]			=				"=irant";
+static const char OBTER_ID_LISTA_CMD[]      =			    "=obteridlista";
+static const char ALTERA_NO_CORRENTE_CMD[]  =		     	"=alterarnocorrente";
 
 /************************FIM COMANDOS SCRIPT************************/
 
@@ -111,15 +112,19 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		ValEsp = -1,
 		i,
 		inxMatriz = -1;
+	int  cord_linha , cord_coluna;
 
-	//Condicoes de Retorno
+	/*Condicoes de Retorno*/
 	TST_tpCondRet CondRet;
 	LIS_tpCondRet CondRet_LIS;
 	TAB_tpCondRet CondRet_TAB;
 
 
-	char   StringDado[DIM_VALOR], CharDado, CharObtido;
-	char* pDado;
+	/*Strings*/
+	char   StringDado[DIM_VALOR], StringDado_2[DIM_VALOR] , CharObtido;
+	char * pDado;
+	char *CharDado ;
+	char *CharDado_2;
 	StringDado[0] = 0;
 
 	/* Efetuar reset de teste de lista */
@@ -135,6 +140,44 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		return TST_CondRetOK;
 
 	} /* fim ativa: Efetuar reset de teste de lista */
+
+
+	  /* Testar InserirPeca */
+
+
+	else if (strcmp(ComandoTeste, INSERIR_PECA_CMD) == 0)
+	{
+		char *id_peca , *id_cor;
+		id_peca = (char *)malloc(1 + sizeof(char));
+		if (id_peca == NULL) return TST_CondRetMemoria;
+		id_cor = (char *)malloc(1 + sizeof(char));
+		if (id_cor == NULL) return TST_CondRetMemoria;
+
+		numLidos = LER_LerParametros("iiicci", &inxMatriz,&cord_linha,&cord_coluna,id_peca,id_cor,&CondRetEsp);
+
+		
+
+		if ((numLidos != 6) || (!ValidarInxMatriz(inxMatriz, NAO_VAZIO)))
+		{
+			printf("Entrou");
+			return TST_CondRetParm;
+		} /* if */
+
+		
+		printf("id_peca: %c   id_cor: %c \n", *id_peca , *id_cor);
+		CondRet_TAB = inserirPeca(&vtMatrizes[inxMatriz] , cord_linha , cord_coluna , id_peca , id_cor );
+		printf("apos inserir peca\n");
+
+		if (CondRet_TAB == 6) {
+			printf("Entrou");
+			return TST_CondRetMemoria;
+
+		}
+
+		return TST_CompararInt(CondRetEsp, CondRet_TAB,
+			"Condicao de retorno errada ao inserir peca");
+
+	} /* fim ativa: Testar Inserir Peca */
 
 
 	  /* Testar CriarTabuleiro */
