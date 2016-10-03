@@ -13,6 +13,7 @@
 *
 *  $HA Hist�rico de evolu��o:
 *     Vers�o  Autor    Data     Observa��es
+*	  5 	  lp,ja,tb 20/set/2016
 *     4       avs   01/fev/2006 criar linguagem script simb�lica
 *     3       avs   08/dez/2004 uniformiza��o dos exemplos
 *     2       avs   07/jul/2003 unifica��o de todos os m�dulos em um s� projeto
@@ -96,10 +97,10 @@
 *  Funcao: LIS  &Criar lista
 *  ****/
 
-   LIS_tpCondRet LIS_CriarLista (LIS_tppLista* pLista, char* idLista) {
+   LIS_tpCondRet LIS_CriarLista (LIS_tppLista *pLista, char* idLista) {
 
 	  LIS_tpLista * aux ;
-	  
+	 
       aux = ( LIS_tpLista * ) malloc( sizeof( LIS_tpLista )) ;
       if ( aux == NULL )
       {
@@ -109,6 +110,8 @@
       LimparCabeca( aux ) ;
 	  strcpy(aux->idLista, idLista);
 	  *pLista = aux;
+	 
+
 
       return LIS_CondRetOK ;
 
@@ -180,7 +183,7 @@
 *  Fun��o: LIS  &Inserir elemento ap�s
 *  ****/
 
-   LIS_tpCondRet LIS_InserirNo( LIS_tppLista* pLista ,void * pValor        )
+   LIS_tpCondRet LIS_InserirNo( LIS_tppLista* pLista ,void * pValor)
       
    {
       tpElemLista * pElem ;
@@ -188,11 +191,11 @@
       #ifdef _DEBUG
          assert( pLista != NULL ) ;
       #endif
-		 printf("Entrou inserir NO\n");
+		
       /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
 
-		 printf("Criou elemento dentro da inserir NO\n");
+	
 
          if ( pElem == NULL )
          {
@@ -225,6 +228,8 @@
 
 		 (*pLista)->pElemCorr = pElem ;
 		 
+		 
+
          return LIS_CondRetOK ;
 
    } /* Fim fun��o: LIS  &Inserir elemento ap�s */
