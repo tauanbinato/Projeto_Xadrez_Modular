@@ -56,36 +56,44 @@ PEC_tpCondRet PEC_criaPeca(PEC_tppPeca *peca , char *nome_peca , char *cor_peca)
 	strcpy(aux_peca->nome_peca, nome_peca);
 	strcpy(aux_peca->cor_peca, cor_peca);
 	*peca = aux_peca;
-
+	
 	return PEC_CondRetOK;
 }
 
 PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca , char *nome_peca) {
 
-	
 	strcpy((*peca)->nome_peca, nome_peca);
-
 	return PEC_CondRetOK;
 }
 
 PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char *cor_peca) {
 
-	
+
 	strcpy((*peca)->cor_peca , cor_peca);
+	return PEC_CondRetOK;
+}
+
+PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char **nome_peca) {
+
+	char * aux;
+	aux = (char *)malloc(1 + sizeof(char));
+	if (aux == NULL) return PEC_CondRetFaltouMemoria;
+	
+	strcpy(aux, (*peca)->nome_peca);
+	strcpy(nome_peca, aux);
 
 	return PEC_CondRetOK;
 }
 
-PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char *nome_peca) {
+PEC_tpCondRet PEC_obtemCorDePeca(PEC_tppPeca *peca, char **cor_peca) {
 
-	strcpy(nome_peca, (*peca)->nome_peca);
-
-	return PEC_CondRetOK;
-}
-
-PEC_tpCondRet PEC_obtemCorDePeca(PEC_tppPeca *peca, char *cor_peca) {
-
-	strcpy(cor_peca, (*peca)->nome_peca);
+	char * aux;
+	aux = (char *)malloc(1 + sizeof(char));
+	if (aux == NULL) return PEC_CondRetFaltouMemoria;
+	
+	strcpy(aux, (*peca)->cor_peca);
+	strcpy(cor_peca, aux);
+	
 
 	return PEC_CondRetOK;
 }
