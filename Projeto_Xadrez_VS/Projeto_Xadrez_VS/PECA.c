@@ -38,11 +38,18 @@
 typedef struct PEC_tagPeca {
 
 	
-	char nome_peca[2];
+	char *nome_peca;
 	/* Nome da peca especifica*/
 
-	char cor_peca[2];
+	char *cor_peca;
 	/* Cor da peca especifica*/
 
 
 } PEC_Peca;
+
+PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca , char *nome_peca) {
+
+	(*peca)->nome_peca = *nome_peca;
+
+	return PEC_CondRetOK;
+}

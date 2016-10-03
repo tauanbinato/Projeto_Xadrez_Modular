@@ -67,6 +67,23 @@ typedef struct PEC_tagPeca * PEC_tppPeca;
 //Estruturas-----------------------------------------
 
 
+
+/***********************************************************************
+*
+*  $FC Função: PEC  &Insere nome 
+*
+*  $ED Descrição da função
+*     Insere um nome em uma estrutura peca
+*
+*  $EP Parâmetros
+*     peca  - ponteiro para a estrutura a ser manipulada
+*
+*  $FV Valor retornado
+*     CondRetOK            - se um elemento tiver sido voltado
+*
+***********************************************************************/
+PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
+
 #undef TABULEIRO_EXT
 
 /********** Fim do módulo de definição: TAB  Tabuleiro **********/

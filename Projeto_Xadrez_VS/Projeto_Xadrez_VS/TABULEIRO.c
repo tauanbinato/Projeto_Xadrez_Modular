@@ -105,6 +105,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	TAB_ancoraTabuleiro *aux_ancoraTAB;
 	/* --------------------------------- */
 
+	printf("1");
 
 	/* Fazendo as alocacaos necessarias */
 	
@@ -112,7 +113,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	if (cabeca_casa == NULL) {
 		return TAB_CondRetFaltouMemoria;
 	}
-	
+	printf("2");
 	// - Alocando cabeça da ancora.
 	aux_ancoraTAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
 	if (aux_ancoraTAB == NULL) {
@@ -121,40 +122,39 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	}
 	*cabeca_TAB = aux_ancoraTAB;
 	
-
+	printf("3");
 	// - Aloca as listas
 	LIS_CriarLista(&caminho_matriz, "Cami");
 	/* --------------------------------- */
 	
-
+	printf("4");
 	//Inicializando estrutura.
 	(*cabeca_TAB)->num_de_linhas = 0;
 	(*cabeca_TAB)->num_de_colunas = 0;
 	
 	
-
+	printf("5");
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
-
 		//Cria 8 caminhos (linhas)
-	
-		LIS_CriarLista(colunas_matriz, vetor_IDS[numDoCaminho]);
-		LIS_InserirNo(caminho_matriz, colunas_matriz);
+		printf("6");
+		LIS_CriarLista(&colunas_matriz, vetor_IDS[numDoCaminho]);
+		LIS_InserirNo(&caminho_matriz, colunas_matriz);
 		(*cabeca_TAB)->num_de_linhas++;
 		
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
-			
+			printf("7");
 			//Cria 8 elementos para cada linha e aponta para uma casa
 			aux_cabecaCasa = (TAB_ancoraCasa *)malloc(sizeof(TAB_ancoraCasa));
 			if (aux_cabecaCasa == NULL) {
 			
 				return TAB_CondRetFaltouMemoria;
 			}
-		
+		printf("8");
 			*cabeca_casa = aux_cabecaCasa;
 			
-			LIS_InserirNo(colunas_matriz, cabeca_casa);
+			LIS_InserirNo(&colunas_matriz, cabeca_casa);
 			free(aux_cabecaCasa);
 		                 
 			(*cabeca_TAB)->num_de_colunas++;
@@ -197,18 +197,20 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB,int *cord_linha , in
 		}
 		LIS_AvancarElementoCorrente((*cabeca_TAB)->pCabecaLista);
 	}
-	printf("Corrente : %d || Linha : %d", corrente, *cord_linha);
+	printf("Corrente : %d || Linha : %d\n", corrente, *cord_linha);
 
 	/*Anda atraves dos elementos de uma linha ate encontrar a coluna desejada*/
 	for (corrente = 1; corrente == *cord_coluna; corrente++) {
-		if (corrente == *cord_coluna) {
-			break;
-		}
-
-		//LIS_ObterNo(*cabeca_TAB)->pCabecaLista, aux_Casa);
+		
+		LIS_ObterNo((*cabeca_TAB)->pCabecaLista, aux_Casa);
 
 	}
+	printf("Corrente : %d || Coluna : %d\n", corrente, *cord_coluna);
 
+
+	//Utiliza funcao de acesso do modulo peca
+	PEC_insereNomeDePeca((*aux_Casa)->pCasaMatriz->pPeca, peca);
+	printf("Peca adicionda : %s", (*aux_Casa)->pCasaMatriz);
 
 	return TAB_CondRetOK;
 }/*Fim funcao: TAB &Inserir Peça*/
