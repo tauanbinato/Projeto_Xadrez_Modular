@@ -24,7 +24,6 @@
 *
 ***************************************************************************/
 
-#include "Lista.h"
 
 #if defined( PECA_OWN )
 #define PECA_EXT
@@ -64,7 +63,7 @@ typedef enum {
 
 
 //Estruturas-----------------------------------------
-typedef struct PEC_tagPeca * ppPeca;
+typedef struct PEC_tagPeca * PEC_tppPeca;
 //Estruturas-----------------------------------------
 
 

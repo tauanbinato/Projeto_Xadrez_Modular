@@ -22,13 +22,18 @@
 #include   <memory.h>
 #include   <malloc.h>
 #include   <assert.h>
+//Include de outros modulos
 #include   "lista.h"
+#include   "Peca.h"
 
 #define	   tamanho_matriz	8
 
 #define LISTA_OWN
 #include "Tabuleiro.h"
 #undef LISTA_OWN
+
+
+
 
 /***********************************************************************
 *
@@ -60,7 +65,7 @@ typedef struct TAB_tagCasa {
 
 	LIS_tppLista * pListaAmeacantes;
 	LIS_tppLista * pListaAmeacados;
-	//falta um ponteiro aqui
+	PEC_tppPeca  * pPeca;
 
 } TAB_casaMatriz;
 
@@ -88,13 +93,25 @@ typedef struct TAB_tagAncoraCasa {
 
 TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 
-
+	/* Declaracoes necessarias */
 	int numDoCaminho, numColunas;
+	char *vetor_IDS[tamanho_matriz] = { "um" , "dois" , "tres" , "quatro" , "cinco" , "seis" , "sete" , "oito" };
+
 	LIS_tppLista  *caminho_matriz;
 	LIS_tppLista  *colunas_matriz;
-	TAB_ancoraCasa *cabeca_Casa;
+	TAB_ppAncoraCasa *cabeca_casa;
+
+	TAB_ancoraCasa *aux_cabecaCasa;
 	TAB_ancoraTabuleiro *aux_ancoraTAB;
+	/* --------------------------------- */
+
+
 	/* Fazendo as alocacaos necessarias */
+	
+	cabeca_casa = (TAB_ppAncoraCasa *)malloc(sizeof(TAB_ancoraCasa));
+	if (cabeca_casa == NULL) {
+		return TAB_CondRetFaltouMemoria;
+	}
 	
 	// - Alocando cabeça da ancora.
 	aux_ancoraTAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
@@ -102,41 +119,43 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	
 		return TAB_CondRetFaltouMemoria;
 	}
-
 	*cabeca_TAB = aux_ancoraTAB;
+	
 
 	// - Aloca as listas
 	LIS_CriarLista(&caminho_matriz, "Cami");
-	
 	/* --------------------------------- */
 	
 
 	//Inicializando estrutura.
 	(*cabeca_TAB)->num_de_linhas = 0;
 	(*cabeca_TAB)->num_de_colunas = 0;
-
-	//Preenche os valores das listas criadas.
-
+	
+	
 
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
+
 		//Cria 8 caminhos (linhas)
-		LIS_CriarLista(colunas_matriz, "Colu");
+	
+		LIS_CriarLista(colunas_matriz, vetor_IDS[numDoCaminho]);
 		LIS_InserirNo(caminho_matriz, colunas_matriz);
 		(*cabeca_TAB)->num_de_linhas++;
 		
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
 		{
 			
-			//Cria 8 colunas para cada linha
-			cabeca_Casa = (TAB_ancoraCasa *)malloc(sizeof(TAB_ancoraCasa));
-			if (cabeca_Casa == NULL) {
+			//Cria 8 elementos para cada linha e aponta para uma casa
+			aux_cabecaCasa = (TAB_ancoraCasa *)malloc(sizeof(TAB_ancoraCasa));
+			if (aux_cabecaCasa == NULL) {
 			
 				return TAB_CondRetFaltouMemoria;
 			}
 		
-			LIS_InserirNo(colunas_matriz, cabeca_Casa);
-			free(cabeca_Casa);
+			*cabeca_casa = aux_cabecaCasa;
+			
+			LIS_InserirNo(colunas_matriz, cabeca_casa);
+			free(aux_cabecaCasa);
 		                 
 			(*cabeca_TAB)->num_de_colunas++;
 		
@@ -157,9 +176,40 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 /***************************************************************************
 *
 *  Funcao: TAB &inserir Peça
-*  ****/
-TAB_tpCondRet inserirPeca()
+*Função InserirPeca – Receberá a coordenada linha-coluna, o identificador da peça a ser inserida e a sua cor. 
+*Crie os retornos necessários inclusive prevendo a colocação da peça em uma coordenada inexistente
+*  *************************************************************************/
+TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB,int *cord_linha , int *cord_coluna , char *peca)
 {
+
+	int corrente;
+	TAB_ppAncoraCasa *aux_Casa;
+
+	//Testa se esta OUT of RANGE
+	if (*cord_linha > tamanho_matriz || *cord_coluna > tamanho_matriz) {
+		TAB_CondRetNaoAchou;
+	}
+
+	/*Anda atraves da cabeça ate encontrar a linha desejada*/
+	for (corrente = 1; corrente == *cord_linha; corrente++) {
+		if (corrente == *cord_linha) {
+			break;
+		}
+		LIS_AvancarElementoCorrente((*cabeca_TAB)->pCabecaLista);
+	}
+	printf("Corrente : %d || Linha : %d", corrente, *cord_linha);
+
+	/*Anda atraves dos elementos de uma linha ate encontrar a coluna desejada*/
+	for (corrente = 1; corrente == *cord_coluna; corrente++) {
+		if (corrente == *cord_coluna) {
+			break;
+		}
+
+		//LIS_ObterNo(*cabeca_TAB)->pCabecaLista, aux_Casa);
+
+	}
+
+
 	return TAB_CondRetOK;
 }/*Fim funcao: TAB &Inserir Peça*/
 

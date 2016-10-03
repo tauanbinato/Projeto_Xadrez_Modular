@@ -287,7 +287,7 @@
 *  Fun��o: LIS  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
-LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, char* CharObtido ) {
+LIS_tpCondRet LIS_ObterNo( LIS_tppLista* pLista, void** CharObtido ) {
 #ifdef _DEBUG
 	   assert(pLista != NULL);
 #endif

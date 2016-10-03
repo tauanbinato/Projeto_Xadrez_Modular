@@ -24,7 +24,6 @@
 #include   <assert.h>
 #include   "lista.h"
 
-#define	   tamanho_matriz	8
 
 #define LISTA_OWN
 #include "Peca.h"
@@ -39,10 +38,10 @@
 typedef struct PEC_tagPeca {
 
 	
-	char *nome_peca;
+	char nome_peca[2];
 	/* Nome da peca especifica*/
 
-	char *cor_peca;
+	char cor_peca[2];
 	/* Cor da peca especifica*/
 
 
