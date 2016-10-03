@@ -83,7 +83,7 @@ typedef struct PEC_tagPeca * PEC_tppPeca;
 *     CondRetOK            - se um elemento tiver sido voltado
 *
 ***********************************************************************/
-PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char **nome_peca);
+PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
 
 
 /***********************************************************************
@@ -101,7 +101,7 @@ PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char **nome_peca);
 *     CondRetOK            - se um elemento tiver sido voltado
 *
 ***********************************************************************/
-PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char **cor_peca);
+PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char *cor_peca);
 
 /***********************************************************************
 *
@@ -118,7 +118,25 @@ PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char **cor_peca);
 *     CondRetOK            - se um elemento tiver sido voltado
 *
 ***********************************************************************/
-PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char **nome_peca);
+PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
+
+/***********************************************************************
+*
+*  $FC Função: PEC  &Obtem cor peca
+*
+*  $ED Descrição da função
+*     Funcao de acesso para obter nome de uma estrutura peca
+*
+*  $EP Parâmetros
+*     peca  - ponteiro para a estrutura a ser manipulada
+*	  cor_peca  - nome da cor de uma peca
+*
+*  $FV Valor retornado
+*     CondRetOK            - se um elemento tiver sido voltado
+*
+***********************************************************************/
+
+PEC_tpCondRet PEC_obtemCorDePeca(PEC_tppPeca *peca, char *cor_peca);
 
 /***********************************************************************
 *

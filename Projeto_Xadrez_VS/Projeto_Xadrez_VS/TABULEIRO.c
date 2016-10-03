@@ -183,13 +183,15 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 {
 
 	int corrente;
-	char **nomePeca;
+	char *nomePeca , *corPeca;
 	TAB_ppAncoraCasa *aux_Casa;
+	PEC_tppPeca *aux_Peca;
 
 	//Testa se esta OUT of RANGE
 	if ((cord_linha > tamanho_matriz || cord_coluna > tamanho_matriz ) || (cord_linha == 0 || cord_coluna == 0)) {
 		return TAB_CondRetNaoAchou;
 	}
+
 
 	/*Anda atraves da cabeça ate encontrar a linha desejada*/
 	for (corrente = 1; corrente == cord_linha; corrente++) {
@@ -209,15 +211,20 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 	printf("Corrente : %d || Coluna : %d\n", corrente, cord_coluna);
 
 
+	aux_Peca = (*aux_Casa)->pCasaMatriz->pPeca;
+
 	//Utiliza funcoes de acesso do modulo peca
 	printf("id_peca: %c   id_cor: %c \n", *id_peca, *id_cor);
-	PEC_insereNomeDePeca((*aux_Casa)->pCasaMatriz->pPeca, *id_peca);
+	/*Crio a peca que sera inserida no tabuleiro*/
+	PEC_criaPeca(&aux_Peca, id_peca, id_cor);
+	PEC_insereNomeDePeca(&aux_Peca, id_peca);
+	PEC_insereCorDePeca(&aux_Peca, id_cor);
 	
-	PEC_insereCorDePeca((*aux_Casa)->pCasaMatriz->pPeca, *id_cor);
-	
-	PEC_obtemNomeDePeca((*aux_Casa)->pCasaMatriz->pPeca, *nomePeca);
+	PEC_obtemNomeDePeca(&aux_Peca, nomePeca);
+	PEC_obtemCorDePeca(&aux_Peca, corPeca);
+
 	printf("Peca adicionda : %c\n",*nomePeca);
-	
+	printf("Cor da peca adicionda : %c\n", *corPeca);
 	return TAB_CondRetOK;
 }/*Fim funcao: TAB &Inserir Peça*/
 
