@@ -1,6 +1,6 @@
 ************************************************************************************ README **************************************************************************************************************
 
-Fala galera, esse é nosso repositório para trabalharmos no projeto.
+Fala time, esse é nosso repositório para trabalharmos no projeto.
 
 Passos Configurando Git + Visual 2015:
 
