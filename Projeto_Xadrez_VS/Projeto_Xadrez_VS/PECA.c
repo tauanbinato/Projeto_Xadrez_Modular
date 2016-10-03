@@ -53,3 +53,10 @@ PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca , char *nome_peca) {
 
 	return PEC_CondRetOK;
 }
+
+PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char *cor_peca) {
+
+	(*peca)->cor_peca = *cor_peca;
+
+	return PEC_CondRetOK;
+}

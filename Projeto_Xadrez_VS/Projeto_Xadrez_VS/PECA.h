@@ -84,7 +84,26 @@ typedef struct PEC_tagPeca * PEC_tppPeca;
 ***********************************************************************/
 PEC_tpCondRet PEC_insereNomeDePeca(PEC_tppPeca *peca, char *nome_peca);
 
-#undef TABULEIRO_EXT
+
+/***********************************************************************
+*
+*  $FC Função: PEC  &Insere cor
+*
+*  $ED Descrição da função
+*     Insere uma cor em uma estrutura peca
+*
+*  $EP Parâmetros
+*     peca  - ponteiro para a estrutura a ser manipulada
+*
+*  $FV Valor retornado
+*     CondRetOK            - se um elemento tiver sido voltado
+*
+***********************************************************************/
+PEC_tpCondRet PEC_insereCorDePeca(PEC_tppPeca *peca, char *cor_peca);
+
+
+
+#undef PECA_EXT
 
 /********** Fim do módulo de definição: TAB  Tabuleiro **********/
 

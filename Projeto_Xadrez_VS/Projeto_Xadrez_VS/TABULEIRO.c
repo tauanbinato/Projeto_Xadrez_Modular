@@ -179,7 +179,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 *Função InserirPeca – Receberá a coordenada linha-coluna, o identificador da peça a ser inserida e a sua cor. 
 *Crie os retornos necessários inclusive prevendo a colocação da peça em uma coordenada inexistente
 *  *************************************************************************/
-TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB,int *cord_linha , int *cord_coluna , char *peca)
+TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB,int *cord_linha , int *cord_coluna , char *id_peca , char *cor)
 {
 
 	int corrente;
@@ -208,8 +208,9 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB,int *cord_linha , in
 	printf("Corrente : %d || Coluna : %d\n", corrente, *cord_coluna);
 
 
-	//Utiliza funcao de acesso do modulo peca
-	PEC_insereNomeDePeca((*aux_Casa)->pCasaMatriz->pPeca, peca);
+	//Utiliza funcoes de acesso do modulo peca
+	PEC_insereNomeDePeca((*aux_Casa)->pCasaMatriz->pPeca, id_peca);
+	PEC_insereCorDePeca((*aux_Casa)->pCasaMatriz->pPeca, cor);
 	printf("Peca adicionda : %s", (*aux_Casa)->pCasaMatriz);
 
 	return TAB_CondRetOK;
