@@ -134,7 +134,7 @@ TAB_tpCondRet destruirTabuleiro();
 *
 ***********************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas_matriz, TAB_ppAncoraTabuleiro *cabeca_TAB, TAB_ppAncoraCasa *cabeca_Casa);
+TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB);
 
 
 

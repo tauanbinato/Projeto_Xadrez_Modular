@@ -64,13 +64,13 @@ static const char ALTERA_NO_CORRENTE_CMD[] = "=alterarnocorrente";
 
 LIS_tppLista            vtListas[DIM_VT_LISTA];
 LIS_tppLista            vtListas_2[DIM_VT_LISTA];
-TAB_ppAncoraTabuleiro	vtAncora_TAB[DIM_VT_TAB];
-TAB_ppAncoraCasa	    vtAncora_Casa[DIM_VT_TAB];
+TAB_ppAncoraTabuleiro	vtMatrizes[DIM_VT_TAB];
 
 
 /***** Protótipos das funções encapuladas no módulo *****/
 // void DestruirValor( void * pValor );
 static int ValidarInxLista(int inxLista, int Modo);
+static int ValidarInxMatriz(int inxLista, int Modo);
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -110,8 +110,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		numElem = -1,
 		ValEsp = -1,
 		i,
-		inxCabeca_TAB = -1,
-		inxCabeca_Casa = -1;
+		inxMatriz = -1;
 
 	//Condicoes de Retorno
 	TST_tpCondRet CondRet;
@@ -144,19 +143,18 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	else if (strcmp(ComandoTeste, CRIAR_TABULEIRO_CMD) == 0)
 	{
 
-		numLidos = LER_LerParametros("iiiii",
-			&inxLista, &inxLista_2, &inxCabeca_TAB, &inxCabeca_Casa, &CondRetEsp);
+		numLidos = LER_LerParametros("ii", &inxMatriz, &CondRetEsp);
 
-		if ((numLidos != 5)
-			|| (!ValidarInxLista(inxLista, VAZIO)) || (!ValidarInxLista(inxLista_2, VAZIO)))
+		if ((numLidos != 2)
+			|| (!ValidarInxMatriz(inxMatriz, VAZIO)))
 		{
 			printf("Entrou");
 			return TST_CondRetParm;
 		} /* if */
 
-		printf("Antes criar tab");
-		CondRet_TAB = cria_tabuleiro(&vtListas[inxLista], &vtListas_2[inxLista_2], &vtAncora_TAB[inxCabeca_TAB], &vtAncora_Casa[inxCabeca_Casa]);
-		printf("apos criar tab");
+		printf("Antes criar tab\n");
+		CondRet_TAB = cria_tabuleiro(&vtMatrizes[inxMatriz]);
+		printf("apos criar tab\n");
 
 		if (CondRet_TAB == 6) {
 
@@ -415,7 +413,7 @@ int ValidarInxLista(int inxLista, int Modo)
 
 	if (Modo == VAZIO)
 	{
-		if (vtListas[inxLista] != 0 || vtListas_2[inxLista] != 0)
+		if (vtListas[inxLista] != 0)
 		{
 			return FALSE;
 		} /* if */
@@ -424,7 +422,37 @@ int ValidarInxLista(int inxLista, int Modo)
 	}
 	else
 	{
-		if (vtListas[inxLista] == 0 || vtListas_2[inxLista] == 0)
+		if (vtListas[inxLista] == 0)
+		{
+			return FALSE;
+		} /* if */
+	} /* if */
+
+	return TRUE;
+
+} /* Fim função: TLIS -Validar indice de lista */
+
+int ValidarInxMatriz(int inxLista, int Modo)
+{
+
+	if ((inxLista <  0)
+		|| (inxLista >= DIM_VT_LISTA))
+	{
+		return FALSE;
+	} /* if */
+
+	if (Modo == VAZIO)
+	{
+		if (vtMatrizes[inxLista] != 0)
+		{
+			return FALSE;
+		} /* if */
+
+
+	}
+	else
+	{
+		if (vtMatrizes[inxLista] == 0)
 		{
 			return FALSE;
 		} /* if */

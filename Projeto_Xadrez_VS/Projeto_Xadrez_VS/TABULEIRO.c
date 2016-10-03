@@ -86,24 +86,34 @@ typedef struct TAB_tagAncoraCasa {
 *
 *  **************************************************************************/
 
-TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas_matriz, TAB_ppAncoraTabuleiro *cabeca_TAB, TAB_ppAncoraCasa *cabeca_Casa) {
+TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 
 
 	int numDoCaminho, numColunas;
+	LIS_tppLista  *caminho_matriz;
+	LIS_tppLista  *colunas_matriz;
+	TAB_ancoraCasa *cabeca_Casa;
+	TAB_ancoraTabuleiro *aux_ancoraTAB;
+	/* Fazendo as alocacaos necessarias */
 	
-	//Alocando cabeça da ancora.
-	*cabeca_TAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
-	if (*cabeca_TAB == NULL) {
+	// - Alocando cabeça da ancora.
+	aux_ancoraTAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
+	if (aux_ancoraTAB == NULL) {
+	
 		return TAB_CondRetFaltouMemoria;
 	}
-	
-	//Cria as listas
-	LIS_CriarLista(caminho_matriz, "Cami");
-	LIS_CriarLista(colunas_matriz, "Colu");
 
-	// Linka a cabeca do tabuleiro com a linha da matriz.
-	(*cabeca_TAB)->pCabecaLista = caminho_matriz;
+	*cabeca_TAB = aux_ancoraTAB;
+
+	// - Aloca as listas
+	LIS_CriarLista(&caminho_matriz, "Cami");
 	
+	/* --------------------------------- */
+	
+
+	//Inicializando estrutura.
+	(*cabeca_TAB)->num_de_linhas = 0;
+	(*cabeca_TAB)->num_de_colunas = 0;
 
 	//Preenche os valores das listas criadas.
 
@@ -111,6 +121,7 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
 		//Cria 8 caminhos (linhas)
+		LIS_CriarLista(colunas_matriz, "Colu");
 		LIS_InserirNo(caminho_matriz, colunas_matriz);
 		(*cabeca_TAB)->num_de_linhas++;
 		
@@ -118,18 +129,23 @@ TAB_tpCondRet cria_tabuleiro(LIS_tppLista *caminho_matriz, LIS_tppLista *colunas
 		{
 			
 			//Cria 8 colunas para cada linha
-			*cabeca_Casa = (TAB_ancoraCasa *)malloc(sizeof(TAB_ancoraCasa));
-			if (*cabeca_Casa == NULL) {
+			cabeca_Casa = (TAB_ancoraCasa *)malloc(sizeof(TAB_ancoraCasa));
+			if (cabeca_Casa == NULL) {
+			
 				return TAB_CondRetFaltouMemoria;
 			}
-			LIS_InserirNo(colunas_matriz, cabeca_Casa);								// <- Digo que cada elemento da matriz aponta pra uma cabeça de casa
+		
+			LIS_InserirNo(colunas_matriz, cabeca_Casa);
+			free(cabeca_Casa);
+		                 
 			(*cabeca_TAB)->num_de_colunas++;
 		
 		}
 	} /* endFor */
 
-	
-
+	  // Linka a cabeca do tabuleiro com a linha da matriz.
+	(*cabeca_TAB)->pCabecaLista = caminho_matriz;
+	printf("Numero de linhas na matriz: %d || Numero de elementos na matriz: %d\n", (*cabeca_TAB)->num_de_linhas++, (*cabeca_TAB)->num_de_colunas++);
 	return TAB_CondRetOK;
 
 }
