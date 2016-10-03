@@ -159,14 +159,14 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 
 		if ((numLidos != 6) || (!ValidarInxMatriz(inxMatriz, NAO_VAZIO)))
 		{
-			printf("Entrou");
+			
 			return TST_CondRetParm;
 		} /* if */
 
 		
-		printf("id_peca: %c   id_cor: %c \n", *id_peca , *id_cor);
+
 		CondRet_TAB = inserirPeca(&vtMatrizes[inxMatriz] , cord_linha , cord_coluna , id_peca , id_cor );
-		printf("apos inserir peca\n");
+		
 
 		if (CondRet_TAB == 6) {
 			printf("Entrou");
@@ -195,9 +195,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetParm;
 		} /* if */
 
-		printf("Antes criar tab\n");
+
 		CondRet_TAB = cria_tabuleiro(&vtMatrizes[inxMatriz]);
-		printf("apos criar tab\n");
+		
 
 		if (CondRet_TAB == 6) {
 

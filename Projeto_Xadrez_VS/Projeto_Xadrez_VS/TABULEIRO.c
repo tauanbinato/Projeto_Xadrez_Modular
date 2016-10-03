@@ -204,7 +204,7 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 
 	/*Anda atraves dos elementos de uma linha ate encontrar a coluna desejada*/
 	for (corrente = 1; corrente == cord_coluna; corrente++) {
-		printf("1");
+	
 		LIS_ObterNo((*cabeca_TAB)->pCabecaLista, &aux_Casa);
 
 	}
