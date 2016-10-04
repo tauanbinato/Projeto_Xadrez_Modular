@@ -174,7 +174,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 
 // AREA DO TAUAN------------------
 /***************************************************************************
-*
+**
 *  Funcao: TAB &inserir Peça
 *Função InserirPeca – Receberá a coordenada linha-coluna, o identificador da peça a ser inserida e a sua cor. 
 *Crie os retornos necessários inclusive prevendo a colocação da peça em uma coordenada inexistente
@@ -186,6 +186,8 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 	char **nomePeca , **corPeca;
 	TAB_ppAncoraCasa *aux_Casa;
 	PEC_tppPeca *aux_Peca;
+
+	printf("Valores: cord_linha: %d  cord_coluna: %d  , id peca: %c   id_cor: %c\n" ,cord_linha , cord_coluna , *id_peca , *id_cor);
 
 	//Testa se esta OUT of RANGE
 	if ((cord_linha > tamanho_matriz || cord_coluna > tamanho_matriz ) || (cord_linha == 0 || cord_coluna == 0)) {

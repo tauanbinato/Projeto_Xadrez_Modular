@@ -153,17 +153,16 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		id_cor = (char *)malloc(1 + sizeof(char));
 		if (id_cor == NULL) return TST_CondRetMemoria;
 
+
 		numLidos = LER_LerParametros("iiicci", &inxMatriz,&cord_linha,&cord_coluna,id_peca,id_cor,&CondRetEsp);
 
 		
-
 		if ((numLidos != 6) || (!ValidarInxMatriz(inxMatriz, NAO_VAZIO)))
 		{
 			
 			return TST_CondRetParm;
 		} /* if */
 
-		
 
 		CondRet_TAB = inserirPeca(&vtMatrizes[inxMatriz] , cord_linha , cord_coluna , id_peca , id_cor );
 		
