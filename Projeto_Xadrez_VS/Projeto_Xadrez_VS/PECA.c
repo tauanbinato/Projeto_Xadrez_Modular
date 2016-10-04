@@ -80,7 +80,7 @@ PEC_tpCondRet PEC_obtemNomeDePeca(PEC_tppPeca *peca, char **nome_peca) {
 	if (aux == NULL) return PEC_CondRetFaltouMemoria;
 	
 	strcpy(aux, (*peca)->nome_peca);
-	strcpy(nome_peca, aux);
+	strcpy(*nome_peca, aux);
 
 	return PEC_CondRetOK;
 }
@@ -92,7 +92,7 @@ PEC_tpCondRet PEC_obtemCorDePeca(PEC_tppPeca *peca, char **cor_peca) {
 	if (aux == NULL) return PEC_CondRetFaltouMemoria;
 	
 	strcpy(aux, (*peca)->cor_peca);
-	strcpy(cor_peca, aux);
+	strcpy(*cor_peca, aux);
 	
 
 	return PEC_CondRetOK;

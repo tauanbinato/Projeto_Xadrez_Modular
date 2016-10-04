@@ -124,7 +124,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	
 
 	// - Aloca as listas
-	LIS_CriarLista(&caminho_matriz, "Cami");
+	LIS_CriarLista(caminho_matriz, "Cami");
 	/* --------------------------------- */
 	
 
@@ -138,8 +138,8 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	{
 		//Cria 8 caminhos (linhas)
 		
-		LIS_CriarLista(&colunas_matriz, vetor_IDS[numDoCaminho]);
-		LIS_InserirNo(&caminho_matriz, colunas_matriz);
+		LIS_CriarLista(colunas_matriz, vetor_IDS[numDoCaminho]);
+		LIS_InserirNo(caminho_matriz, colunas_matriz);
 		(*cabeca_TAB)->num_de_linhas++;
 		
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
@@ -154,7 +154,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 		
 			*cabeca_casa = aux_cabecaCasa;
 			
-			LIS_InserirNo(&colunas_matriz, cabeca_casa);
+			LIS_InserirNo(colunas_matriz, cabeca_casa);
 			free(aux_cabecaCasa);
 		                 
 			(*cabeca_TAB)->num_de_colunas++;
@@ -190,14 +190,14 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 	printf("Valores: cord_linha: %d  cord_coluna: %d  , id peca: %c   id_cor: %c\n" ,cord_linha , cord_coluna , *id_peca , *id_cor);
 
 	//Testa se esta OUT of RANGE
-	if ((cord_linha > tamanho_matriz || cord_coluna > tamanho_matriz ) || (cord_linha == 0 || cord_coluna == 0)) {
+	if ((**cord_linha > tamanho_matriz || **cord_coluna > tamanho_matriz ) || (**cord_linha == 0 || **cord_coluna == 0)) {
 		return TAB_CondRetNaoAchou;
 	}
 
 
 	/*Anda atraves da cabeça ate encontrar a linha desejada*/
-	for (corrente = 1; corrente == cord_linha; corrente++) {
-		if (corrente == cord_linha) {
+	for (corrente = 1; corrente == **cord_linha; corrente++) {
+		if (corrente == **cord_linha) {
 			break;
 		}
 		LIS_AvancarElementoCorrente((*cabeca_TAB)->pCabecaLista);
@@ -205,9 +205,9 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 	printf("Corrente : %d || Linha : %d\n", corrente, cord_linha);
 
 	/*Anda atraves dos elementos de uma linha ate encontrar a coluna desejada*/
-	for (corrente = 1; corrente == cord_coluna; corrente++) {
+	for (corrente = 1; corrente == **cord_coluna; corrente++) {
 	
-		LIS_ObterNo((*cabeca_TAB)->pCabecaLista, &aux_Casa);
+		LIS_ObterNo((*cabeca_TAB)->pCabecaLista, (void**)aux_Casa);
 
 	}
 	printf("Corrente : %d || Coluna : %d\n", corrente, cord_coluna);
@@ -218,12 +218,12 @@ TAB_tpCondRet inserirPeca(TAB_ppAncoraTabuleiro *cabeca_TAB, int **cord_linha , 
 	//Utiliza funcoes de acesso do modulo peca
 	printf("id_peca: %c   id_cor: %c \n", *id_peca, *id_cor);
 	/*Crio a peca que sera inserida no tabuleiro*/
-	PEC_criaPeca(&aux_Peca, id_peca, id_cor);
-	PEC_insereNomeDePeca(&aux_Peca, id_peca);
-	PEC_insereCorDePeca(&aux_Peca, id_cor);
+	PEC_criaPeca(aux_Peca, *id_peca, *id_cor);
+	PEC_insereNomeDePeca(aux_Peca, *id_peca);
+	PEC_insereCorDePeca(aux_Peca, *id_cor);
 	
-	PEC_obtemNomeDePeca(&aux_Peca, &nomePeca);
-	PEC_obtemCorDePeca(&aux_Peca, &corPeca);
+	PEC_obtemNomeDePeca(aux_Peca, *nomePeca);
+	PEC_obtemCorDePeca(aux_Peca, *corPeca);
 
 	printf("Peca adicionda : %c\n",nomePeca);
 	printf("Cor da peca adicionda : %c\n", corPeca);

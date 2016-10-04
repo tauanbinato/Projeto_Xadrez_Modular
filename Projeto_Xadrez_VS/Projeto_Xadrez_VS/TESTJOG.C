@@ -148,9 +148,9 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 	else if (strcmp(ComandoTeste, INSERIR_PECA_CMD) == 0)
 	{
 		char *id_peca , *id_cor;
-		id_peca = (char *)malloc(1 + sizeof(char));
+		id_peca = (char *)malloc(sizeof(char));
 		if (id_peca == NULL) return TST_CondRetMemoria;
-		id_cor = (char *)malloc(1 + sizeof(char));
+		id_cor = (char *)malloc(sizeof(char));
 		if (id_cor == NULL) return TST_CondRetMemoria;
 
 
@@ -164,7 +164,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 
-		CondRet_TAB = inserirPeca(&vtMatrizes[inxMatriz] , cord_linha , cord_coluna , id_peca , id_cor );
+		CondRet_TAB = inserirPeca(&vtMatrizes[inxMatriz] , &cord_linha , &cord_coluna , id_peca , id_cor );
 		
 
 		if (CondRet_TAB == 6) {
@@ -302,7 +302,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetMemoria;
 		} /* if */
 
-		*pDado = CharDado;
+		pDado = CharDado;
 
 		CondRet_LIS = LIS_InserirNo(&vtListas[inxLista], pDado);
 
@@ -348,7 +348,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 			return TST_CondRetParm;
 		} /* if */
 
-		CondRet_LIS = LIS_ObterNo(vtListas[inxLista], &CharObtido);
+		CondRet_LIS = LIS_ObterNo(&vtListas[inxLista], (void**)CharObtido);
 
 		if (CondRet_LIS == 2)
 		{
@@ -356,7 +356,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 				"Erro Lista Vazia");
 		} /* if */
 
-		return TST_CompararChar(CharObtido, CharDado,
+		return TST_CompararChar(CharObtido, *CharDado,
 			"Valor do elemento errado.");
 
 	} /* fim ativa: Testar obter valor do elemento corrente */
@@ -376,7 +376,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 		return TST_CompararInt(CondRetEsp,
-			LIS_AvancarElementoCorrente(vtListas[inxLista]),
+			LIS_AvancarElementoCorrente(&vtListas[inxLista]),
 			"Condicao de retorno errada ao avancar");
 
 	} /* fim ativa: LIS  &Avançar elemento */
@@ -396,7 +396,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 		return TST_CompararInt(CondRetEsp,
-			LIS_VoltarElementoCorrente(vtListas[inxLista]),
+			LIS_VoltarElementoCorrente(&vtListas[inxLista]),
 			"Condicao de retorno errada ao avancar");
 
 	} /* fim ativa: LIS  &Voltar elemento */
@@ -413,7 +413,7 @@ TST_tpCondRet TST_EfetuarComando(char * ComandoTeste)
 		} /* if */
 
 		return TST_CompararInt(CondRetEsp,
-			LIS_AlterarElementoCorrente(vtListas[inxLista], CharDado),
+			LIS_AlterarElementoCorrente(vtListas[inxLista], *CharDado),
 			"Condicao de retorno errada ao avancar");
 
 	} /* fim ativa: LIS  &Voltar elemento */
