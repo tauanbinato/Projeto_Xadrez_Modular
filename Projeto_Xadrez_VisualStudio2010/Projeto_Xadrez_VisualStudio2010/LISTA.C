@@ -106,12 +106,11 @@
       {
          return LIS_CondRetFaltouMemoria ;
       } /* if */
-	  
+	 
       LimparCabeca( aux ) ;
 	  strcpy(aux->idLista, idLista);
-	  *pLista = aux;
-	 
-
+	  
+	  pLista = &aux;
 
       return LIS_CondRetOK ;
 
@@ -194,38 +193,45 @@
 		
       /* Criar elemento a inserir ap�s */
          pElem = CriarElemento( pLista , pValor ) ;
-
-	
-
+		
          if ( pElem == NULL )
          {
             return LIS_CondRetFaltouMemoria ;
          } /* if */
-		
+		 printf("\ncriou elem\n");
       /* Encadear o elemento ap�s o elemento */
 
          if ((*pLista)->pElemCorr == NULL )
          {
+			 printf("\nentrou primeiro if\n");
 			 (*pLista)->pOrigemLista = pElem ;
+			 printf("\nplista->porigemlista=pelem\n");
 			 (*pLista)->pFimLista = pElem ;
-         } else
+         }
+		 else
          {
-            if ((*pLista)->pElemCorr->pProx != NULL )
-            {
-               pElem->pProx  = (*pLista)->pElemCorr->pProx ;
-			   (*pLista)->pElemCorr->pProx->pAnt = pElem ;
-            } else
-            {
-				(*pLista)->pFimLista = pElem ;
-            } /* if */
+				printf("\nentrou else 1\n");
+				printf("\n%d\n",(*pLista)->pElemCorr->pProx);
+				if ((*pLista)->pElemCorr->pProx != NULL )
+				{
+					printf("\nentrou if dentro do else\n");
+					pElem->pProx  = (*pLista)->pElemCorr->pProx ;
+					printf("\nlinkou 1\n");
+					(*pLista)->pElemCorr->pProx->pAnt = pElem ;
+					printf("\nlinkou 2\n");
+				} 
+				else
+				{
+					printf("\nentrou else 2\n");
+					(*pLista)->pFimLista = pElem ;
+				} /* if */
 
-            pElem->pAnt = (*pLista)->pElemCorr ;
-			(*pLista)->pElemCorr->pProx = pElem ;
+				pElem->pAnt = (*pLista)->pElemCorr ;
+				(*pLista)->pElemCorr->pProx = pElem ;
 
          } /* if */
-		
+		 printf("\nsaiu\n");
 		 pElem->pValor = pValor;
-
 		 (*pLista)->pElemCorr = pElem ;
 		 
 		 

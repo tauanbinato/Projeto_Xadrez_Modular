@@ -105,7 +105,7 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	TAB_ancoraTabuleiro *aux_ancoraTAB;
 	/* --------------------------------- */
 
-	
+	printf("declarou");
 
 	/* Fazendo as alocacaos necessarias */
 	
@@ -113,33 +113,36 @@ TAB_tpCondRet cria_tabuleiro(TAB_ppAncoraTabuleiro *cabeca_TAB) {
 	if (cabeca_casa == NULL) {
 		return TAB_CondRetFaltouMemoria;
 	}
-
+	printf("alocou cabeca casa");
 	// - Alocando cabeça da ancora.
 	aux_ancoraTAB = (TAB_ancoraTabuleiro *)malloc(sizeof(TAB_ancoraTabuleiro));
 	if (aux_ancoraTAB == NULL) {
 	
 		return TAB_CondRetFaltouMemoria;
 	}
+	printf("alocou ancora");
 	*cabeca_TAB = aux_ancoraTAB;
-	
+	printf("atribuiu aux a cabeca");
 
 	// - Aloca as listas
 	LIS_CriarLista(caminho_matriz, "Cami");
 	/* --------------------------------- */
 	
-
+	printf("\ncriou lista caminho\n");
 	//Inicializando estrutura.
 	(*cabeca_TAB)->num_de_linhas = 0;
 	(*cabeca_TAB)->num_de_colunas = 0;
 	
-	
+	printf("inicializou num linhas e col do cab tab\n"); 
 	
 	for (numDoCaminho = 0; numDoCaminho < tamanho_matriz; numDoCaminho++)
 	{
 		//Cria 8 caminhos (linhas)
-		
+		printf("entrou no for\n");
 		LIS_CriarLista(colunas_matriz, vetor_IDS[numDoCaminho]);
-		LIS_InserirNo(caminho_matriz, colunas_matriz);
+		printf("\ncriou lista colunas");
+		LIS_InserirNo(caminho_matriz, *colunas_matriz);
+		printf("\ninseriu no\n");
 		(*cabeca_TAB)->num_de_linhas++;
 		
 		for (numColunas = 0; numColunas < tamanho_matriz; numColunas++)
